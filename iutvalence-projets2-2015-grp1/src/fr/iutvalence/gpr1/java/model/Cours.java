@@ -1,4 +1,4 @@
-package fr.iutvalence.gpr1.java;
+package fr.iutvalence.gpr1.java.model;
 
 public class Cours {
 	

@@ -1,9 +1,8 @@
 package fr.iutvalence.gpr1.java;
 
-public class Application {
+public class Gestionnaire {
 	
-	public static void main(String[] args)
-	{
+
 		private determinerAbsence(){
 			//TODO Faire la méthode
 		}
@@ -18,4 +17,4 @@ public class Application {
 			
 	}
 
-}
+
