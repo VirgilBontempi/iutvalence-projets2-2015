@@ -1,4 +1,4 @@
-package fr.iutvalence.groupes2.projet;
+package fr.iutvalence.gpr1.java;
 
 public class Application {
 	
