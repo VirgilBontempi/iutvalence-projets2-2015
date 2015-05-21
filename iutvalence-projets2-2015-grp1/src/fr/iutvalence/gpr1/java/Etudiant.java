@@ -37,8 +37,9 @@ public class Etudiant {
 	 * @return login
 	 */
 
-	public String identificationEtudiant(){
-		//si identifié, absence = false
+	public void identificationEtudiant(){
+		
+		this.absence = true;
 		System.out.println("Saisissez vos identifiants");
 		Scanner scanner = new Scanner(System.in);
 		String login = scanner.nextLine();
@@ -50,14 +51,9 @@ public class Etudiant {
 		
 		if(etudiant_retourne != null)
 		{
-		if(etudiant_retourne.password == this.password) {
-			
+		if(etudiant_retourne.password == this.password) absence = false;
 		}
 		
-		}
-		//TODO Faire l'esception "le login n'est pas dans la liste"
-		absence = false;
-		return login;
 	}
 	
 	/**
@@ -65,14 +61,7 @@ public class Etudiant {
 	 * @return nbrAbsence
 	 */
 	public int getNbrAbsence(){
-		int nbrAbsence = 0;
-		//apres pointageTerminé, nbrabsence = nbrabsence+1 si absence = true
-		// sinon, nbrabsence = nbrabsence
-		if(absence == true){
-			nbrAbsence = this.nbrAbsence+1;
-		}
-		nbrAbsence = this.nbrAbsence;
-		return nbrAbsence;
+		return this.nbrAbsence;
 	}
 
 	public String login() {

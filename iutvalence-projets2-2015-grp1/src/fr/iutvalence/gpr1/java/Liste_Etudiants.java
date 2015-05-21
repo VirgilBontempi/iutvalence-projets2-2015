@@ -33,9 +33,7 @@ public class Liste_Etudiants {
 	    Etudiant etudiant_trouve = null;
 		
 		for(int i=0; i < NBRE_MAX_ETUDIANTS; i++) {
-		if(etudiants[i].login() == login) {
-			etudiant_trouve = etudiants[i];
-		}
+		if(etudiants[i].login() == login) etudiant_trouve = etudiants[i];	
 		}
 		
 		return etudiant_trouve;
