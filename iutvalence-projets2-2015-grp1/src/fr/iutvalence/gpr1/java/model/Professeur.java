@@ -10,18 +10,7 @@ public class Professeur {
 	
 	private String password;
 	
-	/**
-	 * Identfie un Professeur.
-	 * @return login un identifiqnt
-	 */
-	public String identificationProfesseur(){
-		System.out.println("Saisissez vos identifiants");
-		Scanner scanner = new Scanner(System.in);
-		String login = scanner.next();
-		String password = scanner.next();
-		//TODO Faire l'esception "le login n'est pas dans la liste"
-		return login;
-	}
+	
 	
 	/**
 	 * Saisie une heure de cours.

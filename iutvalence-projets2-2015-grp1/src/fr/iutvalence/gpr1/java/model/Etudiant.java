@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 public class Etudiant {
 	
+	public static final int NBR_ABSENCE_BY_DEFAULT = 0;
+	
 	private String nom;
 	
 	private String prenom;
@@ -12,7 +14,7 @@ public class Etudiant {
 	
 	private int numEtudiant;
 	
-	private boolean absence = true;
+	private boolean absence;
 	
 	private String login;
 	
@@ -21,40 +23,18 @@ public class Etudiant {
 	private int nbrAbsence;
 	
 	
-	public Etudiant(String nom, String prenom, String gprTp, int numEtudiant, boolean absence, String login, String password, int nbrAbsence) {
+	public Etudiant(String nom, String prenom, String gprTp, int numEtudiant, String login, String password) {
 	this.nom = nom;
 	this.prenom = prenom;
 	this.gprTp = gprTp;
 	this.numEtudiant = numEtudiant;
-	this.absence = absence;
+	this.absence = true;
 	this.login = login;
 	this.password = password;
-	this.nbrAbsence = nbrAbsence;
+	this.nbrAbsence = NBR_ABSENCE_BY_DEFAULT;
 	}
 	
-	/**
-	 * Identifie un Etudiant et change le statut 'absent' en 'non absent'.
-	 * @return login
-	 */
-
-	public void identificationEtudiant(){
-		
-		this.absence = true;
-		System.out.println("Saisissez vos identifiants");
-		Scanner scanner = new Scanner(System.in);
-		String login = scanner.nextLine();
-		String password = scanner.nextLine();
-		
-		Liste_Etudiants etudiants = new Liste_Etudiants();
-		
-		Etudiant etudiant_retourne = etudiants.getEtudiant(login);
-		
-		if(etudiant_retourne != null)
-		{
-		if(etudiant_retourne.password == this.password) absence = false;
-		}
-		
-	}
+	
 	
 	/**
 	 * Compteur du nombre d'absence en foncion du statut 'absent' après dentification.
