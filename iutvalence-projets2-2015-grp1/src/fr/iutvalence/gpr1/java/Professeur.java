@@ -46,12 +46,27 @@ public class Professeur {
 		return grpTp;
 	}
 	
-	public void saisieTypeCours(String getTypeCours){
-		//TODO Faire la méthode
+	/**
+	 * Saisie un type de cours.
+	 * @return getTypeCours un type de cours (CM, TD ou TP)
+	 */
+	public String saisieTypeCours(){
+		System.out.println("Saisissez un type de cours");
+		Scanner scanner = new Scanner(System.in);
+		String getTypeCours = scanner.next();
+		return getTypeCours;
 	}
 	
-	public void saisieNomCours(String getLibelle){
+	/**
+	 * Saisie un libellé de cours.
+	 * @return getLibelle un libellé de cours
+	 */
+	public String saisieNomCours(){
 		//TODO Faire la méthode
+		System.out.println("Saisissez le nom du cours");
+		Scanner scanner = new Scanner(System.in);
+		String getLibelle = scanner.next();
+		return getLibelle;
 	}
 
 }
