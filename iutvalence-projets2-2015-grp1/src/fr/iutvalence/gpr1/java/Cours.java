@@ -22,7 +22,7 @@ public class Cours {
 	
 			
 			for(int i=0; i < NBRE_MAX_ETUDIANTS; i++) {
-			if(etudiants[i].absence() == login) etudiant_trouve = etudiants[i];	
+			if(etudiants[i].absence() != false) etudiants[i].addAbsence();	
 			}
 					
 

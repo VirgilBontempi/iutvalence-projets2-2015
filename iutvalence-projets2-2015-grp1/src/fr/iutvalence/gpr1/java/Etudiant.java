@@ -72,6 +72,10 @@ public class Etudiant {
 		
 		return this.login;
 	}
+	
+	public void addAbsence() {
+		this.nbrAbsence = this.nbrAbsence++;
+	}
 
 
 }
