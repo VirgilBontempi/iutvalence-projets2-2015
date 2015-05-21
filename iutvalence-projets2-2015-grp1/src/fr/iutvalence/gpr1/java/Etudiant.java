@@ -63,6 +63,10 @@ public class Etudiant {
 	public int getNbrAbsence(){
 		return this.nbrAbsence;
 	}
+	
+	public boolean getAbsence() {
+		return this.absence;
+	}
 
 	public String login() {
 		
