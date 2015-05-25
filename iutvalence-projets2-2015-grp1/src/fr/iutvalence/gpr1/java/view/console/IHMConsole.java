@@ -8,13 +8,11 @@ public class IHMConsole implements IHM {
 	
 	Scanner scanner = new Scanner(System.in);
 	
-	@Override
 	public String saisieLogin() {
 		System.out.println("Saisissez vos identifiants");
 		return scanner.nextLine();
 	}
 
-	@Override
 	public String saisiePassword() {
 		return scanner.nextLine();
 	}

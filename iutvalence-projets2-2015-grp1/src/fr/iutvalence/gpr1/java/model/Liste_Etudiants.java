@@ -3,7 +3,9 @@ package fr.iutvalence.gpr1.java.model;
 public class Liste_Etudiants {
 	
 	private static final int NBRE_MAX_ETUDIANTS = 5;
- 	private Etudiant[] etudiants = null;
+	
+
+	private Etudiant[] etudiants = null;
  	
  	private int nombre_etudiants = 0;
  	
@@ -38,6 +40,11 @@ public class Liste_Etudiants {
 		
 		return etudiant_trouve;
 	}
+	
+ 	public static int getNbreMaxEtudiants() {
+		return NBRE_MAX_ETUDIANTS;
+	}
+
 	
 	/*
 	public void ajouterEtudiant(Etudiant etudiant){

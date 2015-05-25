@@ -23,7 +23,7 @@ public class Etudiant {
 	private int nbrAbsence;
 	
 	
-	public Etudiant(String nom, String prenom, String gprTp, int numEtudiant, String login, String password) {
+	public Etudiant(String nom, String prenom, String gprTp, int numEtudiant,boolean absence, String login, String password,int nbrAbsence) {
 	this.nom = nom;
 	this.prenom = prenom;
 	this.gprTp = gprTp;

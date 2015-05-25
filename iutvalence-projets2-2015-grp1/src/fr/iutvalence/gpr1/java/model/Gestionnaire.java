@@ -19,7 +19,7 @@ public class Gestionnaire {
 	public void identificationAdministrateur(){
 		String login = this.monIHM.saisieLogin();
 		String password = this.monIHM.saisiePassword();
-		//TODO Faire l'esception "le login n'est pas dans la liste"
+		//TODO Faire l'exception "le login n'est pas dans la liste"
 	}
 	
 	/**
