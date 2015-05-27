@@ -37,17 +37,16 @@ public class Gestionnaire {
 	 * @return login
 	 */
 	public void identificationEtudiant(){
-		this.absence = true;
 		String login = this.monIHM.saisieLogin();
 		String password = this.monIHM.saisiePassword();
 		
-		Liste_Etudiants etudiants = new Liste_Etudiants();
+		Liste_Etudiants listEtudiants = new Liste_Etudiants();
 		
-		Etudiant etudiant_retourne = etudiants.getEtudiant(login);
+		Etudiant etudiant_retourne = listEtudiants.getEtudiant(login);
 		
 		if(etudiant_retourne != null)
 		{
-		if(etudiant_retourne.password == this.password) absence = false;
+			if(etudiant_retourne.getPassword() == password) etudiant_retourne.setAbsence(false);
 		}
 		
 	}

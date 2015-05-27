@@ -34,8 +34,6 @@ public class Etudiant {
 	this.nbrAbsence = NBR_ABSENCE_BY_DEFAULT;
 	}
 	
-	
-	
 	/**
 	 * Compteur du nombre d'absence en foncion du statut 'absent' après dentification.
 	 * @return nbrAbsence
@@ -48,9 +46,18 @@ public class Etudiant {
 		return this.absence;
 	}
 
+	public void setAbsence(boolean absence) {
+		this.absence = absence;
+	}
+
 	public String login() {
 		
 		return this.login;
+	}
+	
+	public String getPassword() {
+		
+		return this.password;
 	}
 	
 	public void addAbsence() {

@@ -9,7 +9,6 @@ public class Cours {
 	private Date date;
 	
 	private Liste_Etudiants listeEtudiant;
-	
 	Cours cours = new Cours();
 
 	public String getTypeCours() {
@@ -23,7 +22,7 @@ public class Cours {
 	public void setAbsences() {
 	
 			for(int i=0; i < listeEtudiant.getNbreMaxEtudiants(); i++) {
-			if(etudiants[i].absence() != false) etudiants[i].addAbsence();	
+			if(listeEtudiant[i].getAbsense == true) listeEtudiant[i].addAbsence();	
 			}
 					
 
