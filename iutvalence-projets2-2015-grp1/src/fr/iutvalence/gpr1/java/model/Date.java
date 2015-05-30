@@ -1,5 +1,6 @@
 package fr.iutvalence.gpr1.java.model;
 
+/** Classe Date. */
 public class Date {
 	private int jour;
 	private int mois;
@@ -11,14 +12,17 @@ public class Date {
 		this.annee = annee;
 	}
 
+	/** Getter d'un jour. */
 	public int getJour() {
 		return jour;
 	}
 
+	/** Getter d'un mois. */
 	public int getMois() {
 		return mois;
 	}
 
+	/** Getter d'une année. */
 	public int getAnnee() {
 		return annee;
 	}

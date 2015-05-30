@@ -2,6 +2,7 @@ package fr.iutvalence.gpr1.java.model;
 
 import java.util.Scanner;
 
+/** Classe Etudiant. */
 public class Etudiant {
 	
 	public static final int NBR_ABSENCE_BY_DEFAULT = 0;
@@ -42,24 +43,25 @@ public class Etudiant {
 		return this.nbrAbsence;
 	}
 	
+	/** Getter d'une absence. */
 	public boolean getAbsence() {
 		return this.absence;
 	}
 
+	/** Setter d'une absence. */
 	public void setAbsence(boolean absence) {
 		this.absence = absence;
 	}
 
 	public String login() {
-		
 		return this.login;
 	}
 	
 	public String getPassword() {
-		
 		return this.password;
 	}
 	
+	/** Ajoute une absence. */
 	public void addAbsence() {
 		this.nbrAbsence = this.nbrAbsence++;
 	}

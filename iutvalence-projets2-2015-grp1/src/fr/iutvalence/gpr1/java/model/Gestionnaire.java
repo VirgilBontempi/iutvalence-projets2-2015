@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import fr.iutvalence.gpr1.java.view.IHM;
 
+/** Classe Gestionnaire */
 public class Gestionnaire {
 	
 	private IHM monIHM;
@@ -50,13 +51,16 @@ public class Gestionnaire {
 		}
 		
 	}
-
+		
+		/** Valide une absence. */
 		private void determinerAbsence(){
 			//TODO Faire la méthode
 		}
 	
+		/** Valide une identification. */
 		private void validationIdentification(){
 			//TODO Faire la méthode
+			// si login = login et password = password, id valide
 		}
 	
 		private void ajoutPresent(){

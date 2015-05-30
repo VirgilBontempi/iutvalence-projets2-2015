@@ -1,5 +1,6 @@
 package fr.iutvalence.gpr1.java.model;
 
+/** Classe Salle. */
 public class Salle {
 	
 	private String numero;
