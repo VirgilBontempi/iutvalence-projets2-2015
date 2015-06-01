@@ -1,5 +1,8 @@
 package fr.iutvalence.gpr1.java.model;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
 import java.util.Scanner;
 
 import fr.iutvalence.gpr1.java.view.IHM;
@@ -9,8 +12,30 @@ public class Gestionnaire {
 	
 	private IHM monIHM;
 	
-	public Gestionnaire(IHM monIHM){
+	private List<Etudiant> listEtudiants;
+	private List<Professeur> listProfesseurs;
+	
+	
+	public Gestionnaire(IHM monIHM, File fichierEtudiants, File fichierProfesseurs){
 		this.monIHM = monIHM;
+		ListePersonnes fichierEtudiant = new ListePersonnes(fichierEtudiants);
+		try
+		{
+			this.listEtudiants=fichierEtudiant.getEtudiants();
+		} catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+		
+		ListePersonnes fichierProfesseur = new ListePersonnes(fichierProfesseurs);
+		try
+		{
+			this.listProfesseurs = fichierProfesseur.getProfesseurs();
+		} catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+		
 	}
 	
 	/**
@@ -40,8 +65,6 @@ public class Gestionnaire {
 	public void identificationEtudiant(){
 		String login = this.monIHM.saisieLogin();
 		String password = this.monIHM.saisiePassword();
-		
-		Liste_Etudiants listEtudiants = new Liste_Etudiants();
 		
 		Etudiant etudiant_retourne = listEtudiants.getEtudiant(login);
 		

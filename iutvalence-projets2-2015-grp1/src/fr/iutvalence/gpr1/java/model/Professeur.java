@@ -3,14 +3,11 @@ package fr.iutvalence.gpr1.java.model;
 import java.util.Scanner;
 
 /** Classe Professeur. */
-public class Professeur {
+public class Professeur extends Personne {
 	
-	private String nom;
-	
-	private String login;
-	
-	private String password;
-	
+	public Professeur(String nom, String prenom, String login, String password){
+		super(nom, prenom, login, password);
+	}
 	
 	
 	/**
