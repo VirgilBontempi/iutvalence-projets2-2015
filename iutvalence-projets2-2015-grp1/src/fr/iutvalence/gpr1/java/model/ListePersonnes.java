@@ -58,6 +58,27 @@ public class ListePersonnes {
 			return listeProfesseurs;
 			}	
 		}
+ 	
+ 	public List<Administrateur> getAdministrateurs() throws IOException {
+		try (BufferedReader entry = new BufferedReader(new FileReader(this.listPersonnes))) {
+			String readText = entry.readLine();
+	
+			List<Administrateur> listeAdministrateurs = new LinkedList<Administrateur>();
+			if (readText!=null) {
+				String[] administrateurs = readText.split("|");
+				for (int index=0; index < administrateurs.length; index++) {
+					String[] administrateur = administrateurs[index].split(",");
+					String nom = administrateur[0];
+					String prenom = administrateur[1];
+					String login = administrateur[2];
+					String password = administrateur[3];
+					Administrateur administrateurCourant = new Administrateur(nom, prenom, login, password);
+					listeAdministrateurs.add(administrateurCourant);
+					}
+				}		
+			return listeAdministrateurs;
+			}	
+		}
 
 	
 	

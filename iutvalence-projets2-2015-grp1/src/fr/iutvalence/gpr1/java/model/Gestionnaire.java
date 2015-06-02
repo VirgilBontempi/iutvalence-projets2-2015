@@ -2,32 +2,37 @@ package fr.iutvalence.gpr1.java.model;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
 import fr.iutvalence.gpr1.java.view.IHM;
 
 /** Classe Gestionnaire */
-public class Gestionnaire {
-	
+public class Gestionnaire
+{
+
 	private IHM monIHM;
-	
+
 	private List<Etudiant> listEtudiants;
 	private List<Professeur> listProfesseurs;
-	
-	
-	public Gestionnaire(IHM monIHM, File fichierEtudiants, File fichierProfesseurs){
+	private List<Administrateur> listAdministrateurs;
+
+	public Gestionnaire(IHM monIHM, File fichierEtudiants,
+			File fichierProfesseurs, File fichierAdministrateurs)
+	{
 		this.monIHM = monIHM;
 		ListePersonnes fichierEtudiant = new ListePersonnes(fichierEtudiants);
 		try
 		{
-			this.listEtudiants=fichierEtudiant.getEtudiants();
+			this.listEtudiants = fichierEtudiant.getEtudiants();
 		} catch (IOException e)
 		{
 			e.printStackTrace();
 		}
-		
-		ListePersonnes fichierProfesseur = new ListePersonnes(fichierProfesseurs);
+
+		ListePersonnes fichierProfesseur = new ListePersonnes(
+				fichierProfesseurs);
 		try
 		{
 			this.listProfesseurs = fichierProfesseur.getProfesseurs();
@@ -36,60 +41,124 @@ public class Gestionnaire {
 			e.printStackTrace();
 		}
 		
+		ListePersonnes fichierAdministrateur = new ListePersonnes(fichierAdministrateurs);
+		try
+		{
+			this.listAdministrateurs = fichierAdministrateur.getAdministrateurs();
+		} catch (IOException e)
+		{
+			e.printStackTrace();
+		}
 	}
-	
+
 	/**
 	 * Identifie un Admin.
-	 * @return login
+	 * 
+	 * @return boolean
 	 */
-	public void identificationAdministrateur(){
+	public boolean identificationAdministrateur()
+	{
 		String login = this.monIHM.saisieLogin();
 		String password = this.monIHM.saisiePassword();
-		//TODO Faire l'exception "le login n'est pas dans la liste"
+		if (this.rechercheProfesseur(login, password))
+			return true;
+		return false;
 	}
-	
+
+	public boolean rechercheAdministrateur(String login, String password)
+	{
+		Iterator<Administrateur> iterator = this.listAdministrateurs.iterator();
+		while (iterator.hasNext())
+		{
+			Administrateur currentAdministrator = iterator.next();
+			if (currentAdministrator.getLogin().equals(login))
+			{
+				if (currentAdministrator.getPassword().equals(password))
+				{
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
 	/**
 	 * Identfie un Professeur.
-	 * @return login un identifiqnt
+	 * 
+	 * @return boolean
 	 */
-	public void identificationProfesseur(){
+	public boolean identificationProfesseur()
+	{
 		String login = this.monIHM.saisieLogin();
 		String password = this.monIHM.saisiePassword();
-		//TODO Faire l'esception "le login n'est pas dans la liste"
+		if (this.rechercheProfesseur(login, password))
+			return true;
+		return false;
 	}
-	
+
+	private boolean rechercheProfesseur(String login, String password)
+	{
+		Iterator<Professeur> iterator = this.listProfesseurs.iterator();
+		while (iterator.hasNext())
+		{
+			Professeur currentTeacher = iterator.next();
+			if (currentTeacher.getLogin().equals(login))
+			{
+				if (currentTeacher.getPassword().equals(password))
+				{
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
 	/**
 	 * Identifie un Etudiant et change le statut 'absent' en 'non absent'.
-	 * @return login
+	 * 
+	 * @return void
 	 */
-	public void identificationEtudiant(){
+	public void identificationEtudiant()
+	{
 		String login = this.monIHM.saisieLogin();
 		String password = this.monIHM.saisiePassword();
-		
-		Etudiant etudiant_retourne = listEtudiants.getEtudiant(login);
-		
-		if(etudiant_retourne != null)
+		Etudiant etudiant = this.rechercheEtudiant(login, password);
+
+		if (etudiant != null)
 		{
-			if(etudiant_retourne.getPassword() == password) etudiant_retourne.setAbsence(false);
+			int index = this.listEtudiants.indexOf(etudiant);
+			etudiant.setAbsence(false);
+			this.listEtudiants.set(index, etudiant);
 		}
-		
-	}
-		
-		/** Valide une absence. */
-		private void determinerAbsence(){
-			//TODO Faire la méthode
-		}
-	
-		/** Valide une identification. */
-		private void validationIdentification(){
-			//TODO Faire la méthode
-			// si login = login et password = password, id valide
-		}
-	
-		private void ajoutPresent(){
-			//TODO Faire la méthode
-		}
-			
+
 	}
 
+	private Etudiant rechercheEtudiant(String login, String password)
+	{
+		Iterator<Etudiant> iterator = this.listEtudiants.iterator();
+		while (iterator.hasNext())
+		{
+			Etudiant currentStudent = iterator.next();
+			if (currentStudent.getLogin().equals(login))
+			{
+				if (currentStudent.getPassword().equals(password))
+				{
+					return currentStudent;
+				}
+			}
+		}
+		return null;
+	}
 
+	/** Valide une absence. */
+	public void determinerAbsence()
+	{
+		// TODO Faire la méthode
+	}
+
+	public void ajoutPresent()
+	{
+		// TODO Faire la méthode
+	}
+
+}

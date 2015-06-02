@@ -14,15 +14,15 @@ public class Personne
 		this.password = login;
 	}
 	
-	public String nom(){
+	public String getNom(){
 		return this.nom;
 	}
 	
-	public String prenom(){
+	public String getPrenom(){
 		return this.prenom;
 	}
 	
-	public String login() {
+	public String getLogin() {
 		return this.login;
 	}
 	

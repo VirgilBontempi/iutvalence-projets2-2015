@@ -34,15 +34,6 @@ public class Cours {
 		return libelle;
 	}
 
-	/** Setter d'une !absence. */
-	public void setAbsences() {
-	
-			for(int i=0; i < listeEtudiant.getNbreMaxEtudiants(); i++) {
-			if(listeEtudiant[i].getAbsense == true) listeEtudiant[i].addAbsence();	
-			}
-					
-
-	}
 	
 	
 }
