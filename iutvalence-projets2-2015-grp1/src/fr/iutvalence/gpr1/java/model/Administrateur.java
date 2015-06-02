@@ -1,12 +1,7 @@
 package fr.iutvalence.gpr1.java.model;
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
-
 /** Classe Administrateur. */
 public class Administrateur extends Personne {
-	
-	private Liste_Admin listeAdmin;
 	
 	/** Constructeur d'un administrateur. */
 	public Administrateur(String nom,String prenom, String login,String password){
@@ -15,14 +10,14 @@ public class Administrateur extends Personne {
 	
 	
 	/** Ajoute un administrateur */
-	public void ajoutAdministrateur(String nom,String login, String motDePasse){
-	int i=0;
-	while(listeAdmin.getAdmin()[i]!=null){
-		i++;
-	}
+//	public void ajoutAdministrateur(String nom,String login, String motDePasse){
+//	int i=0;
+//	while(listeAdmin.getAdmin()[i]!=null){
+//		i++;
+//	}
 	//listeAdmin.getAdmin()[i]= new Administrateur(nom,login,motDePasse);
 	//on est plus sur un tableau mais sue une liste !
-	}
+//	}
 	
 	/** Supprime un administrateur. */
 	public void suppressionAdministrateur(String nom,String login, String motDePasse){
