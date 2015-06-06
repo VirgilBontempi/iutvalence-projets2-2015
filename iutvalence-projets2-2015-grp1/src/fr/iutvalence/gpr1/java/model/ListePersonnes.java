@@ -81,8 +81,52 @@ public class ListePersonnes {
 			return listeAdministrateurs;
 			}	
 		}
-
+ 	
+ 	public List<Etudiant> getListEtudiantsAbs() throws IOException {
+		try (BufferedReader entry = new BufferedReader(new FileReader(this.listPersonnes))) {
+			String readText = entry.readLine();
 	
+			List<Etudiant> listeEtudiantsAbs = new LinkedList<Etudiant>();
+			if (readText!=null) {
+				String[] etudiantsAbs = readText.split("|");
+				for (int index=0; index < etudiantsAbs.length; index++) {
+					String[] etudiantAbs = etudiantsAbs[index].split(",");
+					String nom = etudiantAbs[0];
+					String prenom = etudiantAbs[1];
+					String grpTp = etudiantAbs[2];
+					int numEtudiants = Integer.parseInt(etudiantsAbs[3]);
+					String login = etudiantAbs[4];
+					String password = etudiantAbs[5];
+					Etudiant etudiantAbsCourant = new Etudiant(nom, prenom, grpTp, numEtudiants, login, password);
+					listeEtudiantsAbs.add(etudiantAbsCourant);
+					}
+				}		
+		return listeEtudiantsAbs;
+		}	
+	}
+
+	public List<Etudiant> getListEtudiantsPresent() throws IOException {
+		try (BufferedReader entry = new BufferedReader(new FileReader(this.listPersonnes))) {
+			String readText = entry.readLine();
+	
+			List<Etudiant> listeEtudiantsPresent = new LinkedList<Etudiant>();
+			if (readText!=null) {
+				String[] etudiantsPresent = readText.split("|");
+				for (int index=0; index < etudiantsPresent.length; index++) {
+					String[] etudiantPresent = etudiantsPresent[index].split(",");
+					String nom = etudiantPresent[0];
+					String prenom = etudiantPresent[1];
+					String grpTp = etudiantPresent[2];
+					int numEtudiants = Integer.parseInt(etudiantsPresent[3]);
+					String login = etudiantPresent[4];
+					String password = etudiantPresent[5];
+					Etudiant etudiantPresentCourant = new Etudiant(nom, prenom, grpTp, numEtudiants, login, password);
+					listeEtudiantsPresent.add(etudiantPresentCourant);
+					}
+				}		
+		return listeEtudiantsPresent;
+		}	
+	}	
 	
 //	public Etudiant getEtudiant(String login){
 //		

@@ -155,12 +155,16 @@ public class Gestionnaire
 	{
 		if(etudiant.getAbsence()){
 			etudiant.addAbsence();
+			
+			
 		}
 	}
 
-	public void ajoutPresent()
+	public void ajoutPresent(Etudiant etudiant)
 	{
-		// TODO Faire la méthode
+		if(etudiant.getAbsence()=false){
+			
+		}
 	}
-
+	
 }
