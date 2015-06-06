@@ -97,10 +97,13 @@ public class ListePersonnes {
 //		return NBRE_MAX_ETUDIANTS;
 //	}
 
-//	
-//	public void ajouterEtudiant(Etudiant etudiant){
-//		
-//	}
+	public void ajouterEtudiant(Etudiant etudiant){
+		try {
+			getListEtudiants().add(etudiant);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 	
 	// public void viderListe(int numeroListe){
 		//TODO Faire la méthode

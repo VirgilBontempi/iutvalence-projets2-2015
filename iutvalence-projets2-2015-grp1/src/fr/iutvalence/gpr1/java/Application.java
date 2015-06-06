@@ -1,6 +1,7 @@
 package fr.iutvalence.gpr1.java;
 
 import java.io.File;
+import java.io.ObjectInputStream.GetField;
 
 import fr.iutvalence.gpr1.java.model.Gestionnaire;
 import fr.iutvalence.gpr1.java.view.IHM;
