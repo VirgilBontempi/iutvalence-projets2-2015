@@ -151,9 +151,11 @@ public class Gestionnaire
 	}
 
 	/** Valide une absence. */
-	public void determinerAbsence()
+	public void determinerAbsence(Etudiant etudiant)
 	{
-		// TODO Faire la méthode
+		if(etudiant.getAbsence()){
+			etudiant.addAbsence();
+		}
 	}
 
 	public void ajoutPresent()
