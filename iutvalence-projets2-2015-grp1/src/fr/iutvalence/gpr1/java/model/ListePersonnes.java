@@ -15,30 +15,30 @@ public class ListePersonnes {
 		this.listPersonnes = listPersonnes;
 	}
 	
- 	public List<Etudiant> getEtudiants() throws IOException {
-		try (BufferedReader entry = new BufferedReader(new FileReader(this.listPersonnes))) {
-			String readText = entry.readLine();
-	
-			List<Etudiant> listeEtudiants = new LinkedList<Etudiant>();
-			if (readText!=null) {
-				String[] etudiants = readText.split("|");
-				for (int index=0; index < etudiants.length; index++) {
-					String[] etudiant = etudiants[index].split(",");
-					String nom = etudiant[0];
-					String prenom = etudiant[1];
-					String grpTp = etudiant[2];
-					int numEtudiants = Integer.parseInt(etudiants[3]);
-					String login = etudiant[4];
-					String password = etudiant[5];
-					Etudiant etudiantCourant = new Etudiant(nom, prenom, grpTp, numEtudiants, login, password);
-					listeEtudiants.add(etudiantCourant);
-					}
-				}		
+	 	public List<Etudiant> getListEtudiants() throws IOException {
+			try (BufferedReader entry = new BufferedReader(new FileReader(this.listPersonnes))) {
+				String readText = entry.readLine();
+		
+				List<Etudiant> listeEtudiants = new LinkedList<Etudiant>();
+				if (readText!=null) {
+					String[] etudiants = readText.split("|");
+					for (int index=0; index < etudiants.length; index++) {
+						String[] etudiant = etudiants[index].split(",");
+						String nom = etudiant[0];
+						String prenom = etudiant[1];
+						String grpTp = etudiant[2];
+						int numEtudiants = Integer.parseInt(etudiants[3]);
+						String login = etudiant[4];
+						String password = etudiant[5];
+						Etudiant etudiantCourant = new Etudiant(nom, prenom, grpTp, numEtudiants, login, password);
+						listeEtudiants.add(etudiantCourant);
+						}
+					}		
 			return listeEtudiants;
 			}	
 		}
  	
- 	public List<Professeur> getProfesseurs() throws IOException {
+ 	public List<Professeur> getListProfesseurs() throws IOException {
 		try (BufferedReader entry = new BufferedReader(new FileReader(this.listPersonnes))) {
 			String readText = entry.readLine();
 	
@@ -59,7 +59,7 @@ public class ListePersonnes {
 			}	
 		}
  	
- 	public List<Administrateur> getAdministrateurs() throws IOException {
+ 	public List<Administrateur> getListAdministrateurs() throws IOException {
 		try (BufferedReader entry = new BufferedReader(new FileReader(this.listPersonnes))) {
 			String readText = entry.readLine();
 	
@@ -97,16 +97,14 @@ public class ListePersonnes {
 //		return NBRE_MAX_ETUDIANTS;
 //	}
 
+//	
+//	public void ajouterEtudiant(Etudiant etudiant){
+//		
+//	}
 	
-	/*
-	public void ajouterEtudiant(Etudiant etudiant){
+	// public void viderListe(int numeroListe){
 		//TODO Faire la méthode
-	}
+	//}
 	
-	public void viderListe(int numeroListe){
-		//TODO Faire la méthode
-	}
-	
-	*/
 
 }

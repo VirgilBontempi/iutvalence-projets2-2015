@@ -25,7 +25,7 @@ public class Gestionnaire
 		ListePersonnes fichierEtudiant = new ListePersonnes(fichierEtudiants);
 		try
 		{
-			this.listEtudiants = fichierEtudiant.getEtudiants();
+			this.listEtudiants = fichierEtudiant.getListEtudiants();
 		} catch (IOException e)
 		{
 			e.printStackTrace();
@@ -35,7 +35,7 @@ public class Gestionnaire
 				fichierProfesseurs);
 		try
 		{
-			this.listProfesseurs = fichierProfesseur.getProfesseurs();
+			this.listProfesseurs = fichierProfesseur.getListProfesseurs();
 		} catch (IOException e)
 		{
 			e.printStackTrace();
@@ -44,7 +44,7 @@ public class Gestionnaire
 		ListePersonnes fichierAdministrateur = new ListePersonnes(fichierAdministrateurs);
 		try
 		{
-			this.listAdministrateurs = fichierAdministrateur.getAdministrateurs();
+			this.listAdministrateurs = fichierAdministrateur.getListAdministrateurs();
 		} catch (IOException e)
 		{
 			e.printStackTrace();
