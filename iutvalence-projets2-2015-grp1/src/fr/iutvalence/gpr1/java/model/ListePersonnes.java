@@ -17,8 +17,8 @@ public class ListePersonnes {
 		this.listPersonnes = listPersonnes;
 	}
 	
-	 	public List<Etudiant> getListEtudiants() throws IOException {
-			try (BufferedReader entry = new BufferedReader(new FileReader(this.listPersonnes))) {
+	 public List<Etudiant> getListEtudiants() throws IOException {
+		try (BufferedReader entry = new BufferedReader(new FileReader(this.listPersonnes))) {
 				String readText = entry.readLine();
 		
 				List<Etudiant> listeEtudiants = new LinkedList<Etudiant>();
