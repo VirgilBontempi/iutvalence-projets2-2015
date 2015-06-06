@@ -17,11 +17,11 @@ public class ListePersonnes {
 		this.listPersonnes = listPersonnes;
 	}
 	
-	 public List<Etudiant> getListEtudiants() throws IOException {
+	 public LinkedList<Etudiant> getListEtudiants() throws IOException {
 		try (BufferedReader entry = new BufferedReader(new FileReader(this.listPersonnes))) {
 				String readText = entry.readLine();
 		
-				List<Etudiant> listeEtudiants = new LinkedList<Etudiant>();
+				LinkedList<Etudiant> listeEtudiants = new LinkedList<Etudiant>();
 				if (readText!=null) {
 					String[] etudiants = readText.split("|");
 					for (int index=0; index < etudiants.length; index++) {
@@ -40,11 +40,11 @@ public class ListePersonnes {
 			}	
 		}
  	
- 	public List<Professeur> getListProfesseurs() throws IOException {
+ 	public LinkedList<Professeur> getListProfesseurs() throws IOException {
 		try (BufferedReader entry = new BufferedReader(new FileReader(this.listPersonnes))) {
 			String readText = entry.readLine();
 	
-			List<Professeur> listeProfesseurs = new LinkedList<Professeur>();
+			LinkedList<Professeur> listeProfesseurs = new LinkedList<Professeur>();
 			if (readText!=null) {
 				String[] professeurs = readText.split("|");
 				for (int index=0; index < professeurs.length; index++) {
@@ -61,11 +61,11 @@ public class ListePersonnes {
 			}	
 		}
  	
- 	public List<Administrateur> getListAdministrateurs() throws IOException {
+ 	public LinkedList<Administrateur> getListAdministrateurs() throws IOException {
 		try (BufferedReader entry = new BufferedReader(new FileReader(this.listPersonnes))) {
 			String readText = entry.readLine();
 	
-			List<Administrateur> listeAdministrateurs = new LinkedList<Administrateur>();
+			LinkedList<Administrateur> listeAdministrateurs = new LinkedList<Administrateur>();
 			if (readText!=null) {
 				String[] administrateurs = readText.split("|");
 				for (int index=0; index < administrateurs.length; index++) {
@@ -128,18 +128,22 @@ public class ListePersonnes {
 		}	
 	}	
 	
-//	public Etudiant getEtudiant(String login){
-//		
-//	    Etudiant etudiant_trouve = null;
-//		
-//		for(int i=0; i < NBRE_MAX_ETUDIANTS; i++) {
-//		if(etudiants[i].login() == login) etudiant_trouve = etudiants[i];	
-//		}
-//		
-//		return etudiant_trouve;
-//	}
-//	
+    public Etudiant GetEtudiant(List<Etudiant> listeEtudiants, String login) {
+        
+        Etudiant etudiant_courant = null;
 
+         for(int curseur=1; curseur<listeEtudiants.size(); curseur++)
+         {
+                 etudiant_courant = listeEtudiants.get(curseur);
+                 
+                 if(etudiant_courant.getLogin().equals(login))
+                         return etudiant_courant;
+
+         }
+                return etudiant_courant;
+         }
+
+    
 	public void ajouterEtudiant(Etudiant etudiant){
 		try {
 			getListEtudiants().add(etudiant);
@@ -154,8 +158,6 @@ public class ListePersonnes {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-		
 		
 	}
 	
