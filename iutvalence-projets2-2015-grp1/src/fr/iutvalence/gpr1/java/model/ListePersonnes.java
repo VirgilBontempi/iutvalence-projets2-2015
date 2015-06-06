@@ -61,7 +61,7 @@ public class ListePersonnes {
 			}	
 		}
  	
- 	public List<Administrateur> getListAdministrateurs() throws IOException {
+ 	public LinkedList<Administrateur> getListAdministrateurs() throws IOException {
 		try (BufferedReader entry = new BufferedReader(new FileReader(this.listPersonnes))) {
 			String readText = entry.readLine();
 	
