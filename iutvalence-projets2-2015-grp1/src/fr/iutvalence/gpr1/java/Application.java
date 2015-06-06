@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream.GetField;
 import java.io.PrintWriter;
+import java.util.Iterator;
 
 import fr.iutvalence.gpr1.java.model.Gestionnaire;
 import fr.iutvalence.gpr1.java.model.ListePersonnes;
@@ -18,7 +19,10 @@ public class Application {
                 File listEtudiants = new File("ListeEtudiants.txt");
                 ListePersonnes a= new ListePersonnes(listEtudiants);
                 try(PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("ListeEtudiants.txt", true)))) {
-                    out.println(a.getListEtudiants());
+                	Iterator i1 = a.getListEtudiants().iterator();
+                	for (int j = 0; j == a.getListEtudiants().size(); j++) {
+            			System.out.print(a.getListEtudiants().get(j) + " , ");
+            		}
                 }catch (IOException e) {
                     //exception handling left as an exercise for the reader
                 }

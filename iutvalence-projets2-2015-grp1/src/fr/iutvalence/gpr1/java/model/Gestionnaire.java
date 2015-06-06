@@ -160,11 +160,11 @@ public class Gestionnaire
 		}
 	}
 
-	public void ajoutPresent(Etudiant etudiant)
-	{
-		if(etudiant.getAbsence()=false){
-			
-		}
-	}
+//	public void ajoutPresent(Etudiant etudiant)
+//	{
+//		if(etudiant.getAbsence()=false){
+//			
+//		}
+//	}
 	
 }
