@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.swing.plaf.basic.BasicComboPopup.ListDataHandler;
+
 public class ListePersonnes {
 	
 	private final File listPersonnes;
@@ -93,9 +95,6 @@ public class ListePersonnes {
 //		return etudiant_trouve;
 //	}
 //	
-// 	public static int getNbreMaxEtudiants() {
-//		return NBRE_MAX_ETUDIANTS;
-//	}
 
 	public void ajouterEtudiant(Etudiant etudiant){
 		try {
@@ -105,9 +104,16 @@ public class ListePersonnes {
 		}
 	}
 	
-	// public void viderListe(int numeroListe){
-		//TODO Faire la méthode
-	//}
+	public void viderListe(){
+		try {
+			getListEtudiants().clear();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+	}
 	
 
 }
