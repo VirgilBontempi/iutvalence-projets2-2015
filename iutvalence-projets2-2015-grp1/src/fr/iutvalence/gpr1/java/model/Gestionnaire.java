@@ -83,7 +83,7 @@ public class Gestionnaire
 	}
 
 	/**
-	 * Identfie un Professeur.
+	 * Identifie un Professeur.
 	 * 
 	 * @return boolean
 	 */
@@ -158,6 +158,26 @@ public class Gestionnaire
 			
 			
 		}
+	}
+	
+	/** Ajoute un administrateur */
+	public void ajouterAdministrateur(Administrateur administrateur) {
+		this.listAdministrateurs.add(administrateur);
+	}
+
+	/** Supprime un administrateur. */
+	public void supprimerAdministrateur(Administrateur administrateur) {
+		this.listAdministrateurs.remove(administrateur);
+	}
+
+	/** Ajoute un professeur. */
+	public void ajouterProfesseur(Professeur professeur) {
+		this.listProfesseurs.add(professeur);
+	}
+
+	/** Supprime un professeur. */
+	public void supprimerProfesseur(Professeur professeur) {
+		this.listProfesseurs.remove(professeur);
 	}
 
 //	public void ajoutPresent(Etudiant etudiant)
