@@ -3,6 +3,7 @@ package fr.iutvalence.gpr1.java.model;
 import java.io.File;
 import java.io.IOException;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -83,7 +84,7 @@ public class Gestionnaire
 	}
 
 	/**
-	 * Identifie un Professeur.
+	 * Identfie un Professeur.
 	 * 
 	 * @return boolean
 	 */
@@ -98,6 +99,7 @@ public class Gestionnaire
 
 	private boolean rechercheProfesseur(String login, String password)
 	{
+		
 		Iterator<Professeur> iterator = this.listProfesseurs.iterator();
 		while (iterator.hasNext())
 		{
@@ -118,73 +120,75 @@ public class Gestionnaire
 	 * 
 	 * @return void
 	 */
-	public void identificationEtudiant()
+	public void identificationEtudiant(File fichierEtudiants)
 	{
 		String login = this.monIHM.saisieLogin();
 		String password = this.monIHM.saisiePassword();
-		Etudiant etudiant = this.rechercheEtudiant(login, password);
-
-		if (etudiant != null)
+        Etudiant etudiant = null;
+        LinkedList<Etudiant> listeEtudiants;
+        
+        ListePersonnes fichierEtudiant = new ListePersonnes(fichierEtudiants);
+    	try
 		{
-			int index = this.listEtudiants.indexOf(etudiant);
-			etudiant.setAbsence(false);
-			this.listEtudiants.set(index, etudiant);
+	
+		listeEtudiants = fichierEtudiant.getListEtudiants();
+
+        for(int curseur=1; curseur<listeEtudiants.size(); curseur++)
+        {
+                etudiant = listeEtudiants.get(curseur);
+                
+                if(etudiant.getLogin().equals(login) && etudiant.getPassword().equals(password))
+                {
+        		int index = this.listEtudiants.indexOf(etudiant);
+    			etudiant.setAbsence(false);
+    			this.listEtudiants.set(index, etudiant);
+    			break;
+                }
+
+        }
+		} 		catch(IOException e)
+		{
+			e.printStackTrace();
 		}
 
+            
 	}
+	
+	
 
-	private Etudiant rechercheEtudiant(String login, String password)
+
+	/** Ajoute les absences. */
+	public void AjoutAbsences(File fichierEtudiants)
 	{
-		Iterator<Etudiant> iterator = this.listEtudiants.iterator();
-		while (iterator.hasNext())
+        Etudiant etudiant = null;
+        LinkedList<Etudiant> listeEtudiants;
+        
+        ListePersonnes fichierEtudiant = new ListePersonnes(fichierEtudiants);
+		try
 		{
-			Etudiant currentStudent = iterator.next();
-			if (currentStudent.getLogin().equals(login))
+		listeEtudiants = fichierEtudiant.getListEtudiants();
+        
+        for(int curseur=1; curseur<listeEtudiants.size(); curseur++)
+        {
+                etudiant = listeEtudiants.get(curseur);
+                
+                if(etudiant.getAbsence() == true)
+                {
+        		etudiant.addAbsence();
+    			listeEtudiants.set(curseur, etudiant);
+                }
+
+        }
+
+		}
+		catch(IOException e)
 			{
-				if (currentStudent.getPassword().equals(password))
-				{
-					return currentStudent;
-				}
+				e.printStackTrace();
 			}
-		}
-		return null;
+
+		
 	}
 
-	/** Valide une absence. */
-	public void determinerAbsence(Etudiant etudiant)
-	{
-		if(etudiant.getAbsence()){
-			etudiant.addAbsence();
-			
-			
-		}
-	}
-	
-	/** Ajoute un administrateur */
-	public void ajouterAdministrateur(Administrateur administrateur) {
-		this.listAdministrateurs.add(administrateur);
-	}
 
-	/** Supprime un administrateur. */
-	public void supprimerAdministrateur(Administrateur administrateur) {
-		this.listAdministrateurs.remove(administrateur);
-	}
 
-	/** Ajoute un professeur. */
-	public void ajouterProfesseur(Professeur professeur) {
-		this.listProfesseurs.add(professeur);
-	}
-
-	/** Supprime un professeur. */
-	public void supprimerProfesseur(Professeur professeur) {
-		this.listProfesseurs.remove(professeur);
-	}
-
-//	public void ajoutPresent(Etudiant etudiant)
-//	{
-//		if(etudiant.getAbsence()=false){
-//			
-//		}
-//	}
-	
 }

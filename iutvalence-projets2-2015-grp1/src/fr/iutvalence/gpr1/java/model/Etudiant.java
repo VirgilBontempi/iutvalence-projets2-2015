@@ -6,7 +6,7 @@ public class Etudiant extends Personne {
 	
 	public static final int NBR_ABSENCE_BY_DEFAULT = 0;
 
-	private String gprTp;
+	private String gprTP;
 	
 	private int numEtudiant;
 	
@@ -15,9 +15,9 @@ public class Etudiant extends Personne {
 	private int nbrAbsence;
 	
 	
-	public Etudiant(String nom, String prenom, String gprTp, int numEtudiant, String login, String password) {
+	public Etudiant(String nom, String prenom, String gprTP, int numEtudiant, String login, String password) {
 	super(nom, prenom, login, password);
-	this.gprTp = gprTp;
+	this.gprTP = gprTP;
 	this.numEtudiant = numEtudiant;
 	this.absence = true;
 	this.nbrAbsence = NBR_ABSENCE_BY_DEFAULT;
@@ -27,16 +27,28 @@ public class Etudiant extends Personne {
 	 * Compteur du nombre d'absence en foncion du statut 'absent' après dentification.
 	 * @return nbrAbsence
 	 */
+	
+	/** Getter du. */
+	public String getgprTP() {
+		return this.gprTP;
+	}
+
+	/** Getter du. */
+	public int getnumEtudiant() {
+		return this.numEtudiant;
+	}
+
+	
 	public int getNbrAbsence(){
 		return this.nbrAbsence;
 	}
 	
-	/** Getter d'une absence. */
+	/** Getter etat absence. */
 	public boolean getAbsence() {
 		return this.absence;
 	}
 
-	/** Setter d'une absence. */
+	/** Setter d'un etat absent. */
 	public void setAbsence(boolean absence) {
 		this.absence = absence;
 	}
