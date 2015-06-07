@@ -58,4 +58,8 @@ public class Professeur extends Personne {
 		String getLibelle = scanner.next();
 		return getLibelle;
 	}
+	
+	public String toString(Professeur prof){
+		return prof.getNom()+","+prof.getPrenom()+","+prof.getLogin()+","+prof.getPassword()+"/";
+	}
 }

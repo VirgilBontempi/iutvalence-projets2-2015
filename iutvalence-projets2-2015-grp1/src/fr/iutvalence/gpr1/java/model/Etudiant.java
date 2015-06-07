@@ -83,5 +83,10 @@ public class Etudiant extends Personne {
 	public void addAbsence() {
 		this.nbrAbsence = this.nbrAbsence++;
 	}
+	
+	
+	public String toString(){
+		return this.nom+","+this.prenom+","+this.gprTP+","+this.numEtudiant+","+this.login+","+this.password+"/";
+	}
 
 }

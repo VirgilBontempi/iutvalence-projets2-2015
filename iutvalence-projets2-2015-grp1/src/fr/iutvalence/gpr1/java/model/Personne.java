@@ -1,10 +1,10 @@
 package fr.iutvalence.gpr1.java.model;
 
 public class Personne {
-	private String nom;
-	private String prenom;
-	private String login;
-	private String password;
+	protected String nom;
+	protected String prenom;
+	protected String login;
+	protected String password;
 
 	/**
 	 * Constructeur Personne.
@@ -57,4 +57,8 @@ public class Personne {
 		return this.password;
 	}
 
+	
+	public String toString(Personne pers){
+		return pers.getNom()+","+pers.getPrenom()+","+pers.getLogin()+","+pers.getPassword()+"/";
+	}
 }
