@@ -85,8 +85,8 @@ public class Etudiant extends Personne {
 	}
 	
 	
-	public String toString(){
-		return this.nom+","+this.prenom+","+this.gprTP+","+this.numEtudiant+","+this.login+","+this.password+"/";
-	}
+//	public String toString(){
+//		return this.nom+","+this.prenom+","+this.gprTP+","+this.numEtudiant+","+this.login+","+this.password+"/";
+//	}
 
 }

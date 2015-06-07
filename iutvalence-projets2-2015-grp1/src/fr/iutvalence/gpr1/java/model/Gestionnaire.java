@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import fr.iutvalence.gpr1.java.view.IHM;
+import fr.iutvalence.gpr1.java.view.console.IHMConsole;
 
 /** Classe Gestionnaire */
 public class Gestionnaire {
@@ -29,7 +30,7 @@ public class Gestionnaire {
 	public Gestionnaire(IHM monIHM, File fichierEtudiants,
 			File fichierProfesseurs, File fichierAdministrateurs) {
 		this.monIHM = monIHM;
-		
+
 		ListePersonnes fichierAdministrateur = new ListePersonnes(
 				fichierAdministrateurs);
 		try {
@@ -53,7 +54,6 @@ public class Gestionnaire {
 			e.printStackTrace();
 		}
 
-		
 	}
 
 	/**
@@ -61,12 +61,10 @@ public class Gestionnaire {
 	 * 
 	 * @return boolean
 	 */
-	public boolean identificationAdministrateur() {
+	public Administrateur identificationAdministrateur() {
 		String login = this.monIHM.saisieLogin();
 		String password = this.monIHM.saisiePassword();
-		if (this.rechercheProfesseur(login, password))
-			return true;
-		return false;
+		return this.rechercheAdministrateur(login, password);
 	}
 
 	/**
@@ -76,17 +74,30 @@ public class Gestionnaire {
 	 * @param password
 	 * @return boolean
 	 */
-	public boolean rechercheAdministrateur(String login, String password) {
+	public Administrateur rechercheAdministrateur(String login, String password) {
 		Iterator<Administrateur> iterator = this.listAdministrateurs.iterator();
 		while (iterator.hasNext()) {
 			Administrateur currentAdministrator = iterator.next();
 			if (currentAdministrator.getLogin().equals(login)) {
+				
 				if (currentAdministrator.getPassword().equals(password)) {
-					return true;
+					return currentAdministrator;
 				}
 			}
 		}
-		return false;
+		return null;
+	}
+
+	public List<Etudiant> getListEtudiants() {
+		return this.listEtudiants;
+	}
+
+	public List<Professeur> getListProfesseurs() {
+		return this.listProfesseurs;
+	}
+
+	public List<Administrateur> getListAdministrateurs() {
+		return this.listAdministrateurs;
 	}
 
 	/**
@@ -94,12 +105,10 @@ public class Gestionnaire {
 	 * 
 	 * @return boolean
 	 */
-	public boolean identificationProfesseur() {
+	public Professeur identificationProfesseur() {
 		String login = this.monIHM.saisieLogin();
 		String password = this.monIHM.saisiePassword();
-		if (this.rechercheProfesseur(login, password))
-			return true;
-		return false;
+		return this.rechercheProfesseur(login, password);
 	}
 
 	/**
@@ -109,52 +118,39 @@ public class Gestionnaire {
 	 * @param password
 	 * @return boolean
 	 */
-	private boolean rechercheProfesseur(String login, String password) {
+	private Professeur rechercheProfesseur(String login, String password) {
 
 		Iterator<Professeur> iterator = this.listProfesseurs.iterator();
 		while (iterator.hasNext()) {
 			Professeur currentTeacher = iterator.next();
 			if (currentTeacher.getLogin().equals(login)) {
 				if (currentTeacher.getPassword().equals(password)) {
-					return true;
+					return currentTeacher;
 				}
 			}
 		}
-		return false;
+		return null;
 	}
 
 	/**
 	 * Identifie un étudiant.
-	 * 
-	 * @param fichierEtudiants
 	 */
-	public void identificationEtudiant(File fichierEtudiants) {
+	public Etudiant identificationEtudiant() {
 		String login = this.monIHM.saisieLogin();
 		String password = this.monIHM.saisiePassword();
 		Etudiant etudiant = null;
-		LinkedList<Etudiant> listeEtudiants;
+		for (int curseur = 0; curseur < this.listEtudiants.size(); curseur++) {
+			etudiant = this.listEtudiants.get(curseur);
 
-		ListePersonnes fichierEtudiant = new ListePersonnes(fichierEtudiants);
-		try {
-
-			listeEtudiants = fichierEtudiant.getListEtudiants();
-
-			for (int curseur = 1; curseur < listeEtudiants.size(); curseur++) {
-				etudiant = listeEtudiants.get(curseur);
-
-				if (etudiant.getLogin().equals(login)
-						&& etudiant.getPassword().equals(password)) {
-					int index = this.listEtudiants.indexOf(etudiant);
-					etudiant.setAbsence(false);
-					this.listEtudiants.set(index, etudiant);
-					break;
-				}
-
+			if (etudiant.getLogin().equals(login)
+					&& etudiant.getPassword().equals(password)) {
+				int index = this.listEtudiants.indexOf(etudiant);
+				etudiant.setAbsence(false);
+				this.listEtudiants.set(index, etudiant);
+				return this.listEtudiants.get(index);
 			}
-		} catch (IOException e) {
-			e.printStackTrace();
 		}
-
+		return null;
 	}
 
 	/**
@@ -186,6 +182,51 @@ public class Gestionnaire {
 			e.printStackTrace();
 		}
 
+	}
+
+	/**
+	 * Le starter de l'application.
+	 */
+	public void starter() {
+		boolean idValide = false;
+		while (!idValide){
+			int choice = monIHM.showMenu();
+
+			if (choice == 1) {
+				this.monIHM.affichageIdAdministrateur();
+				Administrateur admin = this.identificationAdministrateur();
+				if (admin != null) {
+					this.monIHM.idValide(admin);
+					idValide=true;
+				}
+				else
+					this.monIHM.idInvalide();
+			}
+
+			if (choice == 2) {
+				this.monIHM.affichageIdProfesseur();
+				Professeur prof = this.identificationProfesseur();
+				if(prof != null){
+					this.monIHM.idValide(prof);
+					idValide=true;
+				}
+				else
+					this.monIHM.idInvalide();
+			}
+
+			if (choice == 3) {
+				this.monIHM.affichageIdEtudiant();
+				Etudiant etudiant = this.identificationEtudiant();
+				if(etudiant != null){
+					this.monIHM.idValide(etudiant);
+					idValide=true;
+					System.out.println(etudiant.getAbsence());
+				}
+				else
+					this.monIHM.idInvalide();
+			}
+		}
+		
 	}
 
 }

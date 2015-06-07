@@ -17,9 +17,9 @@ public class ListePersonnes {
 	 */
 	public ListePersonnes(File listPersonnes) {
 		this.listPersonnes = listPersonnes;
-		this.PathListeAdministrateur = "ListeAdministrateurs.txt";
-		this.PathListeEtudiants = "ListeEtudiants.txt";
-		this.PathListeProfesseurs = "ListeProfesseurs.txt";
+		this.PathListeAdministrateur = "temp/ListeAdministrateurs.txt";
+		this.PathListeEtudiants = "temp/ListeEtudiants.txt";
+		this.PathListeProfesseurs = "temp/ListeProfesseurs.txt";
 	}
 
 	/**
@@ -27,7 +27,7 @@ public class ListePersonnes {
 	 * @param listeEtudiants
 	 * @return
 	 */
-	public void writeFileEtudiants(LinkedList<Etudiant> listeEtudiants) {
+	public File writeFileEtudiants(LinkedList<Etudiant> listeEtudiants) {
 
 		// d�finition d'un fichier
 		File fichier = new File(PathListeEtudiants);
@@ -46,12 +46,12 @@ public class ListePersonnes {
 
 			for (int curseur = 1; curseur < listeEtudiants.size(); curseur++) {
 				etudiant_courant = listeEtudiants.get(curseur);
-				writer.write(etudiant_courant.getNom() + ","
+				writer.write("/" + etudiant_courant.getNom() + ","
 						+ etudiant_courant.getPrenom() + ","
 						+ etudiant_courant.getgprTP() + ","
 						+ etudiant_courant.getnumEtudiant() + ","
 						+ etudiant_courant.getLogin() + ","
-						+ etudiant_courant.getPassword() + "/");
+						+ etudiant_courant.getPassword());
 
 			}
 
@@ -77,6 +77,7 @@ public class ListePersonnes {
 				}
 			}
 		}
+		return fichier;
 
 	}
 
@@ -90,8 +91,6 @@ public class ListePersonnes {
 		try (BufferedReader entry = new BufferedReader(new FileReader(
 				this.listPersonnes))) {
 			String readText = entry.readLine();
-			Etudiant etud;
-
 
 			LinkedList<Etudiant> listeEtudiants = new LinkedList<Etudiant>();
 			if (readText != null) {
@@ -107,10 +106,8 @@ public class ListePersonnes {
 					Etudiant etudiantCourant = new Etudiant(nom, prenom, grpTp,
 							numEtudiants, login, password);
 					listeEtudiants.add(etudiantCourant);
-					
 				}
 			}
-			System.out.println(listeEtudiants);
 			return listeEtudiants;
 		}
 	}
@@ -123,7 +120,7 @@ public class ListePersonnes {
 	 */
 	public LinkedList<Professeur> getListProfesseurs() throws IOException {
 		try (BufferedReader entry = new BufferedReader(new FileReader(
-				this.PathListeEtudiants))) {
+				this.listPersonnes))) {
 			String readText = entry.readLine();
 
 			LinkedList<Professeur> listeProfesseurs = new LinkedList<Professeur>();
@@ -237,7 +234,7 @@ public class ListePersonnes {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
 	}
-	
 
 }
