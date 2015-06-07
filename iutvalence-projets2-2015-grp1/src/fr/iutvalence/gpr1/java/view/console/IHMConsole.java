@@ -16,5 +16,7 @@ public class IHMConsole implements IHM {
 	public String saisiePassword() {
 		return scanner.nextLine();
 	}
+	
+	
 
 }

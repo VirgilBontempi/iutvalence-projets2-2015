@@ -1,1 +1,1 @@
-[]
+BARNEOUD,Hector,TP3F,1,barneohe,abcd12|BONTEMPI,Virgil,TP3F,2,bontempv,abcd12|BOULAKHSOUMI,Faris,TP3F,3,boulakfa,abcd12|CADET,Maxime,TP3F,4,cadetmax,abcd12|POLOCE,Antoine,TP3E,5,polocean,abcd12

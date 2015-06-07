@@ -10,8 +10,7 @@ import java.util.Scanner;
 import fr.iutvalence.gpr1.java.view.IHM;
 
 /** Classe Gestionnaire */
-public class Gestionnaire
-{
+public class Gestionnaire {
 
 	private IHM monIHM;
 
@@ -19,35 +18,38 @@ public class Gestionnaire
 	private List<Professeur> listProfesseurs;
 	private List<Administrateur> listAdministrateurs;
 
+	/**
+	 * Constructeur de Gestionnaire.
+	 * 
+	 * @param monIHM
+	 * @param fichierEtudiants
+	 * @param fichierProfesseurs
+	 * @param fichierAdministrateurs
+	 */
 	public Gestionnaire(IHM monIHM, File fichierEtudiants,
-			File fichierProfesseurs, File fichierAdministrateurs)
-	{
+			File fichierProfesseurs, File fichierAdministrateurs) {
 		this.monIHM = monIHM;
 		ListePersonnes fichierEtudiant = new ListePersonnes(fichierEtudiants);
-		try
-		{
+		try {
 			this.listEtudiants = fichierEtudiant.getListEtudiants();
-		} catch (IOException e)
-		{
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
 		ListePersonnes fichierProfesseur = new ListePersonnes(
 				fichierProfesseurs);
-		try
-		{
+		try {
 			this.listProfesseurs = fichierProfesseur.getListProfesseurs();
-		} catch (IOException e)
-		{
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-		ListePersonnes fichierAdministrateur = new ListePersonnes(fichierAdministrateurs);
-		try
-		{
-			this.listAdministrateurs = fichierAdministrateur.getListAdministrateurs();
-		} catch (IOException e)
-		{
+
+		ListePersonnes fichierAdministrateur = new ListePersonnes(
+				fichierAdministrateurs);
+		try {
+			this.listAdministrateurs = fichierAdministrateur
+					.getListAdministrateurs();
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
@@ -57,8 +59,7 @@ public class Gestionnaire
 	 * 
 	 * @return boolean
 	 */
-	public boolean identificationAdministrateur()
-	{
+	public boolean identificationAdministrateur() {
 		String login = this.monIHM.saisieLogin();
 		String password = this.monIHM.saisiePassword();
 		if (this.rechercheProfesseur(login, password))
@@ -66,16 +67,19 @@ public class Gestionnaire
 		return false;
 	}
 
-	public boolean rechercheAdministrateur(String login, String password)
-	{
+	/**
+	 * Recherche un administrateur dans la liste.
+	 * 
+	 * @param login
+	 * @param password
+	 * @return boolean
+	 */
+	public boolean rechercheAdministrateur(String login, String password) {
 		Iterator<Administrateur> iterator = this.listAdministrateurs.iterator();
-		while (iterator.hasNext())
-		{
+		while (iterator.hasNext()) {
 			Administrateur currentAdministrator = iterator.next();
-			if (currentAdministrator.getLogin().equals(login))
-			{
-				if (currentAdministrator.getPassword().equals(password))
-				{
+			if (currentAdministrator.getLogin().equals(login)) {
+				if (currentAdministrator.getPassword().equals(password)) {
 					return true;
 				}
 			}
@@ -88,8 +92,7 @@ public class Gestionnaire
 	 * 
 	 * @return boolean
 	 */
-	public boolean identificationProfesseur()
-	{
+	public boolean identificationProfesseur() {
 		String login = this.monIHM.saisieLogin();
 		String password = this.monIHM.saisiePassword();
 		if (this.rechercheProfesseur(login, password))
@@ -97,17 +100,20 @@ public class Gestionnaire
 		return false;
 	}
 
-	private boolean rechercheProfesseur(String login, String password)
-	{
-		
+	/**
+	 * Recherche un professeur dans la liste.
+	 * 
+	 * @param login
+	 * @param password
+	 * @return boolean
+	 */
+	private boolean rechercheProfesseur(String login, String password) {
+
 		Iterator<Professeur> iterator = this.listProfesseurs.iterator();
-		while (iterator.hasNext())
-		{
+		while (iterator.hasNext()) {
 			Professeur currentTeacher = iterator.next();
-			if (currentTeacher.getLogin().equals(login))
-			{
-				if (currentTeacher.getPassword().equals(password))
-				{
+			if (currentTeacher.getLogin().equals(login)) {
+				if (currentTeacher.getPassword().equals(password)) {
 					return true;
 				}
 			}
@@ -116,79 +122,68 @@ public class Gestionnaire
 	}
 
 	/**
-	 * Identifie un Etudiant et change le statut 'absent' en 'non absent'.
+	 * Identifie un étudiant.
 	 * 
-	 * @return void
+	 * @param fichierEtudiants
 	 */
-	public void identificationEtudiant(File fichierEtudiants)
-	{
+	public void identificationEtudiant(File fichierEtudiants) {
 		String login = this.monIHM.saisieLogin();
 		String password = this.monIHM.saisiePassword();
-        Etudiant etudiant = null;
-        LinkedList<Etudiant> listeEtudiants;
-        
-        ListePersonnes fichierEtudiant = new ListePersonnes(fichierEtudiants);
-    	try
-		{
-	
-		listeEtudiants = fichierEtudiant.getListEtudiants();
+		Etudiant etudiant = null;
+		LinkedList<Etudiant> listeEtudiants;
 
-        for(int curseur=1; curseur<listeEtudiants.size(); curseur++)
-        {
-                etudiant = listeEtudiants.get(curseur);
-                
-                if(etudiant.getLogin().equals(login) && etudiant.getPassword().equals(password))
-                {
-        		int index = this.listEtudiants.indexOf(etudiant);
-    			etudiant.setAbsence(false);
-    			this.listEtudiants.set(index, etudiant);
-    			break;
-                }
+		ListePersonnes fichierEtudiant = new ListePersonnes(fichierEtudiants);
+		try {
 
-        }
-		} 		catch(IOException e)
-		{
+			listeEtudiants = fichierEtudiant.getListEtudiants();
+
+			for (int curseur = 1; curseur < listeEtudiants.size(); curseur++) {
+				etudiant = listeEtudiants.get(curseur);
+
+				if (etudiant.getLogin().equals(login)
+						&& etudiant.getPassword().equals(password)) {
+					int index = this.listEtudiants.indexOf(etudiant);
+					etudiant.setAbsence(false);
+					this.listEtudiants.set(index, etudiant);
+					break;
+				}
+
+			}
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
-            
 	}
-	
-	
 
+	/**
+	 * Ajoute une absence à un étudiant.
+	 * 
+	 * @param fichierEtudiants
+	 */
+	public void AjoutAbsences(File fichierEtudiants) {
+		Etudiant etudiant = null;
+		LinkedList<Etudiant> listeEtudiants;
 
-	/** Ajoute les absences. */
-	public void AjoutAbsences(File fichierEtudiants)
-	{
-        Etudiant etudiant = null;
-        LinkedList<Etudiant> listeEtudiants;
-        
-        ListePersonnes fichierEtudiant = new ListePersonnes(fichierEtudiants);
-		try
-		{
-		listeEtudiants = fichierEtudiant.getListEtudiants();
-        
-        for(int curseur=1; curseur<listeEtudiants.size(); curseur++)
-        {
-                etudiant = listeEtudiants.get(curseur);
-                
-                if(etudiant.getAbsence() == true)
-                {
-        		etudiant.addAbsence();
-    			listeEtudiants.set(curseur, etudiant);
-                }
+		ListePersonnes fichierEtudiant = new ListePersonnes(fichierEtudiants);
+		try {
+			listeEtudiants = fichierEtudiant.getListEtudiants();
 
-        }
+			for (int curseur = 1; curseur < listeEtudiants.size(); curseur++) {
+				etudiant = listeEtudiants.get(curseur);
 
-		}
-		catch(IOException e)
-			{
-				e.printStackTrace();
+				if (etudiant.getAbsence() == true) {
+					etudiant.addAbsence();
+					listeEtudiants.set(curseur, etudiant);
+				}
+
 			}
 
-		
+		}
+
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+
 	}
-
-
 
 }

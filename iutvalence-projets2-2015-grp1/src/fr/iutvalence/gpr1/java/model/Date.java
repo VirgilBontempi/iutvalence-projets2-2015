@@ -5,24 +5,43 @@ public class Date {
 	private int jour;
 	private int mois;
 	private int annee;
-	
+
+	/**
+	 * Constructeur de Date.
+	 * 
+	 * @param jour
+	 * @param mois
+	 * @param annee
+	 */
 	public Date(int jour, int mois, int annee) {
 		this.jour = jour;
 		this.mois = mois;
 		this.annee = annee;
 	}
 
-	/** Getter d'un jour. */
+	/**
+	 * Getter du jour.
+	 * 
+	 * @return jour
+	 */
 	public int getJour() {
 		return jour;
 	}
 
-	/** Getter d'un mois. */
+	/**
+	 * Getter du mois.
+	 * 
+	 * @return mois
+	 */
 	public int getMois() {
 		return mois;
 	}
 
-	/** Getter d'une année. */
+	/**
+	 * Getter de l'annee.
+	 * 
+	 * @return annee
+	 */
 	public int getAnnee() {
 		return annee;
 	}

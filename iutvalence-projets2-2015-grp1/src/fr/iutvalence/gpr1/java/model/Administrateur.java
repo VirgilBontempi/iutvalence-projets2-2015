@@ -3,7 +3,14 @@ package fr.iutvalence.gpr1.java.model;
 /** Classe Administrateur. */
 public class Administrateur extends Personne {
 
-	/** Constructeur d'un administrateur. */
+	/**
+	 * Construceur de Administrateur.
+	 * 
+	 * @param nom
+	 * @param prenom
+	 * @param login
+	 * @param password
+	 */
 	public Administrateur(String nom, String prenom, String login,
 			String password) {
 		super(nom, prenom, login, password);
