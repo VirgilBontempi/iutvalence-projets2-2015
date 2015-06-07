@@ -79,7 +79,7 @@ public class Gestionnaire {
 		while (iterator.hasNext()) {
 			Administrateur currentAdministrator = iterator.next();
 			if (currentAdministrator.getLogin().equals(login)) {
-				
+
 				if (currentAdministrator.getPassword().equals(password)) {
 					return currentAdministrator;
 				}
@@ -184,12 +184,44 @@ public class Gestionnaire {
 
 	}
 
+	public void creationCours() {
+		String libelle = this.monIHM.saisieLibelleCours();
+		String typeCours = this.monIHM.saisieTypeCours();
+		String grpTp = this.monIHM.saisieGrpTp();
+	}
+
+	public void debutCours() {
+		int choiceCours = this.monIHM.menuCours();
+
+		if (choiceCours == 2) {
+			boolean idValide = false;
+			while (!idValide) {
+				this.monIHM.affichageIdEtudiant();
+				Etudiant etudiant = this.identificationEtudiant();
+				if (etudiant != null) {
+					this.monIHM.idValide(etudiant);
+					idValide = true;
+					this.monIHM.elevePresent();
+					this.debutCours();
+				} else
+					this.monIHM.idInvalide();
+					this.debutCours();
+			}
+		}
+		if (choiceCours == 1) {
+			this.monIHM.showMenu();
+		}
+
+	}
+
 	/**
 	 * Le starter de l'application.
 	 */
 	public void starter() {
 		boolean idValide = false;
-		while (!idValide){
+		boolean etatCours = false;
+
+		while (!idValide) {
 			int choice = monIHM.showMenu();
 
 			if (choice == 1) {
@@ -197,36 +229,43 @@ public class Gestionnaire {
 				Administrateur admin = this.identificationAdministrateur();
 				if (admin != null) {
 					this.monIHM.idValide(admin);
-					idValide=true;
-				}
-				else
+					idValide = true;
+				} else
 					this.monIHM.idInvalide();
 			}
 
 			if (choice == 2) {
+
 				this.monIHM.affichageIdProfesseur();
 				Professeur prof = this.identificationProfesseur();
-				if(prof != null){
+				if (prof != null) {
 					this.monIHM.idValide(prof);
-					idValide=true;
+					idValide = true;
+
+					this.creationCours();
+
+					this.debutCours();
+
 				}
-				else
-					this.monIHM.idInvalide();
+
+			} else {
+				this.monIHM.idInvalide();
 			}
 
-			if (choice == 3) {
-				this.monIHM.affichageIdEtudiant();
-				Etudiant etudiant = this.identificationEtudiant();
-				if(etudiant != null){
-					this.monIHM.idValide(etudiant);
-					idValide=true;
-					System.out.println(etudiant.getAbsence());
-				}
-				else
-					this.monIHM.idInvalide();
-			}
 		}
-		
+
+		// if (choice == 3) {
+		// this.monIHM.affichageIdEtudiant();
+		// Etudiant etudiant = this.identificationEtudiant();
+		// if(etudiant != null){
+		// this.monIHM.idValide(etudiant);
+		// idValide=true;
+		// this.monIHM.elevePresent();
+		// this.starter();
+		// }
+		// else
+		// this.monIHM.idInvalide();
+		// }
 	}
 
 }

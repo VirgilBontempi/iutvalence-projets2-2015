@@ -19,12 +19,10 @@ public class Cours {
 	 * 
 	 * @param typeCours
 	 * @param libelle
-	 * @param date
 	 */
-	public Cours(String typeCours, String libelle, Date date) {
+	public Cours(String typeCours, String libelle) {
 		this.typeCours = typeCours;
 		this.libelle = libelle;
-		this.date = date;
 		this.listeEtudiant = new LinkedList<Etudiant>();
 	}
 
