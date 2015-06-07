@@ -51,7 +51,7 @@ public class ListePersonnes {
 						+ etudiant_courant.getgprTP() + ","
 						+ etudiant_courant.getnumEtudiant() + ","
 						+ etudiant_courant.getLogin() + ","
-						+ etudiant_courant.getPassword() + "|");
+						+ etudiant_courant.getPassword() + "/");
 
 			}
 
@@ -107,9 +107,10 @@ public class ListePersonnes {
 					Etudiant etudiantCourant = new Etudiant(nom, prenom, grpTp,
 							numEtudiants, login, password);
 					listeEtudiants.add(etudiantCourant);
-					System.out.println(listeEtudiants);
+					
 				}
 			}
+			System.out.println(listeEtudiants);
 			return listeEtudiants;
 		}
 	}
