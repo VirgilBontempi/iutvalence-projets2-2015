@@ -29,6 +29,15 @@ public class Gestionnaire {
 	public Gestionnaire(IHM monIHM, File fichierEtudiants,
 			File fichierProfesseurs, File fichierAdministrateurs) {
 		this.monIHM = monIHM;
+		
+		ListePersonnes fichierAdministrateur = new ListePersonnes(
+				fichierAdministrateurs);
+		try {
+			this.listAdministrateurs = fichierAdministrateur
+					.getListAdministrateurs();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		ListePersonnes fichierEtudiant = new ListePersonnes(fichierEtudiants);
 		try {
 			this.listEtudiants = fichierEtudiant.getListEtudiants();
@@ -44,14 +53,7 @@ public class Gestionnaire {
 			e.printStackTrace();
 		}
 
-		ListePersonnes fichierAdministrateur = new ListePersonnes(
-				fichierAdministrateurs);
-		try {
-			this.listAdministrateurs = fichierAdministrateur
-					.getListAdministrateurs();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		
 	}
 
 	/**

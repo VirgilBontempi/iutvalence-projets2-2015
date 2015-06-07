@@ -94,18 +94,19 @@ public class ListePersonnes {
 
 			LinkedList<Etudiant> listeEtudiants = new LinkedList<Etudiant>();
 			if (readText != null) {
-				String[] etudiants = readText.split("|");
+				String[] etudiants = readText.split("/");
 				for (int index = 0; index < etudiants.length; index++) {
 					String[] etudiant = etudiants[index].split(",");
 					String nom = etudiant[0];
 					String prenom = etudiant[1];
 					String grpTp = etudiant[2];
-					int numEtudiants = Integer.parseInt(etudiants[3]);
+					int numEtudiants = Integer.parseInt(etudiant[3]);
 					String login = etudiant[4];
 					String password = etudiant[5];
 					Etudiant etudiantCourant = new Etudiant(nom, prenom, grpTp,
 							numEtudiants, login, password);
 					listeEtudiants.add(etudiantCourant);
+					System.out.println(listeEtudiants);
 				}
 			}
 			return listeEtudiants;
@@ -125,7 +126,7 @@ public class ListePersonnes {
 
 			LinkedList<Professeur> listeProfesseurs = new LinkedList<Professeur>();
 			if (readText != null) {
-				String[] professeurs = readText.split("|");
+				String[] professeurs = readText.split("/");
 				for (int index = 0; index < professeurs.length; index++) {
 					String[] professeur = professeurs[index].split(",");
 					String nom = professeur[0];
@@ -155,7 +156,7 @@ public class ListePersonnes {
 
 			LinkedList<Administrateur> listeAdministrateurs = new LinkedList<Administrateur>();
 			if (readText != null) {
-				String[] administrateurs = readText.split("|");
+				String[] administrateurs = readText.split("/");
 				for (int index = 0; index < administrateurs.length; index++) {
 					String[] administrateur = administrateurs[index].split(",");
 					String nom = administrateur[0];
@@ -176,11 +177,11 @@ public class ListePersonnes {
 	 * 
 	 * @param fichierEtudiants
 	 * @param login
-	 * @return
+	 * @return etudiantCourant
 	 */
 	public Etudiant GetEtudiant(File fichierEtudiants, String login) {
 
-		Etudiant etudiant_courant = null;
+		Etudiant etudiantCourant = null;
 		LinkedList<Etudiant> listeEtudiants;
 		ListePersonnes fichierEtudiant = new ListePersonnes(fichierEtudiants);
 		try {
@@ -188,19 +189,19 @@ public class ListePersonnes {
 			listeEtudiants = fichierEtudiant.getListEtudiants();
 
 			for (int curseur = 1; curseur < listeEtudiants.size(); curseur++) {
-				etudiant_courant = listeEtudiants.get(curseur);
+				etudiantCourant = listeEtudiants.get(curseur);
 
-				if (etudiant_courant.getLogin().equals(login))
-					return etudiant_courant;
+				if (etudiantCourant.getLogin().equals(login))
+					return etudiantCourant;
 
 			}
-			return etudiant_courant;
+			return etudiantCourant;
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
-		return etudiant_courant;
+		return etudiantCourant;
 
 	}
 
