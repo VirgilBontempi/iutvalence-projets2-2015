@@ -21,7 +21,7 @@ public class ListePersonnes {
 		this.PathListeProfesseurs = "temp/ListeProfesseurs.txt";
 	}
 	
-	public void writeFileEtudiants(LinkedList<Etudiant> listeEtudiants) {
+	public File writeFileEtudiants(LinkedList<Etudiant> listeEtudiants) {
 
 	    // définition d'un fichier
 	   File fichier =  new File(PathListeEtudiants) ;
@@ -72,8 +72,10 @@ public class ListePersonnes {
 	         }
 	      }
 	   }
+	    return fichier;
 		
 	}
+	
 	 public LinkedList<Etudiant> getListEtudiants() throws IOException {
 		try (BufferedReader entry = new BufferedReader(new FileReader(this.listPersonnes))) {
 				String readText = entry.readLine();
@@ -82,7 +84,7 @@ public class ListePersonnes {
 				if (readText!=null) {
 					String[] etudiants = readText.split("|");
 					for (int index=0; index < etudiants.length; index++) {
-						String[] etudiant = etudiants[index].split(",");
+						String[] etudiant = etudiants[index].split(", ");
 						String nom = etudiant[0];
 						String prenom = etudiant[1];
 						String grpTp = etudiant[2];

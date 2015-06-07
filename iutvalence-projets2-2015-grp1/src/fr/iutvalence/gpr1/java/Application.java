@@ -18,14 +18,22 @@ public class Application {
         public static void main(String[] args) {
                 File listEtudiants = new File("ListeEtudiants.txt");
                 ListePersonnes a= new ListePersonnes(listEtudiants);
-                try(PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("ListeEtudiants.txt", true)))) {
-                	Iterator i1 = a.getListEtudiants().iterator();
-                	for (int j = 0; j == a.getListEtudiants().size(); j++) {
-            			System.out.print(a.getListEtudiants().get(j) + " , ");
-            		}
-                }catch (IOException e) {
-                    //exception handling left as an exercise for the reader
-                }
+//                try(PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("ListeEtudiants.txt", true)))) {
+//                	Iterator i1 = a.getListEtudiants().iterator();
+//                	for (int j = 0; j == a.getListEtudiants().size(); j++) {
+//            			System.out.print(a.getListEtudiants().get(j) + " , ");
+//            		}
+//                }catch (IOException e) {
+//                    //exception handling left as an exercise for the reader
+//                }
+                
+                try {
+					System.out.println(a.writeFileEtudiants(a.getListEtudiants()));
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+                
                 File listProfesseurs = new File("ListeProfesseurs.txt");
                 File listAdministrateurs = new File("ListeAdministrateurs.txt");
                 IHM monIHM = new IHMConsole();

@@ -55,5 +55,4 @@ public class Professeur extends Personne {
 		String getLibelle = scanner.next();
 		return getLibelle;
 	}
-
 }
