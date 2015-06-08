@@ -18,6 +18,8 @@ public class Gestionnaire {
 	private List<Etudiant> listEtudiants;
 	private List<Professeur> listProfesseurs;
 	private List<Administrateur> listAdministrateurs;
+	String grpTp = null;
+	int grpTd = 0;
 
 	/**
 	 * Constructeur de Gestionnaire.
@@ -190,11 +192,12 @@ public class Gestionnaire {
 		String libelle = this.monIHM.saisieLibelleCours();
 		String typeCours = this.monIHM.saisieTypeCours();
 		if(typeCours.equalsIgnoreCase("TD")){
-			int grpTd = this.monIHM.saisieGrpTd();
+			this.grpTd = this.monIHM.saisieGrpTd();
 		}
 		if(typeCours.equalsIgnoreCase("TP")){
-			String grpTp = this.monIHM.saisieGrpTp();
+		 this.grpTp = this.monIHM.saisieGrpTp();
 		}
+		
 		
 	}
 
@@ -231,11 +234,13 @@ public class Gestionnaire {
 	public LinkedList<Etudiant> listeDesAbsents() {
 		LinkedList<Etudiant> listAbs = new LinkedList<Etudiant>();
 		for (int i = 0; i < this.listEtudiants.size(); i++) {
+
 			if (this.listEtudiants.get(i).getAbsence() == true
 				&& this.listEtudiants.get(i) != null && 
 				(this.monIHM.saisieGrpTd() == this.listEtudiants.get(i).getGrpTd()
 				|| this.monIHM.saisieGrpTp() == this.listEtudiants.get(i).getgprTP() 
 				|| this.monIHM.saisieTypeCours()=="CM")) {
+
 				listAbs.add(this.listEtudiants.get(i));
 				System.out.println("Voici la liste des absents");
 				System.out.println(listAbs);
@@ -303,8 +308,9 @@ public class Gestionnaire {
 				this.monIHM.affichageIdProfesseur();
 				Professeur prof = this.identificationProfesseur();
 				if (prof != null) {
+
 					
-					
+
 					this.monIHM.idValide(prof);
 					idValide = true;
 

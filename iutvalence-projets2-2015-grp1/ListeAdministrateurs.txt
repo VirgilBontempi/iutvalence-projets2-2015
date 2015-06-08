@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 BOULAKHSOUMI,Faris,boulakfa,abcd12/CADET,Maxime,cadetmax,abcd12/POLOCE,Antoine,polocean,abcd12/Bontempi,Virgil,bontempv,abcd12/titi,toto,tata,abcd12 
+=======
+BOULAKHSOUMI,Faris,boulakfa,abcd12/CADET,Maxime,cadetmax,abcd12/POLOCE,Antoine,polocean,abcd12/Bontempi,Virgil,bontempv,abcd12/titi,toto,tata,abcd12
+>>>>>>> branch 'master' of https://github.com/VirgilBontempi/iutvalence-projets2-2015.git
