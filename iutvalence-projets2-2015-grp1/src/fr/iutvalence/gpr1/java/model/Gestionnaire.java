@@ -67,8 +67,6 @@ public class Gestionnaire {
 		return this.rechercheAdministrateur(login, password);
 	}
 
-	
-	
 	/**
 	 * Recherche un administrateur dans la liste.
 	 * 
@@ -189,15 +187,14 @@ public class Gestionnaire {
 	public String creationCours() {
 		String libelle = this.monIHM.saisieLibelleCours();
 		String typeCours = this.monIHM.saisieTypeCours();
-		if(typeCours.equalsIgnoreCase("TD")){
+		if (typeCours.equalsIgnoreCase("TD")) {
 			return this.monIHM.saisieGrpTd();
 		}
-		if(typeCours.equalsIgnoreCase("TP")){
-		return this.monIHM.saisieGrpTp();
+		if (typeCours.equalsIgnoreCase("TP")) {
+			return this.monIHM.saisieGrpTp();
 		}
 		return null;
-		
-		
+
 	}
 
 	public void debutCours(String grp) {
@@ -224,7 +221,8 @@ public class Gestionnaire {
 			if (prof != null) {
 				this.listeDesAbsents(grp);
 				this.starter();
-			}
+			} else
+				this.monIHM.idInvalide();
 
 		}
 
@@ -233,21 +231,22 @@ public class Gestionnaire {
 	public void listeDesAbsents(String grp) {
 		LinkedList<Etudiant> listAbs = new LinkedList<Etudiant>();
 		for (int i = 0; i < this.listEtudiants.size(); i++) {
-			Etudiant currentEtudiant=this.listEtudiants.get(i);
-			if (grp !=null){
+			Etudiant currentEtudiant = this.listEtudiants.get(i);
+			if (grp != null) {
 				try {
 					int td = Integer.parseInt(grp);
-					if(currentEtudiant.getGrpTd()==td && currentEtudiant.getAbsence()) {
+					if (currentEtudiant.getGrpTd() == td
+							&& currentEtudiant.getAbsence()) {
 						listAbs.add(currentEtudiant);
-					}	
+					}
 				} catch (Exception e) {
-					if(currentEtudiant.getgprTP().equalsIgnoreCase(grp) && currentEtudiant.getAbsence()) {
+					if (currentEtudiant.getgprTP().equalsIgnoreCase(grp)
+							&& currentEtudiant.getAbsence()) {
 						listAbs.add(currentEtudiant);
 					}
 				}
-			}
-			else {
-				if (currentEtudiant.getAbsence()){
+			} else {
+				if (currentEtudiant.getAbsence()) {
 					listAbs.add(currentEtudiant);
 				}
 			}
@@ -255,14 +254,12 @@ public class Gestionnaire {
 		this.monIHM.affichageListeAbsence(listAbs);
 		this.resetAbsence();
 	}
-	
-	
 
 	private void resetAbsence() {
-		for(Etudiant currentStudent : this.listEtudiants){
+		for (Etudiant currentStudent : this.listEtudiants) {
 			currentStudent.setAbsence(true);
 		}
-		
+
 	}
 
 	public void choixAdministrateur() {
@@ -287,90 +284,89 @@ public class Gestionnaire {
 			this.removeProf();
 			this.choixAdministrateur();
 		}
-		
+
 		if (choiceAdmin == 5) {
 			this.monIHM.afficherListeAdmin(this.listAdministrateurs);
 			this.choixAdministrateur();
 		}
-		
-		if(choiceAdmin == 6){
+
+		if (choiceAdmin == 6) {
 			this.monIHM.afficherListeProf(this.listProfesseurs);
 			this.choixAdministrateur();
 		}
-		
+
 		if (choiceAdmin == 7) {
 			this.starter();
 		}
-		
-	}
 
+	}
 
 	private void removeProf() {
 		String loginProf = this.monIHM.inputProf2();
-		if (loginProf != null){
-			int index = this.searchLoginProfesseur(this.listProfesseurs, loginProf);
-			if (index>=0){
+		if (loginProf != null) {
+			int index = this.searchLoginProfesseur(this.listProfesseurs,
+					loginProf);
+			if (index >= 0) {
 				Professeur prof = this.listProfesseurs.get(index);
 				this.listProfesseurs.remove(prof);
 				this.monIHM.displayProfRemoved(prof);
-			}
-			else
+			} else
 				this.monIHM.inputProf2Invalide();
-		}
-		else{
+		} else {
 			this.monIHM.inputProf2Invalide();
 		}
 		this.choixAdministrateur();
 	}
 
-	private int searchLoginProfesseur(List<Professeur> liste, String loginPersonne) {
-		if(!liste.isEmpty()){
+	private int searchLoginProfesseur(List<Professeur> liste,
+			String loginPersonne) {
+		if (!liste.isEmpty()) {
 			int index = 0;
 			String login = liste.get(index).getLogin();
-			while(index+1 < liste.size() && !login.equals(loginPersonne)){
+			while (index + 1 < liste.size() && !login.equals(loginPersonne)) {
 				index++;
 				login = liste.get(index).getLogin();
 			}
-			if(login.equals(loginPersonne)){
+			if (login.equals(loginPersonne)) {
 				return index;
 			}
 		}
 		return -1;
-		
+
 	}
 
 	private void removeAdmin() {
 		String loginAdmin = this.monIHM.inputAdmin2();
-		if (loginAdmin != null){
-			int index = this.searchLoginAdministrateur(this.listAdministrateurs, loginAdmin);
-			if (index>=0){
+		if (loginAdmin != null) {
+			int index = this.searchLoginAdministrateur(
+					this.listAdministrateurs, loginAdmin);
+			if (index >= 0) {
 				Administrateur admin = this.listAdministrateurs.get(index);
 				this.listAdministrateurs.remove(admin);
 				this.monIHM.displayAdminRemoved(admin);
-			}
-			else
+			} else
 				this.monIHM.inputAdmin2Invalide();
-		}
-		else{
+		} else {
 			this.monIHM.inputAdmin2Invalide();
 		}
 		this.choixAdministrateur();
 	}
 
-	private int searchLoginAdministrateur(List<Administrateur> liste, String loginPersonne) {
-		if(!liste.isEmpty()){
+	private int searchLoginAdministrateur(List<Administrateur> liste,
+			String loginPersonne) {
+		if (!liste.isEmpty()) {
 			int index = 0;
 			String login = liste.get(index).getLogin();
-			while(index+1 < liste.size() && !login.equals(loginPersonne)){
+			while (index + 1 < liste.size() && !login.equals(loginPersonne)) {
 				index++;
 				login = liste.get(index).getLogin();
 			}
-			if(login.equals(loginPersonne)){
+			if (login.equals(loginPersonne)) {
 				return index;
 			}
 		}
 		return -1;
-		
+
 	}
 
 	private void addProf() {
@@ -393,9 +389,11 @@ public class Gestionnaire {
 	 * Le starter de l'application.
 	 */
 	public void starter() {
+
 		boolean idValide = false;
 
 		while (!idValide) {
+
 			int choice = monIHM.showMenu();
 
 			if (choice == 1) {
@@ -425,11 +423,11 @@ public class Gestionnaire {
 					this.monIHM.idInvalide();
 				}
 			}
-			
+
 			if (choice == 3) {
-				
-				this.leaveApplication();
-				
+				System.exit(0);
+				;
+
 			}
 
 		}
