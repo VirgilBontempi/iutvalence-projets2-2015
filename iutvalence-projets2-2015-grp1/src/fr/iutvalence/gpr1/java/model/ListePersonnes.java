@@ -50,11 +50,22 @@ public class ListePersonnes {
 
 			Etudiant etudiant_courant = null;
 
-			String etudiant_string = null;
-			
+			String etudiant_temp = "";
+
+			etudiant_courant = listeEtudiants.get(0);
+			etudiant_temp += etudiant_courant.getNom() + ","
+					+ etudiant_courant.getPrenom() + ","
+					+ etudiant_courant.getgprTP() + ","
+					+ etudiant_courant.getGrpTd() + ","
+					+ etudiant_courant.getnumEtudiant() + ","
+					+ etudiant_courant.getNbrAbsence() + ","
+					+ etudiant_courant.getAbsence() + ","
+					+ etudiant_courant.getLogin() + ","
+					+ etudiant_courant.getPassword();
+
 			for (int curseur = 1; curseur < listeEtudiants.size(); curseur++) {
 				etudiant_courant = listeEtudiants.get(curseur);
-				etudiant_string = "/" + etudiant_courant.getNom() + ","
+				etudiant_temp += "/" + etudiant_courant.getNom() + ","
 						+ etudiant_courant.getPrenom() + ","
 						+ etudiant_courant.getgprTP() + ","
 						+ etudiant_courant.getGrpTd() + ","
@@ -64,9 +75,10 @@ public class ListePersonnes {
 						+ etudiant_courant.getLogin() + ","
 						+ etudiant_courant.getPassword();
 				
-				writer.write(etudiant_string);
-
 			}
+			
+			writer.write(etudiant_temp);
+
 
 		} catch (IOException e) {
 
@@ -92,6 +104,8 @@ public class ListePersonnes {
 		}
 		
 	}
+
+	
 	
 	public void writeFileProfesseurs(LinkedList<Professeur> listeProfesseurs) {
 
@@ -115,18 +129,27 @@ public class ListePersonnes {
 
 			Professeur professeur_courant = null;
 
-			String professeur_string = null;
+			String professeur_temp =  "";
+			
+			professeur_courant = listeProfesseurs.get(0);
+			professeur_temp += professeur_courant.getNom() + ","
+					+ professeur_courant.getPrenom() + ","
+					+ professeur_courant.getLogin() + ","
+					+ professeur_courant.getPassword();
+			
 			
 			for (int curseur = 1; curseur < listeProfesseurs.size(); curseur++) {
 				professeur_courant = listeProfesseurs.get(curseur);
-				professeur_string = "/" + professeur_courant.getNom() + ","
+				professeur_temp += "/" + professeur_courant.getNom() + ","
 						+ professeur_courant.getPrenom() + ","
 						+ professeur_courant.getLogin() + ","
 						+ professeur_courant.getPassword();
 						
-				writer.write(professeur_string);
 
 			}
+			
+			writer.write(professeur_temp);
+
 
 		} catch (IOException e) {
 
