@@ -178,7 +178,14 @@ public class ListePersonnes {
 
 			String liste_temp = "";
 			
-			for (int curseur = 0; curseur < listeAdministrateurs.size(); curseur++) {
+			administrateur_courant = listeAdministrateurs.get(0);
+
+			liste_temp += administrateur_courant.getNom() + ","
+					+ administrateur_courant.getPrenom() + ","
+					+ administrateur_courant.getLogin() + ","
+					+ administrateur_courant.getPassword();
+			
+			for (int curseur = 1; curseur < listeAdministrateurs.size(); curseur++) {
 				administrateur_courant = listeAdministrateurs.get(curseur);
 
 				liste_temp += "/" + administrateur_courant.getNom() + ","
