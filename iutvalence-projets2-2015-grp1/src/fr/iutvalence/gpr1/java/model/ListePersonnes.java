@@ -17,9 +17,9 @@ public class ListePersonnes {
 	 */
 	public ListePersonnes(File listPersonnes) {
 		this.listPersonnes = listPersonnes;
-		this.PathListeAdministrateur = "../../../../../../ListeAdministrateurs.txt";
-		this.PathListeEtudiants = "../../../../../../ListeEtudiants.txt";
-		this.PathListeProfesseurs = "../../../../../../ListeProfesseurs.txt";
+		this.PathListeAdministrateur = "ListeAdministrateurs.txt";
+		this.PathListeEtudiants = "ListeEtudiants.txt";
+		this.PathListeProfesseurs = "ListeProfesseurs.txt";
 	}
 
 	/**
@@ -233,12 +233,12 @@ public class ListePersonnes {
 					String nom = etudiant[0];
 					String prenom = etudiant[1];
 					String grpTP = etudiant[2];
-					String grpTD = etudiant[3];
+					int grpTD = Integer.parseInt(etudiant[3]);
 					int numEtudiant = Integer.parseInt(etudiant[4]);
 					int nbrabsence = Integer.parseInt(etudiant[5]);
-					String absence_temp = etudiant[5];
-					String login = etudiant[6];
-					String password = etudiant[7];
+					String absence_temp = etudiant[6];
+					String login = etudiant[7];
+					String password = etudiant[8];
 					boolean absence;
 					if(absence_temp.equals("true")) {
 					absence = true;

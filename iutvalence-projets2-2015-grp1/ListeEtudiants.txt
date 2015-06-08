@@ -1,1 +1,1 @@
-BARNEOUD,Hector,F,3,1,barneohe,abcd12/BONTEMPI,Virgil,F,3,2,bontempv,abcd12/BOULAKHSOUMI,Faris,F,3,3,boulakfa,abcd12/CADET,Maxime,F,3,4,cadetm,abcd12/POLOCE,Antoine,E,3,5,polocean,abcd12/
+BARNEOUD,Hector,F,3,1,0,true,barneohe,abcd12/BONTEMPI,Virgil,F,3,2,0,true,bontempv,abcd12/BOULAKHSOUMI,Faris,F,3,3,0,true,boulakfa,abcd12/CADET,Maxime,F,3,4,0,true,cadetm,abcd12/POLOCE,Antoine,E,3,5,0,true,polocean,abcd12/

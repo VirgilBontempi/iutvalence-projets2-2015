@@ -7,7 +7,7 @@ public class Etudiant extends Personne {
 
 	private String gprTP;
 	
-	private String grpTd;
+	private int grpTd;
 
 	private int numEtudiant;
 
@@ -26,7 +26,7 @@ public class Etudiant extends Personne {
 	 * @param login
 	 * @param password
 	 */
-	public Etudiant(String nom, String prenom, String gprTP, String grpTD, int numEtudiant, int nbrabsence, boolean absence, String login, String password) {
+	public Etudiant(String nom, String prenom, String gprTP, int grpTD, int numEtudiant, int nbrabsence, boolean absence, String login, String password) {
 		super(nom, prenom, login, password);
 		this.gprTP = gprTP;
 		this.grpTd = grpTD;
@@ -41,7 +41,7 @@ public class Etudiant extends Personne {
 	 * 
 	 * @return grpTd
 	 */
-	public String getGrpTd() {
+	public int getGrpTd() {
 		return grpTd;
 	}
 
