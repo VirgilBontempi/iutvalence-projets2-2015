@@ -211,8 +211,13 @@ public class Gestionnaire {
 			}
 		}
 		if (choiceCours == 1) {
-			// TODO methode qui retourne les listes absents/présents.
-			this.starter();
+			this.monIHM.affichageIdProfesseur();
+			Professeur prof = this.identificationProfesseur();
+			if (prof != null) {
+				// TODO methode qui retourne les listes absents/présents.
+				this.starter();
+			}
+			
 		}
 
 	}
