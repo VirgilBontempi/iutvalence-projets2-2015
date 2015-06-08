@@ -235,11 +235,13 @@ public class Gestionnaire {
 		LinkedList<Etudiant> listAbs = new LinkedList<Etudiant>();
 		for (int i = 0; i < this.listEtudiants.size(); i++) {
 
+
 			if (this.listEtudiants.get(i).getAbsence() == true
 				&& this.listEtudiants.get(i) != null && 
 				(this.monIHM.saisieGrpTd() == this.listEtudiants.get(i).getGrpTd()
 				|| this.monIHM.saisieGrpTp() == this.listEtudiants.get(i).getgprTP() 
 				|| this.monIHM.saisieTypeCours()=="CM")) {
+
 
 				listAbs.add(this.listEtudiants.get(i));
 				System.out.println("Voici la liste des absents");
@@ -308,8 +310,6 @@ public class Gestionnaire {
 				this.monIHM.affichageIdProfesseur();
 				Professeur prof = this.identificationProfesseur();
 				if (prof != null) {
-
-					
 
 					this.monIHM.idValide(prof);
 					idValide = true;
