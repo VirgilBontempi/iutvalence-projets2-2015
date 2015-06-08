@@ -1,11 +1,12 @@
 package fr.iutvalence.gpr1.java.view;
 
 import java.util.LinkedList;
+import java.util.List;
 
 import fr.iutvalence.gpr1.java.model.Administrateur;
-import fr.iutvalence.gpr1.java.model.Date;
 import fr.iutvalence.gpr1.java.model.Etudiant;
 import fr.iutvalence.gpr1.java.model.Personne;
+import fr.iutvalence.gpr1.java.model.Professeur;
 
 public interface IHM {
 	
@@ -41,15 +42,42 @@ public interface IHM {
 
 	public int adminMenu();
 
-	public void addAdmin();
+	public Administrateur inputAdmin();
+	
+	public String inputAdmin2();
+	
+	public void displayNewAdminAdded(Administrateur nouvelAdmin);
 	
 	public void removeAdmin();
+	
+	public void displayAdminRemoved(Administrateur administrateur);
 
-	public void choixAdministrateur();
-
-	public void afficherListe();
+	public void afficherListeAdmin(List<Administrateur> listAdmin);
 
 	public void affichageListeAbsence(LinkedList<Etudiant> listAbs);
+
+	public Professeur inputProf();
+	
+	public String inputProf2();
+
+	public void displayNewProfAdded(Professeur professeur);
+	
+	public void removeProf();
+
+	public void displayProfRemoved(Professeur professeur);
+
+	public void afficherListeProf(List<Professeur> listProf);
+
+	public void inputAdmin2Invalide();
+
+	public void inputProf2Invalide();
+
+	
+
+	
+
+	
+
 
 
 }

@@ -1,7 +1,5 @@
 package fr.iutvalence.gpr1.java.model;
 
-import java.util.Scanner;
-
 /** Classe Professeur. */
 public class Professeur extends Personne {
 

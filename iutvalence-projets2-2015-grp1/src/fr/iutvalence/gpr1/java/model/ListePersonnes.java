@@ -25,7 +25,6 @@ public class ListePersonnes {
 	/**
 	 * 
 	 * @param listeEtudiants
-	 * @return
 	 */
 	
 	public void writeFileEtudiants(LinkedList<Etudiant> listeEtudiants) {

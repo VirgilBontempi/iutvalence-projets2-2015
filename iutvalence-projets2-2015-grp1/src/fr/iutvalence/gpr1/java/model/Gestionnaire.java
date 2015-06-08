@@ -269,31 +269,124 @@ public class Gestionnaire {
 		int choiceAdmin = this.monIHM.adminMenu();
 
 		if (choiceAdmin == 1) {
-			this.monIHM.addAdmin();
+			this.addAdmin();
 			this.choixAdministrateur();
 		}
 
 		if (choiceAdmin == 2) {
-			this.monIHM.removeAdmin();
+			this.removeAdmin();
 			this.choixAdministrateur();
 		}
 
 		if (choiceAdmin == 3) {
-			// TODO methode ajout prof
+			this.addProf();
+			this.choixAdministrateur();
 		}
 
 		if (choiceAdmin == 4) {
-			// TODO meethode suppression prof
+			this.removeProf();
+			this.choixAdministrateur();
 		}
 		
 		if (choiceAdmin == 5) {
-			this.monIHM.afficherListe();
+			this.monIHM.afficherListeAdmin(this.listAdministrateurs);
 			this.choixAdministrateur();
 		}
-		if (choiceAdmin == 6) {
+		
+		if(choiceAdmin == 6){
+			this.monIHM.afficherListeProf(this.listProfesseurs);
+			this.choixAdministrateur();
+		}
+		
+		if (choiceAdmin == 7) {
 			this.starter();
 		}
 		
+	}
+
+
+	private void removeProf() {
+		String loginProf = this.monIHM.inputProf2();
+		if (loginProf != null){
+			int index = this.searchLoginProfesseur(this.listProfesseurs, loginProf);
+			if (index>=0){
+				Professeur prof = this.listProfesseurs.get(index);
+				this.listProfesseurs.remove(prof);
+				this.monIHM.displayProfRemoved(prof);
+			}
+			else
+				this.monIHM.inputProf2Invalide();
+		}
+		else{
+			this.monIHM.inputProf2Invalide();
+		}
+		this.choixAdministrateur();
+	}
+
+	private int searchLoginProfesseur(List<Professeur> liste, String loginPersonne) {
+		if(!liste.isEmpty()){
+			int index = 0;
+			String login = liste.get(index).getLogin();
+			while(index+1 < liste.size() && !login.equals(loginPersonne)){
+				index++;
+				login = liste.get(index).getLogin();
+			}
+			if(login.equals(loginPersonne)){
+				return index;
+			}
+		}
+		return -1;
+		
+	}
+
+	private void removeAdmin() {
+		String loginAdmin = this.monIHM.inputAdmin2();
+		if (loginAdmin != null){
+			int index = this.searchLoginAdministrateur(this.listAdministrateurs, loginAdmin);
+			if (index>=0){
+				Administrateur admin = this.listAdministrateurs.get(index);
+				this.listAdministrateurs.remove(admin);
+				this.monIHM.displayAdminRemoved(admin);
+			}
+			else
+				this.monIHM.inputAdmin2Invalide();
+		}
+		else{
+			this.monIHM.inputAdmin2Invalide();
+		}
+		this.choixAdministrateur();
+	}
+
+	private int searchLoginAdministrateur(List<Administrateur> liste, String loginPersonne) {
+		if(!liste.isEmpty()){
+			int index = 0;
+			String login = liste.get(index).getLogin();
+			while(index+1 < liste.size() && !login.equals(loginPersonne)){
+				index++;
+				login = liste.get(index).getLogin();
+			}
+			if(login.equals(loginPersonne)){
+				return index;
+			}
+		}
+		return -1;
+		
+	}
+
+	private void addProf() {
+		Professeur professeur = this.monIHM.inputProf();
+		if (professeur != null) {
+			this.listProfesseurs.add(professeur);
+			this.monIHM.displayNewProfAdded(professeur);
+		}
+	}
+
+	private void addAdmin() {
+		Administrateur administrateur = this.monIHM.inputAdmin();
+		if (administrateur != null) {
+			this.listAdministrateurs.add(administrateur);
+			this.monIHM.displayNewAdminAdded(administrateur);
+		}
 	}
 
 	/**
@@ -332,21 +425,15 @@ public class Gestionnaire {
 					this.monIHM.idInvalide();
 				}
 			}
+			
+			if (choice == 3) {
+				
+				this.leaveApplication();
+				
+			}
 
 		}
 
-		// if (choice == 3) {
-		// this.monIHM.affichageIdEtudiant();
-		// Etudiant etudiant = this.identificationEtudiant();
-		// if(etudiant != null){
-		// this.monIHM.idValide(etudiant);
-		// idValide=true;
-		// this.monIHM.elevePresent();
-		// this.starter();
-		// }
-		// else
-		// this.monIHM.idInvalide();
-		// }
 	}
 
 }

@@ -1,18 +1,12 @@
 package fr.iutvalence.gpr1.java.model;
 
-import java.util.LinkedList;
-import java.util.List;
-
 /** Classe Cours. */
 public class Cours {
 
-	private String typeCours; // on fera des exceptions (tp, td ou cm)
+	private String typeCours;
 
 	private String libelle;
 
-	private Date date;
-
-	private List<Etudiant> listeEtudiant;
 
 	/**
 	 * Constructeur de Cours.
@@ -23,7 +17,6 @@ public class Cours {
 	public Cours(String typeCours, String libelle) {
 		this.typeCours = typeCours;
 		this.libelle = libelle;
-		this.listeEtudiant = new LinkedList<Etudiant>();
 	}
 
 	/**
