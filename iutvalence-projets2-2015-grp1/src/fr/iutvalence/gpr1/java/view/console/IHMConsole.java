@@ -162,12 +162,13 @@ public class IHMConsole implements IHM {
 		System.out.println("2 -> Supprimer un Administrateur");
 		System.out.println("3 -> Ajouter un Professeur");
 		System.out.println("4 -> Supprimer un Professeur");
+		System.out.println("5 -> Voir la liste des administrateur");
 		String index = "";
 		do {
 			index = scanner.nextLine();
 		} while (!this.isNumeric(index));
 		int choiceAdmin = Integer.parseInt(index);
-		if (choiceAdmin < 5 && choiceAdmin > 0)
+		if (choiceAdmin < 6 && choiceAdmin > 0)
 			return choiceAdmin;
 		System.out.println("Votre choix est invalide");
 		return this.adminMenu();
@@ -202,9 +203,56 @@ public class IHMConsole implements IHM {
 				e.printStackTrace();
 			}
 		}
-		
-	
-		
-	
 
+		public void removeAdmin(){
+			File listAdmin=new File("ListeAdministrateur.txt");
+			ListePersonnes fichierAdmin = new ListePersonnes(listAdmin);
+			Administrateur adminCourant;
+			System.out.println("Saisissez le login de l'administrateur à supprimer");
+			String login;
+			login = scanner.nextLine();
+
+			try {
+				for (int curseur = 0; curseur < fichierAdmin.getListAdministrateurs().size(); curseur++) {
+					
+					adminCourant = fichierAdmin.getListAdministrateurs().get(curseur);
+
+					if (adminCourant.getLogin()==login)
+						fichierAdmin.getListAdministrateurs().remove(curseur);
+				}
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			try {
+				fichierAdmin.writeFileAdministrateurs(fichierAdmin.getListAdministrateurs());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	
+		
+	}
+
+		@Override
+		public void choixAdministrateur() {
+			// TODO Auto-generated method stub
+			
+		}
+
+		public void afficherListe() {
+			File listAdmin=new File("ListeAdministrateur.txt");
+			ListePersonnes fichierAdmin = new ListePersonnes(listAdmin);
+			try {
+				System.out.println(fichierAdmin.getListAdministrateurs());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+
+	
+		
 }

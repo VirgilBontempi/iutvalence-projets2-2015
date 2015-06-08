@@ -39,6 +39,12 @@ public interface IHM {
 	public int adminMenu();
 
 	public void addAdmin();
+	
+	public void removeAdmin();
+
+	public void choixAdministrateur();
+
+	public void afficherListe();
 
 
 }
