@@ -100,10 +100,11 @@ public class ListePersonnes {
 					String nom = etudiant[0];
 					String prenom = etudiant[1];
 					String grpTp = etudiant[2];
-					int numEtudiants = Integer.parseInt(etudiant[3]);
-					String login = etudiant[4];
-					String password = etudiant[5];
-					Etudiant etudiantCourant = new Etudiant(nom, prenom, grpTp,
+					String grpTd = etudiant[3];
+					int numEtudiants = Integer.parseInt(etudiant[4]);
+					String login = etudiant[5];
+					String password = etudiant[6];
+					Etudiant etudiantCourant = new Etudiant(nom, prenom, grpTp, grpTd,
 							numEtudiants, login, password);
 					listeEtudiants.add(etudiantCourant);
 				}

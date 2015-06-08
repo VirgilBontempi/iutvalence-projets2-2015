@@ -6,6 +6,8 @@ public class Etudiant extends Personne {
 	public static final int NBR_ABSENCE_BY_DEFAULT = 0;
 
 	private String gprTP;
+	
+	private String grpTd;
 
 	private int numEtudiant;
 
@@ -19,17 +21,28 @@ public class Etudiant extends Personne {
 	 * @param nom
 	 * @param prenom
 	 * @param gprTP
+	 * @param grpTD
 	 * @param numEtudiant
 	 * @param login
 	 * @param password
 	 */
-	public Etudiant(String nom, String prenom, String gprTP, int numEtudiant,
+	public Etudiant(String nom, String prenom, String gprTP, String grpTD, int numEtudiant,
 			String login, String password) {
 		super(nom, prenom, login, password);
 		this.gprTP = gprTP;
+		this.grpTd = grpTD;
 		this.numEtudiant = numEtudiant;
 		this.absence = true;
 		this.nbrAbsence = NBR_ABSENCE_BY_DEFAULT;
+	}
+
+	/**
+	 * Getter du groupe de TD.
+	 * 
+	 * @return grpTd
+	 */
+	public String getGrpTd() {
+		return grpTd;
 	}
 
 	/**

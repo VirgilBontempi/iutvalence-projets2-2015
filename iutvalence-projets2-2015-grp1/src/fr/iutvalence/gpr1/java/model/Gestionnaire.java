@@ -187,7 +187,9 @@ public class Gestionnaire {
 	public void creationCours() {
 		String libelle = this.monIHM.saisieLibelleCours();
 		String typeCours = this.monIHM.saisieTypeCours();
+		int grpTd = this.monIHM.saisieGrpTd();
 		String grpTp = this.monIHM.saisieGrpTp();
+
 	}
 
 	public void debutCours() {
@@ -205,11 +207,12 @@ public class Gestionnaire {
 					this.debutCours();
 				} else
 					this.monIHM.idInvalide();
-					this.debutCours();
+				this.debutCours();
 			}
 		}
 		if (choiceCours == 1) {
-			this.monIHM.showMenu();
+			// TODO methode qui retourne les listes absents/présents.
+			this.starter();
 		}
 
 	}
@@ -219,7 +222,6 @@ public class Gestionnaire {
 	 */
 	public void starter() {
 		boolean idValide = false;
-		boolean etatCours = false;
 
 		while (!idValide) {
 			int choice = monIHM.showMenu();
@@ -230,7 +232,8 @@ public class Gestionnaire {
 				if (admin != null) {
 					this.monIHM.idValide(admin);
 					idValide = true;
-				} else
+				}
+				if (idValide = false)
 					this.monIHM.idInvalide();
 			}
 
@@ -246,10 +249,9 @@ public class Gestionnaire {
 
 					this.debutCours();
 
+				} else {
+					this.monIHM.idInvalide();
 				}
-
-			} else {
-				this.monIHM.idInvalide();
 			}
 
 		}

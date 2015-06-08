@@ -28,6 +28,8 @@ public interface IHM {
 	public String saisieLibelleCours();
 
 	public String saisieGrpTp();
+	
+	public int saisieGrpTd();
 
 	public int menuCours();
 

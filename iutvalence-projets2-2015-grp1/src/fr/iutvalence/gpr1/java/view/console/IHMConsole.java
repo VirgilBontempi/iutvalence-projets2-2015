@@ -25,13 +25,12 @@ public class IHMConsole implements IHM {
 		System.out.println("Choisissez votre interface:");
 		System.out.println("1 -> Je suis un Administrateur");
 		System.out.println("2 -> Je suis un Professeur");
-		//System.out.println("3 -> Je suis un Etudiant");
 		String index = "";
 		do {
 			index = scanner.nextLine();
 		} while (!this.isNumeric(index));
 		int choice = Integer.parseInt(index);
-		if(choice < 3 && choice > 0)
+		if (choice < 3 && choice > 0)
 			return choice;
 		System.out.println("Votre choix est invalide");
 		return this.showMenu();
@@ -48,29 +47,30 @@ public class IHMConsole implements IHM {
 
 	@Override
 	public void affichageIdAdministrateur() {
-			System.out.println("Bienvenu Administrateur, veuillez vous identifier");
+		System.out.println("Bienvenu Administrateur, veuillez vous identifier");
 	}
-	
+
 	@Override
 	public void affichageIdProfesseur() {
 		System.out.println("Bienvenu Professeur, veuillez vous identifier");
 	}
-	
+
 	@Override
 	public void affichageIdEtudiant() {
-			System.out.println("Bienvenu Etudiant, veuillez vous identifier");
+		System.out.println("Bienvenu Etudiant, veuillez vous identifier");
 	}
 
 	@Override
 	public void idValide(Personne personne) {
-		System.out.println("Bonjour " + personne.getPrenom() + " " + personne.getNom());
-		
+		System.out.println("Bonjour " + personne.getPrenom() + " "
+				+ personne.getNom());
+
 	}
 
 	@Override
 	public void idInvalide() {
 		System.out.println("Identifiants invalides");
-		
+
 	}
 
 	@Override
@@ -82,7 +82,9 @@ public class IHMConsole implements IHM {
 	public String saisieTypeCours() {
 		System.out.println("De quel type est votre cours ? (CM, TD ou TP)");
 		String typeCours = scanner.nextLine();
-		if (typeCours.equalsIgnoreCase("CM")||typeCours.equalsIgnoreCase("TD")||typeCours.equalsIgnoreCase("TP")){
+		if (typeCours.equalsIgnoreCase("CM")
+				|| typeCours.equalsIgnoreCase("TD")
+				|| typeCours.equalsIgnoreCase("TP")) {
 			return typeCours;
 		}
 		System.out.println("Le type de cours est invalide");
@@ -97,8 +99,33 @@ public class IHMConsole implements IHM {
 
 	@Override
 	public String saisieGrpTp() {
-		System.out.println("Choisissez le groupe de TP avec lequel vous avez cours ?");
-		return scanner.nextLine();
+		System.out.println("Saisissez le groupe de TP avec lequel vous avez cours ? (Exemple: F)");
+		String grpTp = scanner.nextLine();
+		if (grpTp.equalsIgnoreCase("A")
+				|| grpTp.equalsIgnoreCase("B")
+				|| grpTp.equalsIgnoreCase("C")
+				|| grpTp.equalsIgnoreCase("D")
+				|| grpTp.equalsIgnoreCase("E")
+				|| grpTp.equalsIgnoreCase("F")) {
+			return grpTp;
+		}
+		System.out.println("Le groupe de TP est invalide");
+		return this.saisieGrpTp();
+	}
+
+	@Override
+	public int saisieGrpTd() {
+		System.out
+				.println("Choisissez le groupe de TD avec lequel vous avez cours ? (Exemple: 3)");
+		String index = "";
+		do {
+			index = scanner.nextLine();
+		} while (!this.isNumeric(index));
+		int grpTd = Integer.parseInt(index);
+		if (grpTd < 4 && grpTd > 0)
+			return grpTd;
+		System.out.println("Le groupe de TD est invalide");
+		return grpTd;
 	}
 
 	@Override
@@ -111,15 +138,10 @@ public class IHMConsole implements IHM {
 			index = scanner.nextLine();
 		} while (!this.isNumeric(index));
 		int choiceCours = Integer.parseInt(index);
-		if(choiceCours < 3 && choiceCours > 0)
+		if (choiceCours < 3 && choiceCours > 0)
 			return choiceCours;
 		System.out.println("Votre choix est invalide");
 		return this.menuCours();
 	}
 
-	
-	
-	
-	
-	
 }
