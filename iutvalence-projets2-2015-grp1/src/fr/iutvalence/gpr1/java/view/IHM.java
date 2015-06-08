@@ -1,7 +1,10 @@
 package fr.iutvalence.gpr1.java.view;
 
+import java.util.LinkedList;
+
 import fr.iutvalence.gpr1.java.model.Administrateur;
 import fr.iutvalence.gpr1.java.model.Date;
+import fr.iutvalence.gpr1.java.model.Etudiant;
 import fr.iutvalence.gpr1.java.model.Personne;
 
 public interface IHM {
@@ -30,7 +33,7 @@ public interface IHM {
 
 	public String saisieGrpTp();
 	
-	public int saisieGrpTd();
+	public String saisieGrpTd();
 
 	public int menuCours();
 
@@ -39,6 +42,8 @@ public interface IHM {
 	public int adminMenu();
 
 	public void addAdmin();
+
+	public void affichageListeAbsence(LinkedList<Etudiant> listAbs);
 
 
 }

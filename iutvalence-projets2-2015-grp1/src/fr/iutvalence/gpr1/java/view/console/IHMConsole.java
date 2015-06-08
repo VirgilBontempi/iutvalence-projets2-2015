@@ -151,7 +151,7 @@ public class IHMConsole implements IHM {
 	}
 
 	@Override
-	public int saisieGrpTd() {
+	public String saisieGrpTd() {
 		System.out
 				.println("Choisissez le groupe de TD avec lequel vous avez cours ? (Exemple: 3)");
 		String index = "";
@@ -160,9 +160,9 @@ public class IHMConsole implements IHM {
 		} while (!this.isNumeric(index));
 		int grpTd = Integer.parseInt(index);
 		if (grpTd < 4 && grpTd > 0)
-			return grpTd;
+			return index;
 		System.out.println("Le groupe de TD est invalide");
-		return grpTd;
+		return this.saisieGrpTd();
 	}
 
 	@Override
@@ -193,12 +193,13 @@ public class IHMConsole implements IHM {
 		System.out.println("2 -> Supprimer un Administrateur");
 		System.out.println("3 -> Ajouter un Professeur");
 		System.out.println("4 -> Supprimer un Professeur");
+		System.out.println("5 -> Retour à l'interface principale");
 		String index = "";
 		do {
 			index = scanner.nextLine();
 		} while (!this.isNumeric(index));
 		int choiceAdmin = Integer.parseInt(index);
-		if (choiceAdmin < 5 && choiceAdmin > 0)
+		if (choiceAdmin < 6 && choiceAdmin > 0)
 			return choiceAdmin;
 		System.out.println("Votre choix est invalide");
 		return this.adminMenu();
@@ -228,11 +229,19 @@ public class IHMConsole implements IHM {
 				listeAdministrateurs = fichierAdmin.getListAdministrateurs();
 				listeAdministrateurs.add(nouvelAdmin);
 				fichierAdmin.writeFileAdministrateurs(listeAdministrateurs);
-				System.out.println("L'administrateur" + nouvelAdmin + "a bien été créé");
+				System.out.println("L'administrateur " + nouvelAdmin + " a bien été créé");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
+
+	@Override
+	public void affichageListeAbsence(LinkedList<Etudiant> listAbs) {
+		System.out.println("Voici la liste des absents");
+		for (Etudiant currentStudent : listAbs){
+			System.out.println(currentStudent.getNom()+" "+currentStudent.getPrenom());
+		}
+	}
 		
 	
 		
