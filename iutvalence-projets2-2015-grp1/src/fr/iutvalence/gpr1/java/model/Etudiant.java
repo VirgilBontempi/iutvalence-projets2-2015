@@ -26,12 +26,12 @@ public class Etudiant extends Personne {
 	 * @param login
 	 * @param password
 	 */
-	public Etudiant(String nom, String prenom, String gprTP, String grpTD, int numEtudiant,
-			String login, String password) {
+	public Etudiant(String nom, String prenom, String gprTP, String grpTD, int numEtudiant, int nbrabsence, boolean absence, String login, String password) {
 		super(nom, prenom, login, password);
 		this.gprTP = gprTP;
 		this.grpTd = grpTD;
 		this.numEtudiant = numEtudiant;
+		this.nbrAbsence = nbrabsence;
 		this.absence = true;
 		this.nbrAbsence = NBR_ABSENCE_BY_DEFAULT;
 	}
@@ -98,8 +98,8 @@ public class Etudiant extends Personne {
 	}
 	
 	
-//	public String toString(){
-//		return this.nom+","+this.prenom+","+this.gprTP+","+this.numEtudiant+","+this.login+","+this.password+"/";
-//	}
+	public String toString(){
+		return this.nom+","+this.prenom+","+this.gprTP+","+this.numEtudiant+ "/";
+	}
 
 }
