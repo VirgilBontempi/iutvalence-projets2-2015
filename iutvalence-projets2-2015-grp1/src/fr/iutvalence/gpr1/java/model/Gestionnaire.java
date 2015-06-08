@@ -297,7 +297,7 @@ public class Gestionnaire {
 				this.monIHM.affichageIdProfesseur();
 				Professeur prof = this.identificationProfesseur();
 				if (prof != null) {
-				//	String grpTp = null;
+
 					this.monIHM.idValide(prof);
 					idValide = true;
 
