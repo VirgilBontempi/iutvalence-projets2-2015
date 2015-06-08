@@ -1,5 +1,6 @@
 package fr.iutvalence.gpr1.java.view;
 
+import fr.iutvalence.gpr1.java.model.Administrateur;
 import fr.iutvalence.gpr1.java.model.Date;
 import fr.iutvalence.gpr1.java.model.Personne;
 
@@ -36,6 +37,8 @@ public interface IHM {
 	public void affichageIdProfesseur2();
 
 	public int adminMenu();
+
+	public void addAdmin();
 
 
 }

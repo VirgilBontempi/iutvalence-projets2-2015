@@ -3,8 +3,8 @@ package fr.iutvalence.gpr1.java.model;
 public class Personne {
 	protected String nom;
 	protected String prenom;
-	private String login;
-	private String password;
+	protected String login;
+	protected String password;
 
 	/**
 	 * Constructeur Personne.
@@ -46,6 +46,22 @@ public class Personne {
 	 */
 	public String getLogin() {
 		return this.login;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	/**

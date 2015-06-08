@@ -16,7 +16,7 @@ public class Administrateur extends Personne {
 		super(nom, prenom, login, password);
 	}
 
-	public String toString(Administrateur admin){
-		return admin.getNom()+", "+admin.getPrenom()+", "+admin.getLogin()+", "+admin.getPassword()+" /";
+	public String toString(){
+		return this.nom+", "+this.prenom+", "+this.login+", "+this.password+" /";
 	}
 }

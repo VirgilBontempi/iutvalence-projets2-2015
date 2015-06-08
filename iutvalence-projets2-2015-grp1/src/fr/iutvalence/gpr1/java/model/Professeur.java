@@ -10,7 +10,7 @@ public class Professeur extends Personne {
 	}
 
 	
-	public String toString(Professeur prof){
-		return prof.getNom()+", "+prof.getPrenom()+", "+prof.getLogin()+", "+prof.getPassword()+" /";
+	public String toString(){
+		return this.nom+", "+this.prenom+", "+this.login+", "+this.password+" /";
 	}
 }

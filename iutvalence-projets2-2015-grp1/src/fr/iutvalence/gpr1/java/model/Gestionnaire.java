@@ -67,6 +67,8 @@ public class Gestionnaire {
 		return this.rechercheAdministrateur(login, password);
 	}
 
+	
+	
 	/**
 	 * Recherche un administrateur dans la liste.
 	 * 
@@ -241,12 +243,17 @@ public class Gestionnaire {
 		}
 		return listAbs;
 	}
+	
+	
+	
+	
 
 	public void choixAdministrateur() {
 		int choiceAdmin = this.monIHM.adminMenu();
 
 		if (choiceAdmin == 1) {
-			// TODO methode d'ajout admin
+			this.monIHM.addAdmin();
+			this.monIHM.adminMenu();
 		}
 
 		if (choiceAdmin == 2) {
@@ -277,7 +284,7 @@ public class Gestionnaire {
 				if (admin != null) {
 					this.monIHM.idValide(admin);
 					idValide = true;
-					this.monIHM.adminMenu();
+					this.choixAdministrateur();
 				} else {
 					this.monIHM.idInvalide();
 				}

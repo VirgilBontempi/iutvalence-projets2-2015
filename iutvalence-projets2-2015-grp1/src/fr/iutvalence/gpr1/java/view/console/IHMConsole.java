@@ -1,9 +1,15 @@
 package fr.iutvalence.gpr1.java.view.console;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.LinkedList;
 import java.util.Scanner;
 
+import fr.iutvalence.gpr1.java.model.Administrateur;
 import fr.iutvalence.gpr1.java.model.Date;
+import fr.iutvalence.gpr1.java.model.Etudiant;
 import fr.iutvalence.gpr1.java.model.Gestionnaire;
+import fr.iutvalence.gpr1.java.model.ListePersonnes;
 import fr.iutvalence.gpr1.java.model.Personne;
 import fr.iutvalence.gpr1.java.view.IHM;
 
@@ -166,6 +172,38 @@ public class IHMConsole implements IHM {
 		System.out.println("Votre choix est invalide");
 		return this.adminMenu();
 	}
+
+	public void addAdmin() {
+		System.out.println("Saisissez le nom du nouvel administrateur");
+			LinkedList<Administrateur> listeAdministrateurs;
+			File listAdmin=new File("ListeAdministrateur.txt");
+			ListePersonnes fichierAdmin = new ListePersonnes(listAdmin);
+			String indexNom="";
+			indexNom = scanner.nextLine();
+		System.out.println("Saisissez le prénom du nouvel administrateur");
+			String indexPrenom="";
+			indexPrenom = scanner.nextLine();
+		System.out.println("Saisissez le login du nouvel administrateur");
+			String indexLogin="";
+			indexLogin = scanner.nextLine();
+		System.out.println("Saisissez le mot de passe du nouvel administrateur");
+			String indexPassword="";
+			indexPassword = scanner.nextLine();
+			
+			Administrateur nouvelAdmin=new Administrateur(indexNom, indexPrenom, indexLogin, indexPassword);
+
+			try {
+
+				listeAdministrateurs = fichierAdmin.getListAdministrateurs();
+				listeAdministrateurs.add(nouvelAdmin);
+				fichierAdmin.writeFileAdministrateurs(listeAdministrateurs);
+				System.out.println("L'administrateur" + nouvelAdmin + "a bien été créé");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
+	
 		
 	
 
