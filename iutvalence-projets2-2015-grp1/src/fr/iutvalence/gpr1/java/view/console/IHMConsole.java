@@ -107,15 +107,46 @@ public class IHMConsole implements IHM {
 	public String saisieGrpTp() {
 		System.out.println("Saisissez le groupe de TP avec lequel vous avez cours ? (Exemple: F)");
 		String grpTp = scanner.nextLine();
-		if (grpTp.equalsIgnoreCase("A")
-				|| grpTp.equalsIgnoreCase("B")
-				|| grpTp.equalsIgnoreCase("C")
-				|| grpTp.equalsIgnoreCase("D")
-				|| grpTp.equalsIgnoreCase("E")
-				|| grpTp.equalsIgnoreCase("F")) {
-			return grpTp;
+		
+		if (grpTp.equalsIgnoreCase("A"))
+		{
+		grpTp = "A";
+		return grpTp;
 		}
+
+		else if (grpTp.equalsIgnoreCase("B"))
+		{
+		grpTp = "B";
+		return grpTp;
+		}
+
+		else if (grpTp.equalsIgnoreCase("C"))
+		{
+		grpTp = "C";
+		return grpTp;
+		}
+		else if (grpTp.equalsIgnoreCase("D"))
+		{
+		grpTp = "D";
+		return grpTp;
+		}
+
+		else if (grpTp.equalsIgnoreCase("E"))
+		{
+		grpTp = "E";
+		return grpTp;
+		}
+		
+		else if (grpTp.equalsIgnoreCase("F"))
+		{
+		grpTp = "F";
+		return grpTp;
+		}	
+		
 		System.out.println("Le groupe de TP est invalide");
+		
+		
+		
 		return this.saisieGrpTp();
 	}
 
