@@ -176,7 +176,7 @@ public class ListePersonnes {
 
 			Administrateur administrateur_courant = null;
 
-			String liste_temp = null;
+			String liste_temp = "";
 			
 			for (int curseur = 1; curseur < listeAdministrateurs.size(); curseur++) {
 				administrateur_courant = listeAdministrateurs.get(curseur);
