@@ -17,9 +17,9 @@ public class ListePersonnes {
 	 */
 	public ListePersonnes(File listPersonnes) {
 		this.listPersonnes = listPersonnes;
-		this.PathListeAdministrateur = "temp/ListeAdministrateurs.txt";
-		this.PathListeEtudiants = "temp/ListeEtudiants.txt";
-		this.PathListeProfesseurs = "temp/ListeProfesseurs.txt";
+		this.PathListeAdministrateur = "../../../../../../ListeAdministrateurs.txt";
+		this.PathListeEtudiants = "../../../../../../ListeEtudiants.txt";
+		this.PathListeProfesseurs = "../../../../../../ListeProfesseurs.txt";
 	}
 
 	/**
@@ -27,11 +27,17 @@ public class ListePersonnes {
 	 * @param listeEtudiants
 	 * @return
 	 */
-	public File writeFileEtudiants(LinkedList<Etudiant> listeEtudiants) {
+	
+	public void writeFileEtudiants(LinkedList<Etudiant> listeEtudiants) {
 
 		// d�finition d'un fichier
 		File fichier = new File(PathListeEtudiants);
-
+		
+		if(fichier.exists())
+		{
+			fichier.delete();
+		}
+		
 		// la d�finition du writer doit se faire ici
 		// pour des raisons de visibilit�
 		Writer writer = null;
@@ -40,18 +46,25 @@ public class ListePersonnes {
 
 			// ouverture d'un flux de sortie sur un fichier
 			// a pour effet de cr�er le fichier
-			writer = new FileWriter(fichier);
+			writer = new FileWriter(fichier, true);
 
 			Etudiant etudiant_courant = null;
 
+			String etudiant_string = null;
+			
 			for (int curseur = 1; curseur < listeEtudiants.size(); curseur++) {
 				etudiant_courant = listeEtudiants.get(curseur);
-				writer.write("/" + etudiant_courant.getNom() + ","
+				etudiant_string = "/" + etudiant_courant.getNom() + ","
 						+ etudiant_courant.getPrenom() + ","
 						+ etudiant_courant.getgprTP() + ","
+						+ etudiant_courant.getGrpTd() + ","
 						+ etudiant_courant.getnumEtudiant() + ","
+						+ etudiant_courant.getNbrAbsence() + ","
+						+ etudiant_courant.getAbsence() + ","
 						+ etudiant_courant.getLogin() + ","
-						+ etudiant_courant.getPassword());
+						+ etudiant_courant.getPassword();
+				
+				writer.write(etudiant_string);
 
 			}
 
@@ -77,10 +90,131 @@ public class ListePersonnes {
 				}
 			}
 		}
-		return fichier;
+		
+	}
+	
+	public void writeFileProfesseurs(LinkedList<Professeur> listeProfesseurs) {
 
+		// d�finition d'un fichier
+		File fichier = new File(PathListeProfesseurs);
+		
+		if(fichier.exists())
+		{
+			fichier.delete();
+		}
+		
+		// la d�finition du writer doit se faire ici
+		// pour des raisons de visibilit�
+		Writer writer = null;
+
+		try {
+
+			// ouverture d'un flux de sortie sur un fichier
+			// a pour effet de cr�er le fichier
+			writer = new FileWriter(fichier, true);
+
+			Professeur professeur_courant = null;
+
+			String professeur_string = null;
+			
+			for (int curseur = 1; curseur < listeProfesseurs.size(); curseur++) {
+				professeur_courant = listeProfesseurs.get(curseur);
+				professeur_string = "/" + professeur_courant.getNom() + ","
+						+ professeur_courant.getPrenom() + ","
+						+ professeur_courant.getLogin() + ","
+						+ professeur_courant.getPassword();
+						
+				writer.write(professeur_string);
+
+			}
+
+		} catch (IOException e) {
+
+			// affichage du message d'erreur et de la pile d'appel
+			e.printStackTrace();
+
+		} finally {
+
+			// il se peut que l'ouverture du flux ait �chou�,
+			// et que ce writer n'ait pas �t� initialis�
+			if (writer != null) {
+
+				try {
+
+					// la m�thode close de FileWriter appelle elle-m�me flush()
+					writer.close();
+
+				} catch (IOException e) {
+
+					e.printStackTrace();
+				}
+			}
+		}
+		
 	}
 
+
+	public void writeFileAdministrateurs(LinkedList<Administrateur> listeAdministrateurs) {
+
+		// d�finition d'un fichier
+		File fichier = new File(PathListeAdministrateur);
+		
+		if(fichier.exists())
+		{
+			fichier.delete();
+		}
+		
+		// la d�finition du writer doit se faire ici
+		// pour des raisons de visibilit�
+		Writer writer = null;
+
+		try {
+
+			// ouverture d'un flux de sortie sur un fichier
+			// a pour effet de cr�er le fichier
+			writer = new FileWriter(fichier, true);
+
+			Administrateur administrateur_courant = null;
+
+			String administrateur_string = null;
+			
+			for (int curseur = 1; curseur < listeAdministrateurs.size(); curseur++) {
+				administrateur_courant = listeAdministrateurs.get(curseur);
+				administrateur_string = "/" + administrateur_courant.getNom() + ","
+						+ administrateur_courant.getPrenom() + ","
+						+ administrateur_courant.getLogin() + ","
+						+ administrateur_courant.getPassword();
+						
+				writer.write(administrateur_string);
+
+			}
+
+		} catch (IOException e) {
+
+			// affichage du message d'erreur et de la pile d'appel
+			e.printStackTrace();
+
+		} finally {
+
+			// il se peut que l'ouverture du flux ait �chou�,
+			// et que ce writer n'ait pas �t� initialis�
+			if (writer != null) {
+
+				try {
+
+					// la m�thode close de FileWriter appelle elle-m�me flush()
+					writer.close();
+
+				} catch (IOException e) {
+
+					e.printStackTrace();
+				}
+			}
+		}
+		
+	}
+	
+	
 	/**
 	 * Obtenir la liste Etudiants.
 	 * 
@@ -88,8 +222,7 @@ public class ListePersonnes {
 	 * @throws IOException
 	 */
 	public LinkedList<Etudiant> getListEtudiants() throws IOException {
-		try (BufferedReader entry = new BufferedReader(new FileReader(
-				this.listPersonnes))) {
+		try (BufferedReader entry = new BufferedReader(new FileReader(PathListeEtudiants))) {
 			String readText = entry.readLine();
 
 			LinkedList<Etudiant> listeEtudiants = new LinkedList<Etudiant>();
@@ -99,13 +232,23 @@ public class ListePersonnes {
 					String[] etudiant = etudiants[index].split(",");
 					String nom = etudiant[0];
 					String prenom = etudiant[1];
-					String grpTp = etudiant[2];
-					String grpTd = etudiant[3];
-					int numEtudiants = Integer.parseInt(etudiant[4]);
-					String login = etudiant[5];
-					String password = etudiant[6];
-					Etudiant etudiantCourant = new Etudiant(nom, prenom, grpTp, grpTd,
-							numEtudiants, login, password);
+					String grpTP = etudiant[2];
+					String grpTD = etudiant[3];
+					int numEtudiant = Integer.parseInt(etudiant[4]);
+					int nbrabsence = Integer.parseInt(etudiant[5]);
+					String absence_temp = etudiant[5];
+					String login = etudiant[6];
+					String password = etudiant[7];
+					boolean absence;
+					if(absence_temp.equals("true")) {
+					absence = true;
+					}
+					else
+					{
+					absence = false;
+					}
+										
+					Etudiant etudiantCourant = new Etudiant(nom, prenom, grpTP, grpTD, numEtudiant, nbrabsence, absence, login, password);
 					listeEtudiants.add(etudiantCourant);
 				}
 			}
@@ -113,6 +256,7 @@ public class ListePersonnes {
 		}
 	}
 
+	
 	/**
 	 * Obtenir la liste Professeur.
 	 * 
@@ -120,8 +264,7 @@ public class ListePersonnes {
 	 * @throws IOException
 	 */
 	public LinkedList<Professeur> getListProfesseurs() throws IOException {
-		try (BufferedReader entry = new BufferedReader(new FileReader(
-				this.listPersonnes))) {
+		try (BufferedReader entry = new BufferedReader(new FileReader(PathListeProfesseurs))) {
 			String readText = entry.readLine();
 
 			LinkedList<Professeur> listeProfesseurs = new LinkedList<Professeur>();
@@ -150,8 +293,7 @@ public class ListePersonnes {
 	 */
 	public LinkedList<Administrateur> getListAdministrateurs()
 			throws IOException {
-		try (BufferedReader entry = new BufferedReader(new FileReader(
-				this.listPersonnes))) {
+		try (BufferedReader entry = new BufferedReader(new FileReader(PathListeAdministrateur))) {
 			String readText = entry.readLine();
 
 			LinkedList<Administrateur> listeAdministrateurs = new LinkedList<Administrateur>();
@@ -179,14 +321,13 @@ public class ListePersonnes {
 	 * @param login
 	 * @return etudiantCourant
 	 */
-	public Etudiant GetEtudiant(File fichierEtudiants, String login) {
+	public Etudiant GetEtudiant(String login) {
 
 		Etudiant etudiantCourant = null;
 		LinkedList<Etudiant> listeEtudiants;
-		ListePersonnes fichierEtudiant = new ListePersonnes(fichierEtudiants);
 		try {
 
-			listeEtudiants = fichierEtudiant.getListEtudiants();
+			listeEtudiants = getListEtudiants();
 
 			for (int curseur = 1; curseur < listeEtudiants.size(); curseur++) {
 				etudiantCourant = listeEtudiants.get(curseur);
@@ -211,12 +352,11 @@ public class ListePersonnes {
 	 * @param fichierEtudiants
 	 * @param etudiant
 	 */
-	public void ajouterEtudiant(File fichierEtudiants, Etudiant etudiant) {
+	public void ajouterEtudiant(Etudiant etudiant) {
 		LinkedList<Etudiant> listeEtudiants;
-		ListePersonnes fichierEtudiant = new ListePersonnes(fichierEtudiants);
 		try {
 
-			listeEtudiants = fichierEtudiant.getListEtudiants();
+			listeEtudiants = getListEtudiants();
 
 			listeEtudiants.add(etudiant);
 			writeFileEtudiants(listeEtudiants);
