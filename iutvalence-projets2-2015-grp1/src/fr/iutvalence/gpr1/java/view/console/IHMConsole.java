@@ -144,4 +144,29 @@ public class IHMConsole implements IHM {
 		return this.menuCours();
 	}
 
+	@Override
+	public void affichageIdProfesseur2() {
+		System.out.println("Re-bonjour Professeur, veuillez vous identifier pour valider votre choix");		
+	}
+
+	@Override
+	public int adminMenu() {
+		System.out.println("Que souhaitez vous faire ?");
+		System.out.println("1 -> Ajouter un Administrateur");
+		System.out.println("2 -> Supprimer un Administrateur");
+		System.out.println("3 -> Ajouter un Professeur");
+		System.out.println("4 -> Supprimer un Professeur");
+		String index = "";
+		do {
+			index = scanner.nextLine();
+		} while (!this.isNumeric(index));
+		int choiceAdmin = Integer.parseInt(index);
+		if (choiceAdmin < 5 && choiceAdmin > 0)
+			return choiceAdmin;
+		System.out.println("Votre choix est invalide");
+		return this.adminMenu();
+	}
+		
+	
+
 }

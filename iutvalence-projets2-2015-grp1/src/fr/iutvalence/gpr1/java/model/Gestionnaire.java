@@ -211,15 +211,36 @@ public class Gestionnaire {
 			}
 		}
 		if (choiceCours == 1) {
-			this.monIHM.affichageIdProfesseur();
+			this.monIHM.affichageIdProfesseur2();
 			Professeur prof = this.identificationProfesseur();
 			if (prof != null) {
 				// TODO methode qui retourne les listes absents/présents.
 				this.starter();
 			}
-			
+
 		}
 
+	}
+	
+	
+	public void choixAdministrateur(){
+		int choiceAdmin = this.monIHM.adminMenu();
+		
+		if(choiceAdmin == 1){
+			//TODO methode d'ajjout admin
+		}
+		
+		if(choiceAdmin == 2){
+			//TODO methode suppression admin
+		}
+		
+		if(choiceAdmin == 3){
+			//TODO methode ajour prof
+		}
+		
+		if(choiceAdmin == 4){
+			//TODO meethode suppression prof
+		}
 	}
 
 	/**
@@ -237,9 +258,10 @@ public class Gestionnaire {
 				if (admin != null) {
 					this.monIHM.idValide(admin);
 					idValide = true;
-				}
-				if (idValide = false)
+					this.monIHM.adminMenu();
+				} else {
 					this.monIHM.idInvalide();
+				}
 			}
 
 			if (choice == 2) {

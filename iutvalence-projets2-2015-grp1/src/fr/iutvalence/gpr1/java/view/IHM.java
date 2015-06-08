@@ -33,5 +33,9 @@ public interface IHM {
 
 	public int menuCours();
 
+	public void affichageIdProfesseur2();
+
+	public int adminMenu();
+
 
 }

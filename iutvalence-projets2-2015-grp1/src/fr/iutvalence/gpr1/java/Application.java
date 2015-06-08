@@ -22,7 +22,7 @@ public class Application {
 //        
 //        ListePersonnes a= new ListePersonnes(FichierListe);     
 //                
-//        Etudiant test = new Etudiant("AAAAAA","BBBBB","TP3F",6,"login","password");
+//        Etudiant test = new Etudiant("AAAAAA","BBBBB","F",3,6,"login","password");
 //        
 //        try {
 //			a.getListEtudiants();
