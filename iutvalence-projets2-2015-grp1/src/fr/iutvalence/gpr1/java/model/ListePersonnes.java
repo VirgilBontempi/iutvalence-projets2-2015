@@ -176,18 +176,18 @@ public class ListePersonnes {
 
 			Administrateur administrateur_courant = null;
 
-			String administrateur_string = null;
+			String liste_temp = null;
 			
 			for (int curseur = 1; curseur < listeAdministrateurs.size(); curseur++) {
 				administrateur_courant = listeAdministrateurs.get(curseur);
-				administrateur_string = "/" + administrateur_courant.getNom() + ","
+
+				liste_temp += "/" + administrateur_courant.getNom() + ","
 						+ administrateur_courant.getPrenom() + ","
 						+ administrateur_courant.getLogin() + ","
 						+ administrateur_courant.getPassword();
-						
-				writer.write(administrateur_string);
-
 			}
+			
+			writer.write(liste_temp);
 
 		} catch (IOException e) {
 

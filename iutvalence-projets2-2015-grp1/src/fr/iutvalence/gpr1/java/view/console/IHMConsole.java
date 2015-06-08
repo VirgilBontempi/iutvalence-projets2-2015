@@ -177,20 +177,20 @@ public class IHMConsole implements IHM {
 		System.out.println("Saisissez le nom du nouvel administrateur");
 			LinkedList<Administrateur> listeAdministrateurs;
 			File listAdmin=new File("ListeAdministrateur.txt");
-			ListePersonnes fichierAdmin = new ListePersonnes(listAdmin);
-			String indexNom="";
+			 ListePersonnes fichierAdmin = new ListePersonnes(listAdmin);
+			String indexNom = null;
 			indexNom = scanner.nextLine();
 		System.out.println("Saisissez le prénom du nouvel administrateur");
-			String indexPrenom="";
+			String indexPrenom = null;
 			indexPrenom = scanner.nextLine();
 		System.out.println("Saisissez le login du nouvel administrateur");
-			String indexLogin="";
+			String indexLogin = null;
 			indexLogin = scanner.nextLine();
 		System.out.println("Saisissez le mot de passe du nouvel administrateur");
-			String indexPassword="";
+			String indexPassword = null;
 			indexPassword = scanner.nextLine();
 			
-			Administrateur nouvelAdmin=new Administrateur(indexNom, indexPrenom, indexLogin, indexPassword);
+			Administrateur nouvelAdmin= new Administrateur(indexNom, indexPrenom, indexLogin, indexPassword);
 
 			try {
 
