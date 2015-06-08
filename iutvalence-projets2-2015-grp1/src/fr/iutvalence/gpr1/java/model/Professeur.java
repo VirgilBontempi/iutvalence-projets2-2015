@@ -11,6 +11,6 @@ public class Professeur extends Personne {
 
 	
 	public String toString(Professeur prof){
-		return prof.getNom()+","+prof.getPrenom()+","+prof.getLogin()+","+prof.getPassword()+"/";
+		return prof.getNom()+", "+prof.getPrenom()+", "+prof.getLogin()+", "+prof.getPassword()+" /";
 	}
 }

@@ -1,8 +1,8 @@
 package fr.iutvalence.gpr1.java.model;
 
 public class Personne {
-	private String nom;
-	private String prenom;
+	protected String nom;
+	protected String prenom;
 	private String login;
 	private String password;
 

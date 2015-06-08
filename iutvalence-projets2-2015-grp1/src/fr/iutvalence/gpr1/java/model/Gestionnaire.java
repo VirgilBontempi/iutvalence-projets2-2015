@@ -187,9 +187,13 @@ public class Gestionnaire {
 	public void creationCours() {
 		String libelle = this.monIHM.saisieLibelleCours();
 		String typeCours = this.monIHM.saisieTypeCours();
-		int grpTd = this.monIHM.saisieGrpTd();
-		String grpTp = this.monIHM.saisieGrpTp();
-
+		if(typeCours.equalsIgnoreCase("TD")){
+			int grpTd = this.monIHM.saisieGrpTd();
+		}
+		if(typeCours.equalsIgnoreCase("TP")){
+			String grpTp = this.monIHM.saisieGrpTp();
+		}
+		
 	}
 
 	public void debutCours() {
@@ -214,32 +218,47 @@ public class Gestionnaire {
 			this.monIHM.affichageIdProfesseur2();
 			Professeur prof = this.identificationProfesseur();
 			if (prof != null) {
-				// TODO methode qui retourne les listes absents/présents.
+				this.listeDesAbsents();
 				this.starter();
 			}
 
 		}
 
 	}
-	
-	
-	public void choixAdministrateur(){
+
+	public LinkedList<Etudiant> listeDesAbsents() {
+		LinkedList<Etudiant> listAbs = new LinkedList<Etudiant>();
+		for (int i = 0; i < this.listEtudiants.size(); i++) {
+			if (this.listEtudiants.get(i).getAbsence() == true
+					&& this.listEtudiants.get(i) != null)
+//					&& (this.monIHM.saisieGrpTd() == Integer.parseInt(this.listEtudiants.get(i).getGrpTd())
+//					|| this.monIHM.saisieGrpTp() == this.listEtudiants.get(i).getgprTP() || this.monIHM.saisieTypeCours()=="CM"))
+			{
+				listAbs.add(this.listEtudiants.get(i));
+				System.out.println("Voici la liste des absents");
+				System.out.println(listAbs);
+			}
+		}
+		return listAbs;
+	}
+
+	public void choixAdministrateur() {
 		int choiceAdmin = this.monIHM.adminMenu();
-		
-		if(choiceAdmin == 1){
-			//TODO methode d'ajjout admin
+
+		if (choiceAdmin == 1) {
+			// TODO methode d'ajout admin
 		}
-		
-		if(choiceAdmin == 2){
-			//TODO methode suppression admin
+
+		if (choiceAdmin == 2) {
+			// TODO methode suppression admin
 		}
-		
-		if(choiceAdmin == 3){
-			//TODO methode ajour prof
+
+		if (choiceAdmin == 3) {
+			// TODO methode ajout prof
 		}
-		
-		if(choiceAdmin == 4){
-			//TODO meethode suppression prof
+
+		if (choiceAdmin == 4) {
+			// TODO meethode suppression prof
 		}
 	}
 
@@ -275,6 +294,8 @@ public class Gestionnaire {
 					this.creationCours();
 
 					this.debutCours();
+					
+					this.listeDesAbsents();
 
 				} else {
 					this.monIHM.idInvalide();

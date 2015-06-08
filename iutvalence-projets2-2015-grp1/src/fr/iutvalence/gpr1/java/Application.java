@@ -16,35 +16,14 @@ import fr.iutvalence.gpr1.java.view.console.IHMConsole;
 
 public class Application {
 
-        public static void main(String[] args) {
+	public static void main(String[] args) {
 
-//        File FichierListe = new File("ListeEtudiants.txt");
-//        
-//        ListePersonnes a= new ListePersonnes(FichierListe);     
-//                
-//        Etudiant test = new Etudiant("AAAAAA","BBBBB","F",3,6,"login","password");
-//        
-//        try {
-//			a.getListEtudiants();
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//        
-//        a.ajouterEtudiant(FichierListe, test);
-//        
-//        try {
-//			a.getListEtudiants();
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-        	
-        File listEtudiants = new File("ListeEtudiants.txt");
-        File listProfesseurs = new File("ListeProfesseurs.txt");
-        File listAdministrateurs = new File("ListeAdministrateurs.txt");
-        IHM monIHM = new IHMConsole();
-        Gestionnaire monGestionnaire = new Gestionnaire(monIHM, listEtudiants, listProfesseurs, listAdministrateurs);
-        monGestionnaire.starter();
-        }
+		File listEtudiants = new File("ListeEtudiants.txt");
+		File listProfesseurs = new File("ListeProfesseurs.txt");
+		File listAdministrateurs = new File("ListeAdministrateurs.txt");
+		IHM monIHM = new IHMConsole();
+		Gestionnaire monGestionnaire = new Gestionnaire(monIHM, listEtudiants,
+				listProfesseurs, listAdministrateurs);
+		monGestionnaire.starter();
+	}
 }
