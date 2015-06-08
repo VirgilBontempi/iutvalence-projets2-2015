@@ -257,8 +257,6 @@ public class Gestionnaire {
 	}
 	
 	
-	
-	
 
 	private void resetAbsence() {
 		for(Etudiant currentStudent : this.listEtudiants){
@@ -276,7 +274,8 @@ public class Gestionnaire {
 		}
 
 		if (choiceAdmin == 2) {
-			// TODO methode suppression admin
+			this.monIHM.removeAdmin();
+			this.choixAdministrateur();
 		}
 
 		if (choiceAdmin == 3) {
@@ -288,8 +287,13 @@ public class Gestionnaire {
 		}
 		
 		if (choiceAdmin == 5) {
+			this.monIHM.afficherListe();
+			this.choixAdministrateur();
+		}
+		if (choiceAdmin == 6) {
 			this.starter();
 		}
+		
 	}
 
 	/**
