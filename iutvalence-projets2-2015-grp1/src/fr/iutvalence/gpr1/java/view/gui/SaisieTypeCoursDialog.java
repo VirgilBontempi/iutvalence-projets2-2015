@@ -65,6 +65,7 @@ public class SaisieTypeCoursDialog extends JDialog implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==this.okButton){
+			this.typeCoursInput=this.typeCours.getSelectedItem().toString();
 			this.dispose();
 		}
 		if(e.getSource()==this.cancelButton){
