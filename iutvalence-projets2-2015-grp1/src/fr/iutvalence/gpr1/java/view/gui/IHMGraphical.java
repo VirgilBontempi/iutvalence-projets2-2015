@@ -50,7 +50,7 @@ public class IHMGraphical extends JFrame implements IHM, Runnable, ActionListene
 		this.add(this.interfaceAdmin);
 		this.interfaceProf = new JButton("Professeur");
 		this.interfaceProf.setBounds(335, 260, 360, 160);
-		
+		this.interfaceProf.addActionListener(this);
 		this.add(this.interfaceProf);
 		this.quitter = new JButton("Quitter");
 		this.quitter.setBounds(335, 430, 360, 160);
@@ -85,18 +85,19 @@ public class IHMGraphical extends JFrame implements IHM, Runnable, ActionListene
 
 	@Override
 	public void affichageIdAdministrateur() {
-		// TODO Auto-generated method stub
+		JOptionPane.showMessageDialog(this, "Bienvenu Administrateur, veuillez vous identifier"," Information ",JOptionPane.INFORMATION_MESSAGE);
+		
 	}
 
 	@Override
 	public void affichageIdProfesseur() {
-		// TODO Auto-generated method stub
+		JOptionPane.showMessageDialog(this, "Bienvenu Professeur, veuillez vous identifier"," Information ",JOptionPane.INFORMATION_MESSAGE);
 		
 	}
 
 	@Override
 	public void affichageIdEtudiant() {
-		// TODO Auto-generated method stub
+		JOptionPane.showMessageDialog(this, "Bonjour Etudiant, veuillez vous identifier"," Information ",JOptionPane.INFORMATION_MESSAGE);
 		
 	}
 
@@ -114,43 +115,49 @@ public class IHMGraphical extends JFrame implements IHM, Runnable, ActionListene
 
 	@Override
 	public void elevePresent() {
-		// TODO Auto-generated method stub
+		JOptionPane.showMessageDialog(this, "Vou avez été noté présent"," Information ",JOptionPane.INFORMATION_MESSAGE);
 		
 	}
 
 	@Override
 	public String saisieTypeCours() {
-		// TODO Auto-generated method stub
-		return null;
+		JDialog typeCours = new SaisieTypeCoursDialog();
+		typeCours.setVisible(true);
+		return ((SaisieTypeCoursDialog) typeCours).getTypeCours();
 	}
 
 	@Override
 	public String saisieLibelleCours() {
-		// TODO Auto-generated method stub
-		return null;
+		JDialog libelle = new SaisieLibelleCoursDialog();
+		libelle.setVisible(true);
+		return ((SaisieLibelleCoursDialog) libelle).getLibelleCours();
 	}
 
 	@Override
 	public String saisieGrpTp() {
-		// TODO Auto-generated method stub
-		return null;
+		JDialog grpTp = new SaisieGrpTpDialog();
+		grpTp.setVisible(true);
+		return ((SaisieGrpTpDialog) grpTp).getGrpTp();
 	}
 
 	@Override
 	public String saisieGrpTd() {
-		// TODO Auto-generated method stub
-		return null;
+		JDialog grpTd = new SaisieGrpTdDialog();
+		grpTd.setVisible(true);
+		return ((SaisieGrpTdDialog) grpTd).getGrpTd();
 	}
 
 	@Override
 	public int menuCours() {
-		// TODO Auto-generated method stub
-		return 0;
+		JDialog menuCours = new menuCoursWindow();
+		menuCours.setVisible(true);
+		return ((menuCoursWindow) menuCours).getChoice();
 	}
 
 	@Override
 	public void affichageIdProfesseur2() {
-		// TODO Auto-generated method stub
+		JOptionPane.showMessageDialog(this, "Re-bonjour Professeur, veuillez vous identifier pour valider votre choix"," Information ",JOptionPane.INFORMATION_MESSAGE);
+		
 		
 	}
 
@@ -177,7 +184,7 @@ public class IHMGraphical extends JFrame implements IHM, Runnable, ActionListene
 
 	@Override
 	public void displayNewAdminAdded(Administrateur nouvelAdmin) {
-		JOptionPane.showMessageDialog(this, "L'adminstrateur "+nouvelAdmin.getPrenom()+" "+nouvelAdmin.getNom()+" a bien été ajoutée"," Information ",JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(this, "L'adminstrateur "+nouvelAdmin.getPrenom()+" "+nouvelAdmin.getNom()+" a bien été ajouté"," Information ",JOptionPane.INFORMATION_MESSAGE);
 	}
 
 	@Override
@@ -188,20 +195,19 @@ public class IHMGraphical extends JFrame implements IHM, Runnable, ActionListene
 
 	@Override
 	public void displayAdminRemoved(Administrateur administrateur) {
-		JOptionPane.showMessageDialog(this, "L'administrateur "+administrateur.getPrenom()+" "+administrateur.getNom()+" a bien été supprimé");
+		JOptionPane.showMessageDialog(this, "L'administrateur "+administrateur.getPrenom()+" "+administrateur.getNom()+" a bien été supprimé"," Information ", JOptionPane.INFORMATION_MESSAGE);
 	}
 
 	@Override
 	public void afficherListeAdmin(List<Administrateur> listAdmin) {
-		// TODO Auto-generated method stub
-		
+		JOptionPane.showMessageDialog(this, this.gestionnaire.displayListAdmin(listAdmin)," Information ", JOptionPane.INFORMATION_MESSAGE);
 		
 	}
 
 	@Override
 	public void affichageListeAbsence(LinkedList<Etudiant> listAbs) {
-		// TODO Auto-generated method stub
-		
+		JOptionPane.showMessageDialog(this, this.gestionnaire.listeDesAbsents(String grp)," Information ", JOptionPane.INFORMATION_MESSAGE);
+	
 	}
 
 	@Override
@@ -220,7 +226,7 @@ public class IHMGraphical extends JFrame implements IHM, Runnable, ActionListene
 
 	@Override
 	public void displayNewProfAdded(Professeur professeur) {
-		JOptionPane.showMessageDialog(this, "Le professeur "+professeur.getPrenom()+" "+professeur.getNom()+" a bien été ajoutée"," Information ",JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(this, "Le professeur "+professeur.getPrenom()+" "+professeur.getNom()+" a bien été ajouté"," Information ",JOptionPane.INFORMATION_MESSAGE);
 		}
 
 	@Override
@@ -237,7 +243,7 @@ public class IHMGraphical extends JFrame implements IHM, Runnable, ActionListene
 
 	@Override
 	public void afficherListeProf(List<Professeur> listProf) {
-		// TODO Auto-generated method stub
+		JOptionPane.showMessageDialog(this, this.gestionnaire.displayListProf(listProf)," Information ", JOptionPane.INFORMATION_MESSAGE);
 		
 	}
 
@@ -258,6 +264,9 @@ public class IHMGraphical extends JFrame implements IHM, Runnable, ActionListene
 		if (e.getSource() == this.interfaceAdmin){
 			this.gestionnaire.actionsAdmin();
 			}
+		if (e.getSource() == this.interfaceProf){
+			this.gestionnaire.actionsProf();
+		}
 		
 	}
 

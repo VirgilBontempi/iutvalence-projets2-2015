@@ -213,11 +213,13 @@ public class Gestionnaire {
 	public String creationCours() {
 		String libelle = this.monIHM.saisieLibelleCours();
 		String typeCours = this.monIHM.saisieTypeCours();
-		if (typeCours.equalsIgnoreCase("TD")) {
-			return this.monIHM.saisieGrpTd();
-		}
-		if (typeCours.equalsIgnoreCase("TP")) {
-			return this.monIHM.saisieGrpTp();
+		if (typeCours != null) {
+			if (typeCours.equalsIgnoreCase("TD")) {
+				return this.monIHM.saisieGrpTd();
+			}
+			if (typeCours.equalsIgnoreCase("TP")) {
+				return this.monIHM.saisieGrpTp();
+			}
 		}
 		return libelle;
 
@@ -525,17 +527,7 @@ public class Gestionnaire {
 			if (choice == 2) {
 
 				this.monIHM.affichageIdProfesseur();
-				Professeur prof = this.identificationProfesseur();
-				if (prof != null) {
-
-					this.monIHM.idValide(prof);
-					idValide = true;
-
-					this.debutCours(this.creationCours());
-
-				} else {
-					this.monIHM.idInvalide();
-				}
+				this.actionsProf();
 			}
 
 			if (choice == 3) {
@@ -550,6 +542,15 @@ public class Gestionnaire {
 
 	}
 
+	public String displayListAdmin(List<Administrateur> listAdmin) {
+		StringBuilder string = new StringBuilder();
+		for (Administrateur admin : listAdmin) {
+			string.append(admin.prenom+" "+admin.nom);
+			string.append("\n");	
+		}
+		return string.toString();
+	}
+	
 	public void actionsAdmin() {
 		Administrateur admin = this.identificationAdministrateur();
 		if (admin != null) {
@@ -558,7 +559,27 @@ public class Gestionnaire {
 		} else {
 			this.monIHM.idInvalide();
 		}
-		
+	}
+
+	public String displayListProf(List<Professeur> listProf) {
+		StringBuilder string = new StringBuilder();
+		for (Professeur prof : listProf) {
+			string.append(prof.prenom+" "+prof.nom);
+			string.append("\n");	
+		}
+		return string.toString();
+	}
+
+	public void actionsProf() {
+		Professeur prof = this.identificationProfesseur();
+		if (prof != null) {
+
+			this.monIHM.idValide(prof);
+			this.debutCours(this.creationCours());
+
+		} else {
+			this.monIHM.idInvalide();
+		}
 	}
 
 }

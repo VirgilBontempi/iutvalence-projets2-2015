@@ -36,7 +36,7 @@ public class inputProfDialog extends JDialog implements ActionListener{
 
 			JPanel pan = new JPanel();
 			pan.setBorder(BorderFactory
-					.createTitledBorder("Informations sur l'adiministrateur"));
+					.createTitledBorder("Informations sur le professeur"));
 			pan.setLayout(new GridLayout(4,2));
 			this.nom = new JTextField();
 			JLabel nomLabel = new JLabel("Saisir un nom :");

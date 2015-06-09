@@ -40,7 +40,7 @@ public class adminMenuWindow extends JDialog implements ActionListener{
 		this.ajouterAdmin = new JButton("Ajouter un Administrateur");
 		this.ajouterAdmin.addActionListener(this);
 		pan.add(this.ajouterAdmin);
-		this.supprimerAdmin = new JButton("Supprimer un Professeur");
+		this.supprimerAdmin = new JButton("Supprimer un Administrateur");
 		this.supprimerAdmin.addActionListener(this);
 		pan.add(this.supprimerAdmin);
 		this.ajouterProf = new JButton("Ajouter un Professeur");

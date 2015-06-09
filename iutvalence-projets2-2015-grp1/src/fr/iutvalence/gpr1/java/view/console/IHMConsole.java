@@ -189,8 +189,7 @@ public class IHMConsole implements IHM {
 
 	@Override
 	public void affichageIdProfesseur2() {
-		System.out
-				.println("Re-bonjour Professeur, veuillez vous identifier pour valider votre choix");
+		System.out.println("Re-bonjour Professeur, veuillez vous identifier pour valider votre choix");
 	}
 
 	@Override

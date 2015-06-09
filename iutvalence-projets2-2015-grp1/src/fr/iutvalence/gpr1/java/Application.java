@@ -21,7 +21,7 @@ public class Application {
 		IHM monIHM = new IHMGraphical();
 		Gestionnaire monGestionnaire = new Gestionnaire(monIHM, listEtudiants,
 				listProfesseurs, listAdministrateurs);
-		//monGestionnaire.starter();
+//		monGestionnaire.starter();
 		((IHMGraphical) monIHM).initWindow(monGestionnaire);
 		SwingUtilities.invokeLater((Runnable) monIHM);
 	}
