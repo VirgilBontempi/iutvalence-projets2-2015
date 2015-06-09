@@ -200,13 +200,13 @@ public class IHMGraphical extends JFrame implements IHM, Runnable, ActionListene
 
 	@Override
 	public void afficherListeAdmin(List<Administrateur> listAdmin) {
-		JOptionPane.showMessageDialog(this, this.gestionnaire.displayListAdmin(listAdmin)," Information ", JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(this, this.gestionnaire.displayListAdmin(listAdmin)," Liste des Administrateurs ", JOptionPane.INFORMATION_MESSAGE);
 		
 	}
 
 	@Override
 	public void affichageListeAbsence(LinkedList<Etudiant> listAbs) {
-		JOptionPane.showMessageDialog(this, this.gestionnaire.listeDesAbsents(String grp)," Information ", JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(this, this.gestionnaire.displayListEtudiants(listAbs)," Liste des Absents ", JOptionPane.INFORMATION_MESSAGE);
 	
 	}
 

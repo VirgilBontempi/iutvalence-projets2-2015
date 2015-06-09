@@ -582,4 +582,13 @@ public class Gestionnaire {
 		}
 	}
 
+	public String displayListEtudiants(LinkedList<Etudiant> list) {
+		StringBuilder string = new StringBuilder();
+		for (Etudiant etudiant : list) {
+			string.append(etudiant.prenom+" "+etudiant.nom);
+			string.append("\n");	
+		}
+		return string.toString();
+	}
+
 }
