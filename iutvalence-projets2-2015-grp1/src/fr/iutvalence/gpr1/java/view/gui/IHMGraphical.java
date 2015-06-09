@@ -195,6 +195,7 @@ public class IHMGraphical extends JFrame implements IHM, Runnable, ActionListene
 	public void afficherListeAdmin(List<Administrateur> listAdmin) {
 		// TODO Auto-generated method stub
 		
+		
 	}
 
 	@Override
