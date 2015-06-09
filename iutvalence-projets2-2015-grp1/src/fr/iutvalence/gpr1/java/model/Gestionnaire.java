@@ -5,10 +5,8 @@ import java.io.IOException;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Scanner;
-
 import fr.iutvalence.gpr1.java.view.IHM;
-import fr.iutvalence.gpr1.java.view.console.IHMConsole;
+
 
 /** Classe Gestionnaire */
 public class Gestionnaire {
@@ -193,7 +191,7 @@ public class Gestionnaire {
 		if (typeCours.equalsIgnoreCase("TP")) {
 			return this.monIHM.saisieGrpTp();
 		}
-		return null;
+		return libelle;
 
 	}
 

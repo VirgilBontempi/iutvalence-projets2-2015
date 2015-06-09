@@ -1,21 +1,13 @@
 package fr.iutvalence.gpr1.java;
 
-import java.io.BufferedWriter;
+
 import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.ObjectInputStream.GetField;
-import java.io.PrintWriter;
-import java.util.Iterator;
+import fr.iutvalence.gpr1.java.model.Gestionnaire;
+import fr.iutvalence.gpr1.java.view.IHM;
+import fr.iutvalence.gpr1.java.view.console.IHMConsole;
 
 import javax.swing.SwingUtilities;
 
-import fr.iutvalence.gpr1.java.model.Etudiant;
-import fr.iutvalence.gpr1.java.model.Gestionnaire;
-import fr.iutvalence.gpr1.java.model.ListePersonnes;
-import fr.iutvalence.gpr1.java.view.IHM;
-import fr.iutvalence.gpr1.java.view.console.IHMConsole;
-import fr.iutvalence.gpr1.java.view.gui.IHMGraphical;
 
 public class Application {
 
