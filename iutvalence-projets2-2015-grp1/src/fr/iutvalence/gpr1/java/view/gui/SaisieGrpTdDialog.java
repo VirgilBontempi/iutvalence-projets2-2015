@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -20,7 +21,7 @@ public class SaisieGrpTdDialog extends JDialog implements ActionListener{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private JTextField grpTd;
+	private JComboBox<Object> grpTd;
 	private JButton okButton;
 	private JButton cancelButton;
 	private String grpTdInput;
@@ -36,7 +37,8 @@ public class SaisieGrpTdDialog extends JDialog implements ActionListener{
 		JPanel pan = new JPanel();
 		pan.setBorder(BorderFactory.createTitledBorder("Veuillez saisir le groupe de TD avec lequel vous avez cours"));
 		pan.setLayout(new GridLayout(1, 2));
-		this.grpTd = new JTextField();
+		Object[] elements = new Object[]{"1", "2", "3"};
+		this.grpTd = new JComboBox<Object>(elements);
 		JLabel nomLabel = new JLabel("Groupe TD :");
 		pan.add(nomLabel);
 		pan.add(this.grpTd);
@@ -63,10 +65,10 @@ public class SaisieGrpTdDialog extends JDialog implements ActionListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource()==this.okButton && this.grpTd.getText().length() != 0){
+		if(e.getSource()==this.okButton){
 			this.dispose();
 		}
-		if(e.getSource()==this.cancelButton && this.grpTd.getText().length() != 0){
+		if(e.getSource()==this.cancelButton){
 			this.dispose();
 		}
 	}

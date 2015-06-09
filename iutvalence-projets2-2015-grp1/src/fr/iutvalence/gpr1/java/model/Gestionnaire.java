@@ -254,7 +254,6 @@ public class Gestionnaire {
 			Professeur prof = this.identificationProfesseur();
 			if (prof != null) {
 				this.listeDesAbsents(grp);
-				this.starter();
 			} else
 				this.monIHM.idInvalide();
 
@@ -344,7 +343,6 @@ public class Gestionnaire {
 		}
 
 		if (choiceAdmin == 7) {
-			this.starter();
 		}
 
 	}
@@ -356,8 +354,8 @@ public class Gestionnaire {
 	private void removeProf() {
 		String loginProf = this.monIHM.inputProf2();
 		if (loginProf != null) {
-			int index = this.searchLoginProfesseur(this.listProfesseurs,
-					loginProf);
+			int index = this.searchLoginProfesseur(this.listProfesseurs,loginProf);
+			System.out.println(index);
 			if (index >= 0) {
 				Professeur prof = this.listProfesseurs.get(index);
 				this.listProfesseurs.remove(prof);
@@ -531,15 +529,18 @@ public class Gestionnaire {
 			}
 
 			if (choice == 3) {
-				this.fileManagerAdmin.writeFileAdministrateurs((LinkedList<Administrateur>) this.listAdministrateurs);
-				this.fileManagerEtudiant.writeFileEtudiants((LinkedList<Etudiant>) this.listEtudiants);
-				this.fileManagerProf.writeFileProfesseurs((LinkedList<Professeur>) this.listProfesseurs);
-				System.exit(0);
-
+				this.quit();
 			}
 
 		}
 
+	}
+
+	public void quit() {
+		this.fileManagerAdmin.writeFileAdministrateurs((LinkedList<Administrateur>) this.listAdministrateurs);
+		this.fileManagerEtudiant.writeFileEtudiants((LinkedList<Etudiant>) this.listEtudiants);
+		this.fileManagerProf.writeFileProfesseurs((LinkedList<Professeur>) this.listProfesseurs);
+		System.exit(0);
 	}
 
 	public String displayListAdmin(List<Administrateur> listAdmin) {

@@ -54,13 +54,13 @@ public class IHMGraphical extends JFrame implements IHM, Runnable, ActionListene
 		this.add(this.interfaceProf);
 		this.quitter = new JButton("Quitter");
 		this.quitter.setBounds(335, 430, 360, 160);
+		this.quitter.addActionListener(this);
 		this.add(this.quitter);
 		
 	}
 	@Override
 	public void run() {
-		this.setVisible(true);
-		
+		this.setVisible(true);	
 	}
 
 	@Override
@@ -266,7 +266,10 @@ public class IHMGraphical extends JFrame implements IHM, Runnable, ActionListene
 			}
 		if (e.getSource() == this.interfaceProf){
 			this.gestionnaire.actionsProf();
-		}
+			}
+		if (e.getSource() == this.quitter){
+			this.gestionnaire.quit();
+			}
 		
 	}
 

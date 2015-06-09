@@ -63,7 +63,6 @@ public class inputProf2Dialog extends JDialog implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource()==this.okButton && this.login.getText().length() != 0){
 			this.professeur = this.login.getText();
-			
 			this.dispose();
 		}
 		if (e.getSource()==this.cancelButton && this.login.getText().length() != 0) {
