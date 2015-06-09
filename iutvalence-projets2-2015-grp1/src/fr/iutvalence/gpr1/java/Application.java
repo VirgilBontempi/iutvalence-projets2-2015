@@ -8,7 +8,7 @@ import fr.iutvalence.gpr1.java.view.console.IHMConsole;
 
 import javax.swing.SwingUtilities;
 
-
+/** Classe Application. */
 public class Application {
 
 	public static void main(String[] args) {

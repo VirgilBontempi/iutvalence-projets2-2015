@@ -3,6 +3,7 @@ package fr.iutvalence.gpr1.java.model;
 import java.io.*;
 import java.util.LinkedList;
 
+/** Classe ListePersonnes. */
 public class ListePersonnes {
 	private final String PathListeAdministrateur;
 	private final String PathListeEtudiants;
@@ -26,7 +27,6 @@ public class ListePersonnes {
 	 * 
 	 * @param listeEtudiants
 	 */
-	
 	public void writeFileEtudiants(LinkedList<Etudiant> listeEtudiants) {
 
 		// d�finition d'un fichier
@@ -105,7 +105,11 @@ public class ListePersonnes {
 	}
 
 	
-	
+	/**
+	 * 
+	 * 
+	 * @param listeProfesseurs
+	 */
 	public void writeFileProfesseurs(LinkedList<Professeur> listeProfesseurs) {
 
 		// d�finition d'un fichier
@@ -176,6 +180,11 @@ public class ListePersonnes {
 	}
 
 
+	/**
+	 * 
+	 * 
+	 * @param listeAdministrateurs
+	 */
 	public void writeFileAdministrateurs(LinkedList<Administrateur> listeAdministrateurs) {
 
 		// d�finition d'un fichier
@@ -392,19 +401,6 @@ public class ListePersonnes {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
-
-	
-	/**
-	 * Vide la liste d'etudiants.
-	 */
-	public void viderListe() {
-		try {
-			getListEtudiants().clear();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
 	}
 
 }

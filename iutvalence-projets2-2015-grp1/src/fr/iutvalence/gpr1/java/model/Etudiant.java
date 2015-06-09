@@ -62,7 +62,7 @@ public class Etudiant extends Personne {
 	public int getnumEtudiant() {
 		return this.numEtudiant;
 	}
-// z zz  z
+
 	/**
 	 * Getter du nombre d'absences.
 	 * 
@@ -97,7 +97,9 @@ public class Etudiant extends Personne {
 		this.nbrAbsence = this.nbrAbsence++;
 	}
 	
-	
+	/**
+	 * Définition de la méthode toString d'un Etudiant.
+	 */
 	public String toString(){
 		return this.nom+","+this.prenom+","+this.gprTP+","+this.numEtudiant+ "/";
 	}

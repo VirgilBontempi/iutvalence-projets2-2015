@@ -8,7 +8,7 @@ import java.util.List;
 import fr.iutvalence.gpr1.java.view.IHM;
 
 
-/** Classe Gestionnaire */
+/** Classe Gestionnaire. */
 public class Gestionnaire {
 
 	private IHM monIHM;
@@ -86,14 +86,31 @@ public class Gestionnaire {
 		return null;
 	}
 
+	
+	/**
+	 * Obtnenir la liste d'étudiants.
+	 * 
+	 * @return listEtudiants
+	 */
 	public List<Etudiant> getListEtudiants() {
 		return this.listEtudiants;
 	}
 
+	/**
+	 * Obtnenir liste d'administrateurs.
+	 * 
+	 * @return listAdministrateurs
+	 */
 	public List<Professeur> getListProfesseurs() {
 		return this.listProfesseurs;
 	}
 
+	
+	/**
+	 * Obtnenir liste de professeurs.
+	 * 
+	 * @return listProfesseurs
+	 */
 	public List<Administrateur> getListAdministrateurs() {
 		return this.listAdministrateurs;
 	}
@@ -182,6 +199,12 @@ public class Gestionnaire {
 
 	}
 
+	
+	/**
+	 * Créé un cours.
+	 * 
+	 * @return libelle
+	 */
 	public String creationCours() {
 		String libelle = this.monIHM.saisieLibelleCours();
 		String typeCours = this.monIHM.saisieTypeCours();
@@ -195,6 +218,12 @@ public class Gestionnaire {
 
 	}
 
+	
+	/**
+	 * Débute un cours avec le groupe d'étudiants choisi.
+	 * 
+	 * @param grp
+	 */
 	public void debutCours(String grp) {
 		int choiceCours = this.monIHM.menuCours();
 
@@ -226,6 +255,12 @@ public class Gestionnaire {
 
 	}
 
+	
+	/**
+	 * Créé la liste des absents suivant le groupe choisi.
+	 * 
+	 * @param grp
+	 */
 	public void listeDesAbsents(String grp) {
 		LinkedList<Etudiant> listAbs = new LinkedList<Etudiant>();
 		for (int i = 0; i < this.listEtudiants.size(); i++) {
@@ -253,6 +288,10 @@ public class Gestionnaire {
 		this.resetAbsence();
 	}
 
+	
+	/**
+	 * Repasse les absence à true entre chaque cours d'une même session.
+	 */
 	private void resetAbsence() {
 		for (Etudiant currentStudent : this.listEtudiants) {
 			currentStudent.setAbsence(true);
@@ -260,6 +299,10 @@ public class Gestionnaire {
 
 	}
 
+	
+	/**
+	 * Choix du menu de l'administrateurs.
+	 */
 	public void choixAdministrateur() {
 		int choiceAdmin = this.monIHM.adminMenu();
 
@@ -299,6 +342,10 @@ public class Gestionnaire {
 
 	}
 
+	
+	/**
+	 * Supprime un professeur de la liste.
+	 */
 	private void removeProf() {
 		String loginProf = this.monIHM.inputProf2();
 		if (loginProf != null) {
@@ -316,6 +363,14 @@ public class Gestionnaire {
 		this.choixAdministrateur();
 	}
 
+	
+	/**
+	 * recherche le login d'un professeur dans la liste.
+	 * 
+	 * @param liste
+	 * @param loginPersonne
+	 * @return index (ou -1 si le login n'existe pas)
+	 */
 	private int searchLoginProfesseur(List<Professeur> liste,
 			String loginPersonne) {
 		if (!liste.isEmpty()) {
@@ -333,6 +388,10 @@ public class Gestionnaire {
 
 	}
 
+	
+	/**
+	 * Supprime un administrateur de la liste
+	 */
 	private void removeAdmin() {
 		String loginAdmin = this.monIHM.inputAdmin2();
 		if (loginAdmin != null) {
@@ -350,6 +409,14 @@ public class Gestionnaire {
 		this.choixAdministrateur();
 	}
 
+	
+	/**
+	 * recherche le login d'un administrateur dans la liste.
+	 * 
+	 * @param liste
+	 * @param loginPersonne
+	 * @return index (ou -1 si le login n'existe pas)
+	 */
 	private int searchLoginAdministrateur(List<Administrateur> liste,
 			String loginPersonne) {
 		if (!liste.isEmpty()) {
@@ -367,6 +434,10 @@ public class Gestionnaire {
 
 	}
 
+	
+	/**
+	 * Ajoute un professeur dans la liste.
+	 */
 	private void addProf() {
 		Professeur professeur = this.monIHM.inputProf();
 		if (professeur != null) {
@@ -375,6 +446,10 @@ public class Gestionnaire {
 		}
 	}
 
+	
+	/**
+	 * Ajoute un administrateur dans la liste.
+	 */
 	private void addAdmin() {
 		Administrateur administrateur = this.monIHM.inputAdmin();
 		if (administrateur != null) {

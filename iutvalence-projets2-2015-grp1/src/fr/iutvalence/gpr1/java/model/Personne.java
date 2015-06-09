@@ -1,5 +1,6 @@
 package fr.iutvalence.gpr1.java.model;
 
+/** Classe Personne. */
 public class Personne {
 	protected String nom;
 	protected String prenom;
@@ -40,7 +41,7 @@ public class Personne {
 	}
 
 	/**
-	 * Getter de Login
+	 * Getter de Login.
 	 * 
 	 * @return login
 	 */
@@ -48,18 +49,38 @@ public class Personne {
 		return this.login;
 	}
 
+	/**
+	 * Setter de Nom.
+	 * 
+	 * @param nom
+	 */
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
 
+	/**
+	 * Setter de prenom.
+	 * 
+	 * @param prenom
+	 */
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
 
+	/**
+	 * Setter de login.
+	 * 
+	 * @param login
+	 */
 	public void setLogin(String login) {
 		this.login = login;
 	}
 
+	/**
+	 * Setter de password.
+	 * 
+	 * @param password
+	 */
 	public void setPassword(String password) {
 		this.password = password;
 	}

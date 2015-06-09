@@ -1,6 +1,7 @@
 package fr.iutvalence.gpr1.java.model;
 
 /** Classe Cours. */
+/** Classe Cours. */
 public class Cours {
 
 	private String typeCours;

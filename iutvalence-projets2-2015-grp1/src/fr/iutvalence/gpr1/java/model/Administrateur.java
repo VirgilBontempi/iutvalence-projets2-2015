@@ -16,6 +16,10 @@ public class Administrateur extends Personne {
 		super(nom, prenom, login, password);
 	}
 
+	
+	/**
+	 * Définition de la méthode toString d'un Administrateur.
+	 */
 	public String toString(){
 		return this.nom+", "+this.prenom+", "+this.login+", "+this.password+" /";
 	}
