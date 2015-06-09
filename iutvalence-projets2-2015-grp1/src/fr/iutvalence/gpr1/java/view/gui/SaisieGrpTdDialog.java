@@ -66,6 +66,7 @@ public class SaisieGrpTdDialog extends JDialog implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==this.okButton){
+			this.grpTdInput=this.grpTd.getSelectedItem().toString();
 			this.dispose();
 		}
 		if(e.getSource()==this.cancelButton){

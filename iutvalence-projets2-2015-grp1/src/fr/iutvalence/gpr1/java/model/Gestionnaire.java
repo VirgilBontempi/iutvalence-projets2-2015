@@ -127,8 +127,13 @@ public class Gestionnaire {
 	 */
 	public Professeur identificationProfesseur() {
 		String login = this.monIHM.saisieLogin();
-		String password = this.monIHM.saisiePassword();
-		return this.rechercheProfesseur(login, password);
+		if (login != null) {
+			String password = this.monIHM.saisiePassword();
+			if (password != null){
+				return this.rechercheProfesseur(login, password);
+			}
+		}
+		return null;
 	}
 
 	/**
@@ -243,7 +248,6 @@ public class Gestionnaire {
 					this.monIHM.idValide(etudiant);
 					idValide = true;
 					this.monIHM.elevePresent();
-					this.debutCours(grp);
 				} else
 					this.monIHM.idInvalide();
 				this.debutCours(grp);

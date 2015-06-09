@@ -18,11 +18,11 @@ public class Application {
 		File listEtudiants = new File("ListeEtudiants.txt");
 		File listProfesseurs = new File("ListeProfesseurs.txt");
 		File listAdministrateurs = new File("ListeAdministrateurs.txt");
-		IHM monIHM = new IHMConsole();
+		IHM monIHM = new IHMGraphical();
 		Gestionnaire monGestionnaire = new Gestionnaire(monIHM, listEtudiants,
 				listProfesseurs, listAdministrateurs);
-		monGestionnaire.starter();
-//		((IHMGraphical) monIHM).initWindow(monGestionnaire);
-//		SwingUtilities.invokeLater((Runnable) monIHM);
+		//monGestionnaire.starter();
+		((IHMGraphical) monIHM).initWindow(monGestionnaire);
+		SwingUtilities.invokeLater((Runnable) monIHM);
 	}
 }
