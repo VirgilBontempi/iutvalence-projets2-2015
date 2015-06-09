@@ -426,7 +426,6 @@ public class Gestionnaire {
 
 			if (choice == 3) {
 				System.exit(0);
-				;
 
 			}
 

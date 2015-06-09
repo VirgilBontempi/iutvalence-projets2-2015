@@ -8,11 +8,14 @@ import java.io.ObjectInputStream.GetField;
 import java.io.PrintWriter;
 import java.util.Iterator;
 
+import javax.swing.SwingUtilities;
+
 import fr.iutvalence.gpr1.java.model.Etudiant;
 import fr.iutvalence.gpr1.java.model.Gestionnaire;
 import fr.iutvalence.gpr1.java.model.ListePersonnes;
 import fr.iutvalence.gpr1.java.view.IHM;
 import fr.iutvalence.gpr1.java.view.console.IHMConsole;
+import fr.iutvalence.gpr1.java.view.gui.IHMGraphical;
 
 public class Application {
 
@@ -25,5 +28,7 @@ public class Application {
 		Gestionnaire monGestionnaire = new Gestionnaire(monIHM, listEtudiants,
 				listProfesseurs, listAdministrateurs);
 		monGestionnaire.starter();
+		//((IHMGraphical) monIHM).initWindow(monGestionnaire);
+		//SwingUtilities.invokeLater((Runnable) monIHM);
 	}
 }
