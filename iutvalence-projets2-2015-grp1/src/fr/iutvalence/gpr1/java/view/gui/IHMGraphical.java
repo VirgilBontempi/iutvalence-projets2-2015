@@ -21,6 +21,10 @@ import fr.iutvalence.gpr1.java.view.IHM;
 
 public class IHMGraphical extends JFrame implements IHM, Runnable, ActionListener {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JButton interfaceAdmin;
 	private JButton interfaceProf;
 	private JButton quitter;
@@ -62,12 +66,14 @@ public class IHMGraphical extends JFrame implements IHM, Runnable, ActionListene
 	@Override
 	public String saisieLogin() {
 		JDialog identifiant = new SaisieIdentifiantsDialog();
+		identifiant.setVisible(true);
 		return ((SaisieIdentifiantsDialog) identifiant).getLogin();
 	}
 
 	@Override
 	public String saisiePassword() {
 		JDialog password = new SaisiePasswordDialog();
+		password.setVisible(true);
 		return ((SaisiePasswordDialog) password).getPassword();
 	}
 
@@ -150,26 +156,28 @@ public class IHMGraphical extends JFrame implements IHM, Runnable, ActionListene
 
 	@Override
 	public int adminMenu() {
-		// TODO Auto-generated method stub
-		return 0;
+		JDialog adminMenu = new adminMenuWindow();
+		adminMenu.setVisible(true);
+		return ((adminMenuWindow) adminMenu).getChoice();
 	}
 
 	@Override
 	public Administrateur inputAdmin() {
-		// TODO Auto-generated method stub
-		return null;
+		JDialog inputAdmin = new inputAdminDialog();
+		inputAdmin.setVisible(true);
+		return ((inputAdminDialog) inputAdmin).getAdmin();
 	}
 
 	@Override
 	public String inputAdmin2() {
-		// TODO Auto-generated method stub
-		return null;
+		JDialog inputAdmin2 = new inputAdmin2Dialog();
+		inputAdmin2.setVisible(true);
+		return ((inputAdmin2Dialog) inputAdmin2).getAdmin();
 	}
 
 	@Override
 	public void displayNewAdminAdded(Administrateur nouvelAdmin) {
-		// TODO Auto-generated method stub
-		
+		JOptionPane.showMessageDialog(this, "L'adminstrateur "+nouvelAdmin.getPrenom()+" "+nouvelAdmin.getNom()+" a bien été ajoutée"," Information ",JOptionPane.INFORMATION_MESSAGE);
 	}
 
 	@Override
@@ -180,8 +188,7 @@ public class IHMGraphical extends JFrame implements IHM, Runnable, ActionListene
 
 	@Override
 	public void displayAdminRemoved(Administrateur administrateur) {
-		// TODO Auto-generated method stub
-		
+		JOptionPane.showMessageDialog(this, "L'administrateur "+administrateur.getPrenom()+" "+administrateur.getNom()+" a bien été supprimé");
 	}
 
 	@Override
@@ -198,21 +205,22 @@ public class IHMGraphical extends JFrame implements IHM, Runnable, ActionListene
 
 	@Override
 	public Professeur inputProf() {
-		// TODO Auto-generated method stub
-		return null;
+		JDialog inputProf = new inputProfDialog();
+		inputProf.setVisible(true);
+		return ((inputProfDialog) inputProf).getProf();
 	}
 
 	@Override
 	public String inputProf2() {
-		// TODO Auto-generated method stub
-		return null;
+		JDialog inputProf2 = new inputProf2Dialog();
+		inputProf2.setVisible(true);
+		return ((inputProf2Dialog) inputProf2).getProf();
 	}
 
 	@Override
 	public void displayNewProfAdded(Professeur professeur) {
-		// TODO Auto-generated method stub
-		
-	}
+		JOptionPane.showMessageDialog(this, "Le professeur "+professeur.getPrenom()+" "+professeur.getNom()+" a bien été ajoutée"," Information ",JOptionPane.INFORMATION_MESSAGE);
+		}
 
 	@Override
 	public void removeProf() {
@@ -222,7 +230,7 @@ public class IHMGraphical extends JFrame implements IHM, Runnable, ActionListene
 
 	@Override
 	public void displayProfRemoved(Professeur professeur) {
-		// TODO Auto-generated method stub
+		JOptionPane.showMessageDialog(this, "Le professeur "+professeur.getPrenom()+" "+professeur.getNom()+" a bien été supprimé");
 		
 	}
 
@@ -234,28 +242,27 @@ public class IHMGraphical extends JFrame implements IHM, Runnable, ActionListene
 
 	@Override
 	public void inputAdmin2Invalide() {
-		// TODO Auto-generated method stub
+		JOptionPane.showMessageDialog(this, "Identifiant invalide"," Attention ",JOptionPane.WARNING_MESSAGE);
 		
 	}
 
 	@Override
 	public void inputProf2Invalide() {
-		// TODO Auto-generated method stub
+		JOptionPane.showMessageDialog(this, "Identifiant invalide"," Attention ",JOptionPane.WARNING_MESSAGE);
 		
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == this.interfaceAdmin){
-			this.affichageIdAdministrateur();
-			Administrateur admin = this.gestionnaire.identificationAdministrateur();
-			if (admin != null) {
-				this.idValide(admin);
-				this.gestionnaire.choixAdministrateur();
-			} else {
-				this.idInvalide();
+			this.gestionnaire.actionsAdmin();
 			}
-		}
+		
+	}
+
+	@Override
+	public void newAddedPersonneExists() {
+		JOptionPane.showMessageDialog(this, "L'identifiant est déjà utilisé"," Attention ",JOptionPane.WARNING_MESSAGE);
 		
 	}
 

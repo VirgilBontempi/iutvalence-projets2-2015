@@ -13,44 +13,44 @@ import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 import javax.swing.JTextField;
 
-public class SaisieIdentifiantsDialog extends JDialog implements ActionListener{
+import fr.iutvalence.gpr1.java.model.Administrateur;
+
+public class inputAdmin2Dialog extends JDialog implements ActionListener{
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	private JTextField login;
 	private JButton okButton;
 	private JButton cancelButton;
-	private String loginInput;
+	private String administrateur;
 
-	public SaisieIdentifiantsDialog(){
+	public inputAdmin2Dialog(){
 		this.setModal(true);
-		this.setTitle("Identification");
-		this.setSize(350, 140);
+		this.setTitle("Saisie");
+		this.setSize(400, 200);
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
-		
+
 		JPanel pan = new JPanel();
-		pan.setBorder(BorderFactory.createTitledBorder("Veuillez saisir vos identifiants"));
-		pan.setLayout(new GridLayout(1, 2));
-		this.login = new JTextField();
-		JLabel nomLabel = new JLabel("Login : ");
-		pan.add(nomLabel);
-		pan.add(this.login);
+		pan.setBorder(BorderFactory
+				.createTitledBorder("Informations sur l'adiministrateur"));
+		pan.setLayout(new GridLayout(1,2));
 		
+		this.login = new JTextField();
+		JLabel loginLabel = new JLabel("Saisir le login :");
+		pan.add(loginLabel);
+		pan.add(this.login);
+
 		JPanel control = new JPanel();
 		this.okButton = new JButton("Valider");
 		this.okButton.setPreferredSize(new Dimension(90, 30));
 		control.add(this.okButton);
 		this.okButton.addActionListener(this);
-		
+
 		this.cancelButton = new JButton("Annuler");
 		this.cancelButton.setPreferredSize(new Dimension(90, 30));
 		control.add(this.cancelButton);
 		this.cancelButton.addActionListener(this);
-		
+
 		JSplitPane split = new JSplitPane();
 		split.setOrientation(JSplitPane.VERTICAL_SPLIT);
 		split.setTopComponent(pan);
@@ -59,20 +59,20 @@ public class SaisieIdentifiantsDialog extends JDialog implements ActionListener{
 		split.setEnabled(false);
 		this.add(split);
 	}
-
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource()==this.okButton && this.login.getText().length() != 0){
-			this.loginInput=this.login.getText();
+		if (e.getSource()==this.okButton && this.login.getText().length() != 0){
+			this.administrateur = this.login.getText();
+			
 			this.dispose();
 		}
-		if(e.getSource()==this.cancelButton){
+		if (e.getSource()==this.cancelButton && this.login.getText().length() != 0) {
 			this.dispose();
-		}
-		
+		}	
 	}
-	
-	public String getLogin(){
-		return this.loginInput;
+
+	public String getAdmin() {
+		return this.administrateur;
 	}
+
 }

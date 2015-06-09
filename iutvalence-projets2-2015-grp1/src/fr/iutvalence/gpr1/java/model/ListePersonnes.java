@@ -5,10 +5,6 @@ import java.util.LinkedList;
 
 /** Classe ListePersonnes. */
 public class ListePersonnes {
-	private final String PathListeAdministrateur;
-	private final String PathListeEtudiants;
-	private final String PathListeProfesseurs;
-
 	private final File listPersonnes;
 
 	/**
@@ -18,9 +14,6 @@ public class ListePersonnes {
 	 */
 	public ListePersonnes(File listPersonnes) {
 		this.listPersonnes = listPersonnes;
-		this.PathListeAdministrateur = "ListeAdministrateurs.txt";
-		this.PathListeEtudiants = "ListeEtudiants.txt";
-		this.PathListeProfesseurs = "ListeProfesseurs.txt";
 	}
 
 	/**
@@ -29,13 +22,6 @@ public class ListePersonnes {
 	 */
 	public void writeFileEtudiants(LinkedList<Etudiant> listeEtudiants) {
 
-		// d�finition d'un fichier
-		File fichier = new File(PathListeEtudiants);
-		
-		if(fichier.exists())
-		{
-			fichier.delete();
-		}
 		
 		// la d�finition du writer doit se faire ici
 		// pour des raisons de visibilit�
@@ -45,7 +31,7 @@ public class ListePersonnes {
 
 			// ouverture d'un flux de sortie sur un fichier
 			// a pour effet de cr�er le fichier
-			writer = new FileWriter(fichier, true);
+			writer = new FileWriter(this.listPersonnes);
 
 			Etudiant etudiant_courant = null;
 
@@ -112,13 +98,6 @@ public class ListePersonnes {
 	 */
 	public void writeFileProfesseurs(LinkedList<Professeur> listeProfesseurs) {
 
-		// d�finition d'un fichier
-		File fichier = new File(PathListeProfesseurs);
-		
-		if(fichier.exists())
-		{
-			fichier.delete();
-		}
 		
 		// la d�finition du writer doit se faire ici
 		// pour des raisons de visibilit�
@@ -128,7 +107,7 @@ public class ListePersonnes {
 
 			// ouverture d'un flux de sortie sur un fichier
 			// a pour effet de cr�er le fichier
-			writer = new FileWriter(fichier, true);
+			writer = new FileWriter(this.listPersonnes);
 
 			Professeur professeur_courant = null;
 
@@ -187,14 +166,6 @@ public class ListePersonnes {
 	 */
 	public void writeFileAdministrateurs(LinkedList<Administrateur> listeAdministrateurs) {
 
-		// d�finition d'un fichier
-		File fichier = new File(PathListeAdministrateur);
-		
-		if(fichier.exists())
-		{
-			fichier.delete();
-		}
-		
 		// la d�finition du writer doit se faire ici
 		// pour des raisons de visibilit�
 		Writer writer = null;
@@ -203,7 +174,7 @@ public class ListePersonnes {
 
 			// ouverture d'un flux de sortie sur un fichier
 			// a pour effet de cr�er le fichier
-			writer = new FileWriter(fichier, true);
+			writer = new FileWriter(this.listPersonnes);
 
 			Administrateur administrateur_courant = null;
 
@@ -260,7 +231,7 @@ public class ListePersonnes {
 	 * @throws IOException
 	 */
 	public LinkedList<Etudiant> getListEtudiants() throws IOException {
-		try (BufferedReader entry = new BufferedReader(new FileReader(PathListeEtudiants))) {
+		try (BufferedReader entry = new BufferedReader(new FileReader(this.listPersonnes))) {
 			String readText = entry.readLine();
 
 			LinkedList<Etudiant> listeEtudiants = new LinkedList<Etudiant>();
@@ -302,7 +273,7 @@ public class ListePersonnes {
 	 * @throws IOException
 	 */
 	public LinkedList<Professeur> getListProfesseurs() throws IOException {
-		try (BufferedReader entry = new BufferedReader(new FileReader(PathListeProfesseurs))) {
+		try (BufferedReader entry = new BufferedReader(new FileReader(this.listPersonnes))) {
 			String readText = entry.readLine();
 
 			LinkedList<Professeur> listeProfesseurs = new LinkedList<Professeur>();
@@ -331,7 +302,7 @@ public class ListePersonnes {
 	 */
 	public LinkedList<Administrateur> getListAdministrateurs()
 			throws IOException {
-		try (BufferedReader entry = new BufferedReader(new FileReader(PathListeAdministrateur))) {
+		try (BufferedReader entry = new BufferedReader(new FileReader(this.listPersonnes))) {
 			String readText = entry.readLine();
 
 			LinkedList<Administrateur> listeAdministrateurs = new LinkedList<Administrateur>();
@@ -352,55 +323,55 @@ public class ListePersonnes {
 		}
 	}
 
-	/**
-	 * Obtenir un étudiant de la liste.
-	 * 
-	 * @param fichierEtudiants
-	 * @param login
-	 * @return etudiantCourant
-	 */
-	public Etudiant GetEtudiant(String login) {
-
-		Etudiant etudiantCourant = null;
-		LinkedList<Etudiant> listeEtudiants;
-		try {
-
-			listeEtudiants = getListEtudiants();
-
-			for (int curseur = 1; curseur < listeEtudiants.size(); curseur++) {
-				etudiantCourant = listeEtudiants.get(curseur);
-
-				if (etudiantCourant.getLogin().equals(login))
-					return etudiantCourant;
-
-			}
-			return etudiantCourant;
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		return etudiantCourant;
-
-	}
-
-	/**
-	 * Ajouter un étudiant à la liste.
-	 * 
-	 * @param fichierEtudiants
-	 * @param etudiant
-	 */
-	public void ajouterEtudiant(Etudiant etudiant) {
-		LinkedList<Etudiant> listeEtudiants;
-		try {
-
-			listeEtudiants = getListEtudiants();
-
-			listeEtudiants.add(etudiant);
-			writeFileEtudiants(listeEtudiants);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
+//	/**
+//	 * Obtenir un étudiant de la liste.
+//	 * 
+//	 * @param fichierEtudiants
+//	 * @param login
+//	 * @return etudiantCourant
+//	 */
+//	public Etudiant GetEtudiant(String login) {
+//
+//		Etudiant etudiantCourant = null;
+//		LinkedList<Etudiant> listeEtudiants;
+//		try {
+//
+//			listeEtudiants = getListEtudiants();
+//
+//			for (int curseur = 1; curseur < listeEtudiants.size(); curseur++) {
+//				etudiantCourant = listeEtudiants.get(curseur);
+//
+//				if (etudiantCourant.getLogin().equals(login))
+//					return etudiantCourant;
+//
+//			}
+//			return etudiantCourant;
+//
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//
+//		return etudiantCourant;
+//
+//	}
+//
+//	/**
+//	 * Ajouter un étudiant à la liste.
+//	 * 
+//	 * @param fichierEtudiants
+//	 * @param etudiant
+//	 */
+//	public void ajouterEtudiant(Etudiant etudiant) {
+//		LinkedList<Etudiant> listeEtudiants;
+//		try {
+//
+//			listeEtudiants = getListEtudiants();
+//
+//			listeEtudiants.add(etudiant);
+//			writeFileEtudiants(listeEtudiants);
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//	}
 
 }

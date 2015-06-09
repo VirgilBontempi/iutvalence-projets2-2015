@@ -406,4 +406,10 @@ public class IHMConsole implements IHM {
 		System.out.println("Le professeur saisie n'existe pas");
 		
 	}
+
+	@Override
+	public void newAddedPersonneExists() {
+		System.out.println("Ce login est déja pris ou ce mot de passe existe déja");
+		
+	}
 }

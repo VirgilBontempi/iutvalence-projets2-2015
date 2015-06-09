@@ -62,8 +62,9 @@ public class SaisiePasswordDialog extends JDialog implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource()==this.okButton && this.password.getText()!=null){
+		if(e.getSource()==this.okButton && this.password.getText().length() != 0){
 			this.passwordInput=this.password.getText();
+			this.dispose();
 		}
 		if(e.getSource()==this.cancelButton){
 			this.dispose();

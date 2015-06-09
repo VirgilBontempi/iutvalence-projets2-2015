@@ -72,6 +72,8 @@ public interface IHM {
 
 	public void inputProf2Invalide();
 
+	public void newAddedPersonneExists();
+
 	
 
 	

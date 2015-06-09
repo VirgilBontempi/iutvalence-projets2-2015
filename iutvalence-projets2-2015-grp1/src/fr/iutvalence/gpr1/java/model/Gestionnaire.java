@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+
 import fr.iutvalence.gpr1.java.view.IHM;
 
 
@@ -13,6 +14,9 @@ public class Gestionnaire {
 
 	private IHM monIHM;
 
+	private ListePersonnes fileManagerAdmin;
+	private ListePersonnes fileManagerEtudiant;
+	private ListePersonnes fileManagerProf;
 	private List<Etudiant> listEtudiants;
 	private List<Professeur> listProfesseurs;
 	private List<Administrateur> listAdministrateurs;
@@ -28,26 +32,21 @@ public class Gestionnaire {
 	public Gestionnaire(IHM monIHM, File fichierEtudiants,
 			File fichierProfesseurs, File fichierAdministrateurs) {
 		this.monIHM = monIHM;
-
-		ListePersonnes fichierAdministrateur = new ListePersonnes(
-				fichierAdministrateurs);
+		this.fileManagerAdmin = new ListePersonnes(fichierAdministrateurs);
+		this.fileManagerEtudiant = new ListePersonnes(fichierEtudiants);
+		this.fileManagerProf = new ListePersonnes(fichierProfesseurs);
 		try {
-			this.listAdministrateurs = fichierAdministrateur
-					.getListAdministrateurs();
+			this.listAdministrateurs=this.fileManagerAdmin.getListAdministrateurs();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		try {
+			this.listEtudiants=this.fileManagerEtudiant.getListEtudiants();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		ListePersonnes fichierEtudiant = new ListePersonnes(fichierEtudiants);
 		try {
-			this.listEtudiants = fichierEtudiant.getListEtudiants();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		ListePersonnes fichierProfesseur = new ListePersonnes(
-				fichierProfesseurs);
-		try {
-			this.listProfesseurs = fichierProfesseur.getListProfesseurs();
+			this.listProfesseurs=this.fileManagerProf.getListProfesseurs();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -61,8 +60,14 @@ public class Gestionnaire {
 	 */
 	public Administrateur identificationAdministrateur() {
 		String login = this.monIHM.saisieLogin();
-		String password = this.monIHM.saisiePassword();
-		return this.rechercheAdministrateur(login, password);
+		if (login != null) {
+			String password = this.monIHM.saisiePassword();
+			if (password !=null){
+				return this.rechercheAdministrateur(login, password);
+			}
+		}
+		return null;
+		
 	}
 
 	/**
@@ -70,7 +75,7 @@ public class Gestionnaire {
 	 * 
 	 * @param login
 	 * @param password
-	 * @return boolean
+	 * @return currentAdministrateur
 	 */
 	public Administrateur rechercheAdministrateur(String login, String password) {
 		Iterator<Administrateur> iterator = this.listAdministrateurs.iterator();
@@ -131,7 +136,7 @@ public class Gestionnaire {
 	 * 
 	 * @param login
 	 * @param password
-	 * @return boolean
+	 * @return currentTacher
 	 */
 	private Professeur rechercheProfesseur(String login, String password) {
 
@@ -441,21 +446,64 @@ public class Gestionnaire {
 	private void addProf() {
 		Professeur professeur = this.monIHM.inputProf();
 		if (professeur != null) {
-			this.listProfesseurs.add(professeur);
-			this.monIHM.displayNewProfAdded(professeur);
+			if (rechercheProfesseurListe(professeur.getLogin(), professeur.getPassword()) != null){
+				this.monIHM.newAddedPersonneExists();
+			} else{
+				this.listProfesseurs.add(professeur);
+				this.monIHM.displayNewProfAdded(professeur);
+			}
 		}
 	}
 
-	
+	/**
+	 * Recherche un professeur en fonction de son login ou de son mot de passe.
+	 * 
+	 * @param login
+	 * @param password
+	 * @return current teacher (ou null)
+	 */
+	private Professeur rechercheProfesseurListe(String login, String password) {
+		Iterator<Professeur> iterator = this.listProfesseurs.iterator();
+		while (iterator.hasNext()) {
+			Professeur currentTeacher = iterator.next();
+			if (currentTeacher.getLogin().equals(login)) {
+					return currentTeacher;
+				}
+			}
+		return null;
+	} 
+
 	/**
 	 * Ajoute un administrateur dans la liste.
 	 */
 	private void addAdmin() {
 		Administrateur administrateur = this.monIHM.inputAdmin();
 		if (administrateur != null) {
-			this.listAdministrateurs.add(administrateur);
-			this.monIHM.displayNewAdminAdded(administrateur);
+			if (rechercheAdministrateurListe(administrateur.getLogin(), administrateur.getPassword()) != null){
+				this.monIHM.newAddedPersonneExists();
+			} else {
+				this.listAdministrateurs.add(administrateur);
+				this.monIHM.displayNewAdminAdded(administrateur);
+			}
 		}
+	}
+
+	/**
+	 * Recherche un administrateur en fonction de son login ou de son mot de passe.
+	 * 
+	 * @param login
+	 * @param password
+	 * @return currentAdministrator (ou null)
+	 */
+	private Administrateur rechercheAdministrateurListe(String login, String password) {
+		Iterator<Administrateur> iterator = this.listAdministrateurs.iterator();
+		while (iterator.hasNext()) {
+			Administrateur currentAdministrator = iterator.next();
+			if (currentAdministrator.getLogin().equals(login)) {
+					return currentAdministrator;
+				}
+			}
+		return null;
 	}
 
 	/**
@@ -471,14 +519,7 @@ public class Gestionnaire {
 
 			if (choice == 1) {
 				this.monIHM.affichageIdAdministrateur();
-				Administrateur admin = this.identificationAdministrateur();
-				if (admin != null) {
-					this.monIHM.idValide(admin);
-					idValide = true;
-					this.choixAdministrateur();
-				} else {
-					this.monIHM.idInvalide();
-				}
+				this.actionsAdmin();
 			}
 
 			if (choice == 2) {
@@ -498,12 +539,26 @@ public class Gestionnaire {
 			}
 
 			if (choice == 3) {
+				this.fileManagerAdmin.writeFileAdministrateurs((LinkedList<Administrateur>) this.listAdministrateurs);
+				this.fileManagerEtudiant.writeFileEtudiants((LinkedList<Etudiant>) this.listEtudiants);
+				this.fileManagerProf.writeFileProfesseurs((LinkedList<Professeur>) this.listProfesseurs);
 				System.exit(0);
 
 			}
 
 		}
 
+	}
+
+	public void actionsAdmin() {
+		Administrateur admin = this.identificationAdministrateur();
+		if (admin != null) {
+			this.monIHM.idValide(admin);
+			this.choixAdministrateur();
+		} else {
+			this.monIHM.idInvalide();
+		}
+		
 	}
 
 }
