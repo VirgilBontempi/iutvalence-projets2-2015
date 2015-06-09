@@ -45,7 +45,7 @@ public class ListePersonnes {
 
 			// ouverture d'un flux de sortie sur un fichier
 			// a pour effet de cr�er le fichier
-			writer = new FileWriter(fichier, true);
+			writer = new FileWriter(fichier);
 
 			Etudiant etudiant_courant = null;
 
@@ -128,7 +128,7 @@ public class ListePersonnes {
 
 			// ouverture d'un flux de sortie sur un fichier
 			// a pour effet de cr�er le fichier
-			writer = new FileWriter(fichier, true);
+			writer = new FileWriter(fichier);
 
 			Professeur professeur_courant = null;
 
@@ -203,7 +203,7 @@ public class ListePersonnes {
 
 			// ouverture d'un flux de sortie sur un fichier
 			// a pour effet de cr�er le fichier
-			writer = new FileWriter(fichier, true);
+			writer = new FileWriter(fichier);
 
 			Administrateur administrateur_courant = null;
 
