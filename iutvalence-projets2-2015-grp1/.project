@@ -14,46 +14,4 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>Délivrables/Projet S2 - Délivrable 0.docx</name>
-			<type>1</type>
-			<location>G:/Bureau/DELIVRABLE/Projet S2 - Délivrable 0.docx</location>
-		</link>
-		<link>
-			<name>Délivrables/Projet S2 - Délivrable 1.docx</name>
-			<type>1</type>
-			<location>G:/Bureau/DELIVRABLE/Projet S2 - Délivrable 1.docx</location>
-		</link>
-		<link>
-			<name>Délivrables/Projet S2 - Délivrable 2.docx</name>
-			<type>1</type>
-			<location>G:/Bureau/DELIVRABLE/Projet S2 - Délivrable 2.docx</location>
-		</link>
-		<link>
-			<name>Délivrables/Projet S2 - PowerPoint.pptx</name>
-			<type>1</type>
-			<location>G:/Bureau/DELIVRABLE/Projet S2 - PowerPoint.pptx</location>
-		</link>
-		<link>
-			<name>Délivrables/Projet S2 - Rapport de developpement.docx</name>
-			<type>1</type>
-			<location>G:/Bureau/DELIVRABLE/Projet S2 - Rapport de developpement.docx</location>
-		</link>
-		<link>
-			<name>Gestion De Projet/HeuresTravail.xlsx</name>
-			<type>1</type>
-			<location>G:/Bureau/Gestion de projet/HeuresTravail.xlsx</location>
-		</link>
-		<link>
-			<name>Gestion De Projet/Projet S2 - Conduite de projet.docx</name>
-			<type>1</type>
-			<location>G:/Bureau/Gestion de projet/Projet S2 - Conduite de projet.docx</location>
-		</link>
-		<link>
-			<name>Gestion De Projet/RépartionDesTâches.xlsx</name>
-			<type>1</type>
-			<location>G:/Bureau/Gestion de projet/RépartionDesTâches.xlsx</location>
-		</link>
-	</linkedResources>
 </projectDescription>
