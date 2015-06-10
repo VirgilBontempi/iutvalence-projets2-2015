@@ -217,17 +217,18 @@ public class Gestionnaire {
 	 */
 	public String creationCours() {
 		String libelle = this.monIHM.saisieLibelleCours();
-		String typeCours = this.monIHM.saisieTypeCours();
-		if (typeCours != null) {
-			if (typeCours.equalsIgnoreCase("TD")) {
-				return this.monIHM.saisieGrpTd();
-			}
-			if (typeCours.equalsIgnoreCase("TP")) {
-				return this.monIHM.saisieGrpTp();
+		if(libelle != null){
+			String typeCours = this.monIHM.saisieTypeCours();
+			if (typeCours != null) {
+				if (typeCours.equalsIgnoreCase("TD")) {
+					return this.monIHM.saisieGrpTd();
+				}
+				if (typeCours.equalsIgnoreCase("TP")) {
+					return this.monIHM.saisieGrpTp();
+				}
 			}
 		}
-		return libelle;
-
+		return "cm";
 	}
 
 	
@@ -237,32 +238,32 @@ public class Gestionnaire {
 	 * @param grp
 	 */
 	public void debutCours(String grp) {
-		int choiceCours = this.monIHM.menuCours();
+		if(grp != null){
+			int choiceCours = this.monIHM.menuCours();
 
-		if (choiceCours == 2) {
-			boolean idValide = false;
-			while (!idValide) {
-				this.monIHM.affichageIdEtudiant();
-				Etudiant etudiant = this.identificationEtudiant();
-				if (etudiant != null) {
-					this.monIHM.idValide(etudiant);
-					idValide = true;
-					this.monIHM.elevePresent();
+			if (choiceCours == 2) {
+				boolean idValide = false;
+				while (!idValide) {
+					this.monIHM.affichageIdEtudiant();
+					Etudiant etudiant = this.identificationEtudiant();
+					if (etudiant != null) {
+						this.monIHM.idValide(etudiant);
+						idValide = true;
+						this.monIHM.elevePresent();
+					} else
+						this.monIHM.idInvalide();
+					this.debutCours(grp);
+				}
+			}
+			if (choiceCours == 1) {
+				this.monIHM.affichageIdProfesseur2();
+				Professeur prof = this.identificationProfesseur();
+				if (prof != null) {
+					this.listeDesAbsents(grp);
 				} else
 					this.monIHM.idInvalide();
-				this.debutCours(grp);
 			}
 		}
-		if (choiceCours == 1) {
-			this.monIHM.affichageIdProfesseur2();
-			Professeur prof = this.identificationProfesseur();
-			if (prof != null) {
-				this.listeDesAbsents(grp);
-			} else
-				this.monIHM.idInvalide();
-
-		}
-
 	}
 
 	
@@ -275,7 +276,11 @@ public class Gestionnaire {
 		LinkedList<Etudiant> listAbs = new LinkedList<Etudiant>();
 		for (int i = 0; i < this.listEtudiants.size(); i++) {
 			Etudiant currentEtudiant = this.listEtudiants.get(i);
-			if (grp != null) {
+			if (grp.equals("cm")) {
+				if (currentEtudiant.getAbsence()) {
+					listAbs.add(currentEtudiant);
+				}
+			} else {
 				try {
 					int td = Integer.parseInt(grp);
 					if (currentEtudiant.getGrpTd() == td
@@ -288,10 +293,7 @@ public class Gestionnaire {
 						listAbs.add(currentEtudiant);
 					}
 				}
-			} else {
-				if (currentEtudiant.getAbsence()) {
-					listAbs.add(currentEtudiant);
-				}
+				
 			}
 		}
 		this.monIHM.affichageListeAbsence(listAbs);

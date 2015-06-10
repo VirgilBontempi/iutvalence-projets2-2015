@@ -26,12 +26,11 @@ public class Etudiant extends Personne {
 	 * @param login
 	 * @param password
 	 */
-	public Etudiant(String nom, String prenom, String gprTP, int grpTD, int numEtudiant, int nbrabsence, boolean absence, String login, String password) {
+	public Etudiant(String nom, String prenom, String gprTP, int grpTD, int numEtudiant, String login, String password) {
 		super(nom, prenom, login, password);
 		this.gprTP = gprTP;
 		this.grpTd = grpTD;
 		this.numEtudiant = numEtudiant;
-		this.nbrAbsence = nbrabsence;
 		this.absence = true;
 		this.nbrAbsence = NBR_ABSENCE_BY_DEFAULT;
 	}

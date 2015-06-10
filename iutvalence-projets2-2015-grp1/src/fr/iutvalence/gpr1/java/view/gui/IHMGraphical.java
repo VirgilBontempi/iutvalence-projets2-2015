@@ -11,6 +11,7 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 import fr.iutvalence.gpr1.java.model.Administrateur;
 import fr.iutvalence.gpr1.java.model.Etudiant;
@@ -39,23 +40,22 @@ public class IHMGraphical extends JFrame implements IHM, Runnable, ActionListene
 	}
 	
 	public void initWindow(Gestionnaire gestionnaire){
+		JPanel background = new BackgroundPanel();
+		this.add(background);
 		this.gestionnaire=gestionnaire;
-		this.setLayout(null);
-//		JLabel title = new JLabel("Mon Application");
-//		title.setBounds(512,50, 360, 100);
-//		this.add(title);
+		background.setLayout(null);
 		this.interfaceAdmin = new JButton("Administrateur");
-		this.interfaceAdmin.setBounds(335, 90, 360, 160);
+		this.interfaceAdmin.setBounds(335, 230, 360, 100);
 		this.interfaceAdmin.addActionListener(this);
-		this.add(this.interfaceAdmin);
+		background.add(this.interfaceAdmin);
 		this.interfaceProf = new JButton("Professeur");
-		this.interfaceProf.setBounds(335, 260, 360, 160);
+		this.interfaceProf.setBounds(335, 350, 360, 100);
 		this.interfaceProf.addActionListener(this);
-		this.add(this.interfaceProf);
+		background.add(this.interfaceProf);
 		this.quitter = new JButton("Quitter");
-		this.quitter.setBounds(335, 430, 360, 160);
+		this.quitter.setBounds(335, 470, 360, 100);
 		this.quitter.addActionListener(this);
-		this.add(this.quitter);
+		background.add(this.quitter);
 		
 	}
 	@Override

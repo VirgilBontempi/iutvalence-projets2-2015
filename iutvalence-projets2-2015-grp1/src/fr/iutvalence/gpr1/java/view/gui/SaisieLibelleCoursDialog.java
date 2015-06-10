@@ -66,7 +66,7 @@ public class SaisieLibelleCoursDialog extends JDialog implements ActionListener{
 			this.libelleInput=this.libelle.getText();
 			this.dispose();
 		}
-		if(e.getSource()==this.cancelButton && this.libelle.getText().length() != 0){
+		if(e.getSource()==this.cancelButton){
 			this.dispose();
 		}
 	}

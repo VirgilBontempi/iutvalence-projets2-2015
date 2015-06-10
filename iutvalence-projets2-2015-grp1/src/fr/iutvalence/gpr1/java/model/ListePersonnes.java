@@ -43,8 +43,6 @@ public class ListePersonnes {
 					+ etudiant_courant.getgprTP() + ","
 					+ etudiant_courant.getGrpTd() + ","
 					+ etudiant_courant.getnumEtudiant() + ","
-					+ etudiant_courant.getNbrAbsence() + ","
-					+ etudiant_courant.getAbsence() + ","
 					+ etudiant_courant.getLogin() + ","
 					+ etudiant_courant.getPassword();
 
@@ -55,8 +53,6 @@ public class ListePersonnes {
 						+ etudiant_courant.getgprTP() + ","
 						+ etudiant_courant.getGrpTd() + ","
 						+ etudiant_courant.getnumEtudiant() + ","
-						+ etudiant_courant.getNbrAbsence() + ","
-						+ etudiant_courant.getAbsence() + ","
 						+ etudiant_courant.getLogin() + ","
 						+ etudiant_courant.getPassword();
 				
@@ -244,20 +240,9 @@ public class ListePersonnes {
 					String grpTP = etudiant[2];
 					int grpTD = Integer.parseInt(etudiant[3]);
 					int numEtudiant = Integer.parseInt(etudiant[4]);
-					int nbrabsence = Integer.parseInt(etudiant[5]);
-					String absence_temp = etudiant[6];
-					String login = etudiant[7];
-					String password = etudiant[8];
-					boolean absence;
-					if(absence_temp.equals("true")) {
-					absence = true;
-					}
-					else
-					{
-					absence = false;
-					}
-										
-					Etudiant etudiantCourant = new Etudiant(nom, prenom, grpTP, grpTD, numEtudiant, nbrabsence, absence, login, password);
+					String login = etudiant[5];
+					String password = etudiant[6];										
+					Etudiant etudiantCourant = new Etudiant(nom, prenom, grpTP, grpTD, numEtudiant, login, password);
 					listeEtudiants.add(etudiantCourant);
 				}
 			}
