@@ -371,7 +371,6 @@ public class Gestionnaire {
 		} else {
 			this.monIHM.inputProf2Invalide();
 		}
-		this.choixAdministrateur();
 	}
 
 	
@@ -417,7 +416,6 @@ public class Gestionnaire {
 		} else {
 			this.monIHM.inputAdmin2Invalide();
 		}
-		this.choixAdministrateur();
 	}
 
 	
