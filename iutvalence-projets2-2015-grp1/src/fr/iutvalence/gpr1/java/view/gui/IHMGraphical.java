@@ -32,7 +32,7 @@ public class IHMGraphical extends JFrame implements IHM, Runnable, ActionListene
 	private Gestionnaire gestionnaire;
 
 	public IHMGraphical() {
-		this.setTitle("Mon Appli");
+		this.setTitle("Absent Manager");
 		this.setSize(1024, 720);
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
@@ -115,7 +115,7 @@ public class IHMGraphical extends JFrame implements IHM, Runnable, ActionListene
 
 	@Override
 	public void elevePresent() {
-		JOptionPane.showMessageDialog(this, "Vou avez été noté présent"," Information ",JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(this, "Vous avez été noté présent"," Information ",JOptionPane.INFORMATION_MESSAGE);
 		
 	}
 

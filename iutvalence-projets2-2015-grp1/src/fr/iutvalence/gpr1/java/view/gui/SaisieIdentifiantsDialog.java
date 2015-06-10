@@ -33,7 +33,7 @@ public class SaisieIdentifiantsDialog extends JDialog implements ActionListener{
 		this.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
 		
 		JPanel pan = new JPanel();
-		pan.setBorder(BorderFactory.createTitledBorder("Veuillez saisir vos identifiants"));
+		pan.setBorder(BorderFactory.createTitledBorder("Veuillez saisir votre identifiant"));
 		pan.setLayout(new GridLayout(1, 2));
 		this.login = new JTextField();
 		JLabel nomLabel = new JLabel("Login : ");
