@@ -14,4 +14,16 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>DELIVRABLE</name>
+			<type>2</type>
+			<location>G:/Bureau/DELIVRABLE</location>
+		</link>
+		<link>
+			<name>Gestion de projet</name>
+			<type>2</type>
+			<location>G:/Bureau/Gestion de projet</location>
+		</link>
+	</linkedResources>
 </projectDescription>
